@@ -1,1 +1,901 @@
-<h1>Em breve</h1>
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Portal — Sayonara Ferreira · Consultoria LB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C9A84C;--gold-light:#e2c06e;--gold-dim:rgba(201,168,76,0.15);
+  --black:#0D0D0D;--dark2:#171717;--dark3:#1e1e1e;
+  --white:#f5f0e8;--white-dim:rgba(245,240,232,0.6);--border:rgba(201,168,76,0.25);
+  --green:#7dd87d;--green-dim:rgba(80,200,80,0.12);--green-border:rgba(80,200,80,0.3);
+  --blue:#8ab4f8;--red:#e05a5a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-serif;font-weight:300;min-height:100vh;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,13,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.nav-brand{display:flex;align-items:center;gap:10px;padding:10px 0;flex-shrink:0;}
+.nav-logo{width:42px;height:42px;border:1.5px solid var(--gold);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.nav-title{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:600;color:var(--white);letter-spacing:1px;line-height:1.2;}
+.nav-title span{color:var(--gold);display:block;font-size:9px;font-family:'Montserrat',sans-serif;font-weight:400;letter-spacing:2px;text-transform:uppercase;}
+.nav-tabs{display:flex;gap:3px;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;padding:8px 0;scrollbar-width:none;}
+.nav-tabs::-webkit-scrollbar{display:none;}
+.tab-btn{background:none;border:1px solid transparent;color:var(--white-dim);font-family:'Montserrat',sans-serif;font-size:9px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:11px 11px;min-height:40px;cursor:pointer;border-radius:2px;transition:all 0.3s;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
+.tab-btn:hover{color:var(--gold);border-color:var(--border);}
+.tab-btn.active{color:var(--gold);border-color:var(--gold);background:var(--gold-dim);}
+.theme-toggle{background:none;border:1px solid var(--border);color:var(--white-dim);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all 0.3s;flex-shrink:0;-webkit-tap-highlight-color:transparent;}
+body.light-mode{--black:#f5f0e8;--dark2:#ede8df;--dark3:#e5e0d7;--white:#1a1a1a;--white-dim:rgba(26,26,26,0.65);--border:rgba(201,168,76,0.35);}
+body.light-mode nav{background:rgba(245,240,232,0.97);}
+.main{max-width:1100px;margin:0 auto;padding:88px 16px 60px;}
+.section{display:none;animation:fadeUp 0.5s ease;}
+.section.active{display:block;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.watermark{position:fixed;bottom:18px;right:18px;opacity:0.06;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;pointer-events:none;z-index:50;transform:rotate(-30deg);white-space:nowrap;}
+.section-header{margin:48px 0 26px;display:flex;align-items:center;gap:14px;}
+.section-header h2{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,36px);font-weight:400;letter-spacing:1px;}
+.section-header h2 span{color:var(--gold);}
+.section-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent);}
+/* HERO */
+.client-hero{text-align:center;padding:50px 20px 40px;position:relative;overflow:hidden;border-radius:4px;margin-bottom:28px;}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#120d00,#0d0d0d);filter:brightness(0.9);}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,13,13,0.1) 0%,rgba(13,13,13,0.88) 100%);}
+.hero-content{position:relative;z-index:2;}
+.client-badge{display:inline-block;border:1px solid var(--border);color:var(--gold);font-size:9px;letter-spacing:3px;text-transform:uppercase;padding:5px 16px;margin-bottom:18px;border-radius:1px;}
+.client-name{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,56px);font-weight:300;letter-spacing:2px;line-height:1.1;margin-bottom:10px;}
+.client-name strong{color:var(--gold);font-weight:600;}
+.client-meta{color:var(--white-dim);font-size:11px;letter-spacing:1px;margin-bottom:8px;}
+.hero-divider{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:20px auto 0;}
+/* PLAN INFO */
+.plan-info-bar{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;}
+.plan-pill{background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:12px 18px;flex:1;min-width:130px;}
+.plan-pill .pl-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--white-dim);margin-bottom:4px;}
+.plan-pill .pl-val{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);font-weight:600;}
+/* ALERT */
+.alert-box{background:rgba(224,90,90,0.08);border:1px solid rgba(224,90,90,0.3);border-left:3px solid var(--red);border-radius:4px;padding:14px 18px;font-size:12px;color:var(--white-dim);line-height:1.9;margin-bottom:16px;}
+.alert-box strong{color:var(--red);}
+.alert-gold{background:rgba(201,168,76,0.06);border:1px solid var(--border);border-left:3px solid var(--gold);}
+.alert-gold strong{color:var(--gold);}
+/* RECADOS */
+.recados-box{background:linear-gradient(135deg,#1a1500,var(--dark2));border:1px solid var(--gold);border-radius:4px;padding:22px;margin-bottom:20px;}
+.recados-box h4{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.recados-text{font-size:13px;line-height:1.9;color:var(--white-dim);white-space:pre-wrap;}
+/* PROFILE GRID */
+.profile-grid{display:grid;grid-template-columns:1fr 2fr;gap:24px;margin:28px 0;}
+@media(max-width:680px){.profile-grid{grid-template-columns:1fr}}
+.profile-card{background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:26px;}
+.profile-card h3{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--gold);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.profile-item{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:12px;gap:10px;}
+.profile-item:last-child{border-bottom:none;}
+.profile-item .label{color:var(--white-dim);font-size:10px;letter-spacing:1px;text-transform:uppercase;}
+.profile-item .value{color:var(--white);font-weight:500;text-align:right;}
+.welcome-box{background:linear-gradient(135deg,var(--dark2) 0%,#161410 100%);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:4px;padding:26px;}
+.welcome-box p{font-size:13px;line-height:1.9;color:var(--white-dim);margin-bottom:12px;}
+.welcome-box p:last-child{margin-bottom:0;}
+.welcome-box strong{color:var(--gold);font-weight:600;}
+/* MEAL */
+.meal-card{background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:22px;margin-bottom:16px;}
+.meal-card h3{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--gold);margin-bottom:6px;}
+.meal-time{font-size:10px;letter-spacing:2px;color:var(--white-dim);text-transform:uppercase;margin-bottom:14px;}
+.meal-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:4px;}
+.swipe-hint{text-align:center;font-size:10px;color:var(--white-dim);padding:4px 0 10px;opacity:0.7;}
+.meal-table{width:100%;border-collapse:collapse;min-width:560px;}
+.meal-table th{background:rgba(201,168,76,0.08);color:var(--gold);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap;}
+.meal-table td{padding:10px 14px;font-size:11px;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:top;color:var(--white-dim);}
+.meal-table tr:last-child td{border-bottom:none;}
+.meal-table .food-name{color:var(--white);font-weight:500;}
+.meal-table .total-row td{border-top:1px solid var(--border);color:var(--gold);font-weight:600;font-size:12px;}
+.meal-obs textarea{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:3px;color:var(--white);font-family:'Montserrat',sans-serif;font-size:11px;padding:10px 12px;resize:none;min-height:60px;outline:none;transition:border 0.3s;margin-top:10px;}
+.meal-obs textarea:focus{border-color:var(--gold);}
+.meal-obs-note{font-size:10px;color:rgba(201,168,76,0.7);margin-top:8px;padding:8px 12px;background:rgba(201,168,76,0.05);border-radius:3px;line-height:1.7;}
+.sub-search{background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:18px 22px;margin-bottom:20px;}
+.sub-search h4{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--gold);margin-bottom:12px;}
+.sub-search input{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:3px;color:var(--white);font-family:'Montserrat',sans-serif;font-size:12px;padding:9px 14px;outline:none;transition:border 0.3s;}
+.sub-search input:focus{border-color:var(--gold);}
+.sub-result{margin-top:10px;font-size:12px;color:var(--white-dim);min-height:20px;}
+/* TREINO */
+
+.treino-tabs::-webkit-scrollbar{display:none;}
+
+
+
+
+.exercise-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:4px;}
+.exercise-table{width:100%;border-collapse:collapse;min-width:480px;}
+.exercise-table th{background:rgba(201,168,76,0.08);color:var(--gold);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap;}
+.exercise-table td{padding:10px 14px;font-size:11px;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:middle;color:var(--white-dim);}
+.exercise-table tr:last-child td{border-bottom:none;}
+.exercise-table .ex-name{color:var(--white);font-weight:500;}
+.video-btn{display:inline-flex;align-items:center;gap:5px;background:var(--gold-dim);border:1px solid var(--border);color:var(--gold);font-size:9px;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;border-radius:2px;text-decoration:none;transition:all 0.3s;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
+.video-btn:hover{background:var(--gold);color:#000;}
+/* CARDIO */
+.cardio-week{background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:22px;margin-bottom:16px;}
+.cardio-week h3{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--gold);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.cardio-day{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.04);}
+.cardio-day:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.cardio-day-title{font-size:11px;font-weight:600;color:var(--white);letter-spacing:1px;margin-bottom:6px;display:flex;align-items:center;gap:8px;}
+.cardio-day-body{font-size:11px;color:var(--white-dim);line-height:1.9;}
+.zone-pill{display:inline-block;padding:2px 10px;border-radius:2px;font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;}
+.z2{background:var(--green-dim);border:1px solid var(--green-border);color:var(--green);}
+.z3{background:rgba(248,196,100,0.12);border:1px solid rgba(248,196,100,0.3);color:#f8c464;}
+.z4{background:rgba(224,90,90,0.1);border:1px solid rgba(224,90,90,0.3);color:var(--red);}
+.week-badge{display:inline-block;padding:3px 14px;border:1px solid var(--border);border-radius:2px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+/* BIBLIOTECA */
+.biblio-block{background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:22px;margin-bottom:16px;}
+.biblio-block-title{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.biblio-item{margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,0.04);}
+.biblio-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.biblio-tag{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;font-weight:600;}
+.biblio-item p{font-size:12px;line-height:1.9;color:var(--white-dim);}
+.ig-link{display:inline-flex;align-items:center;gap:5px;background:var(--gold-dim);border:1px solid var(--border);color:var(--gold);font-size:9px;letter-spacing:1px;padding:5px 10px;border-radius:2px;text-decoration:none;transition:all 0.3s;-webkit-tap-highlight-color:transparent;}
+.ig-link:hover{background:var(--gold);color:#000;}
+/* EVOLUÇÃO */
+.photo-upload-area{border:2px dashed var(--border);border-radius:4px;padding:40px;text-align:center;cursor:pointer;transition:border 0.3s;margin-bottom:20px;}
+.photo-upload-area:hover{border-color:var(--gold);}
+.upload-label{cursor:pointer;display:block;}
+.upload-icon{font-size:32px;margin-bottom:10px;}
+.upload-text{font-size:12px;color:var(--white-dim);}
+.photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;}
+.photo-item{position:relative;border-radius:4px;overflow:hidden;aspect-ratio:3/4;}
+.photo-item img{width:100%;height:100%;object-fit:cover;}
+/* FEEDBACK */
+.fb-obs{background:var(--gold-dim);border:1px solid var(--border);border-radius:4px;padding:14px 18px;font-size:12px;color:var(--white-dim);margin-bottom:24px;line-height:1.8;}
+.fb-section{background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:22px;margin-bottom:16px;}
+.fb-section h3{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:16px;}
+.fb-question{margin-bottom:16px;}
+.fb-question:last-child{margin-bottom:0;}
+.fb-q-label{font-size:11px;color:var(--white-dim);margin-bottom:8px;line-height:1.6;}
+.fb-scale,.fb-yesno{display:flex;gap:6px;flex-wrap:wrap;}
+.fb-scale-btn,.fb-yn-btn{background:var(--dark3);border:1px solid var(--border);color:var(--white-dim);font-family:'Montserrat',sans-serif;font-size:10px;padding:8px 14px;min-height:40px;border-radius:2px;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;gap:5px;-webkit-tap-highlight-color:transparent;}
+.fb-scale-btn.selected,.fb-yn-btn.selected{background:var(--gold-dim);border-color:var(--gold);color:var(--gold);}
+.fb-text-area{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:3px;color:var(--white);font-family:'Montserrat',sans-serif;font-size:12px;padding:12px 14px;resize:none;min-height:80px;outline:none;transition:border 0.3s;margin-top:8px;}
+.fb-text-area:focus{border-color:var(--gold);}
+.btn-generate{background:var(--gold);color:#000;font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;border:none;padding:14px 28px;border-radius:2px;cursor:pointer;width:100%;margin-top:16px;transition:all 0.3s;-webkit-tap-highlight-color:transparent;}
+.btn-generate:hover{background:var(--gold-light);}
+.fb-result{background:var(--dark3);border:1px solid var(--border);border-radius:4px;padding:18px;margin-top:16px;font-size:12px;line-height:1.9;color:var(--white-dim);display:none;white-space:pre-wrap;}
+.btn-copy{background:var(--dark2);border:1px solid var(--gold);color:var(--gold);font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:1px;padding:8px 20px;border-radius:2px;cursor:pointer;margin-top:10px;width:100%;-webkit-tap-highlight-color:transparent;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <div class="nav-logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L3 7v10l9 5 9-5V7L12 2z" stroke="#C9A84C" stroke-width="1.5" fill="none"/><path d="M12 2v20M3 7l9 5 9-5" stroke="#C9A84C" stroke-width="1" opacity="0.5"/></svg>
+      </div>
+      <div class="nav-title">Consultoria LB<span>Luan Barreto · Nutricionista & Treinador</span></div>
+    </div>
+    <div class="nav-tabs">
+      <button class="tab-btn active" onclick="showSection('apresentacao')">Apresentação</button>
+      <button class="tab-btn" onclick="showSection('dieta')">Dieta</button>
+      <button class="tab-btn" onclick="showSection('treino')">Treino</button>
+      <button class="tab-btn" onclick="showSection('cardio')">Cardio</button>
+      <button class="tab-btn" onclick="showSection('conscientizacao')">Conscientização</button>
+      <button class="tab-btn" onclick="showSection('z3distribuidora')">🛒 Z3</button>
+      <button class="tab-btn" onclick="showSection('evolucao')">Evolução</button>
+      <button class="tab-btn" onclick="showSection('relatorio')">Relatório</button>
+      <button class="tab-btn" onclick="showSection('feedback')">Feedback</button>
+      <button class="tab-btn" onclick="showSection('financeiro')">💳 Financeiro</button>
+    </div>
+    <button class="theme-toggle" onclick="document.body.classList.toggle('light-mode')">☀</button>
+  </div>
+</nav>
+
+<div class="main">
+
+<!-- ══════════════ APRESENTAÇÃO ══════════════ -->
+<section id="apresentacao" class="section active">
+  <div class="client-hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="client-badge">Consultoria LB · Plano Personalizado</div>
+      <div class="client-name">Sayonara <strong>Ferreira</strong></div>
+      <div class="client-meta">49 anos · 72 kg · 1,69 m · Vila Velha — ES</div>
+      <div class="hero-divider"></div>
+    </div>
+  </div>
+
+  <div class="plan-info-bar">
+    <div class="plan-pill"><div class="pl-label">Objetivo</div><div class="pl-val" style="font-size:13px;">Composição Corporal</div></div>
+    <div class="plan-pill"><div class="pl-label">Refeições/dia</div><div class="pl-val">4</div></div>
+    <div class="plan-pill"><div class="pl-label">Calorias/dia</div><div class="pl-val">~1.390 kcal</div></div>
+    <div class="plan-pill"><div class="pl-label">Treinos/semana</div><div class="pl-val">5–6x</div></div>
+    <div class="plan-pill"><div class="pl-label">Semana atual</div><div class="pl-val" id="weekNum">—</div></div>
+  </div>
+
+  <div class="alert-box alert-gold">
+    <strong>⚠️ Atenção — Restrições de Saúde:</strong><br>
+    Dor lombar — evitar exercícios unilaterais com carga. Punho esquerdo sensível (queda de bike). Medicação para pressão alta. Ajuste os exercícios conforme orientação do treinador.
+  </div>
+
+  <div class="recados-box">
+    <h4>📌 Recados do Treinador</h4>
+    <div class="recados-text">Sayonara, seja bem-vinda à Consultoria LB! 🎯
+
+Seu plano foi montado considerando seu nível avançado de treino e suas especificidades — lombar, punho e o protocolo atual de suplementação. A estratégia alimentar em déficit calórico criará o ambiente necessário para a perda de gordura sem comprometer sua massa muscular.
+
+Treino em jejum + cardio antes da primeira refeição: essa estrutura está incluída no seu planejamento.
+
+Suporte: segunda a sexta, 8h às 18h. Qualquer dúvida, me chama! 💬</div>
+  </div>
+
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h3>Dados Pessoais</h3>
+      <div class="profile-item"><span class="label">Nome</span><span class="value">Sayonara D. S. Ferreira</span></div>
+      <div class="profile-item"><span class="label">Idade</span><span class="value">49 anos</span></div>
+      <div class="profile-item"><span class="label">Peso</span><span class="value">72 kg</span></div>
+      <div class="profile-item"><span class="label">Altura</span><span class="value">1,69 m</span></div>
+      <div class="profile-item"><span class="label">Cidade</span><span class="value">Vila Velha — ES</span></div>
+      <div class="profile-item"><span class="label">Nível treino</span><span class="value">Avançado (2+ anos)</span></div>
+      <div class="profile-item"><span class="label">Treina em jejum</span><span class="value">Sim</span></div>
+    </div>
+    <div class="welcome-box">
+      <p>Sayonara, você já tem uma base sólida. O desafio agora é <strong>ajustar as variáveis</strong> — quantidade alimentar, protocolo aeróbico e organização da rotina — para que o corpo responda na composição corporal.</p>
+      <p>Com <strong>~1.390 kcal/dia</strong> em 4 refeições bem distribuídas, o déficit calórico será suficiente para promover perda de gordura mantendo a massa muscular que você construiu.</p>
+      <p>A musculação é parte essencial do processo. <strong>Perder peso sem musculação aumenta muito o risco de perder massa muscular junto.</strong></p>
+      <p><strong>"Constância não é ausência de falhas, é capacidade de retorno."</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ DIETA ══════════════ -->
+<section id="dieta" class="section">
+  <div class="section-header"><h2>Plano <span>Alimentar</span></h2><div class="section-line"></div></div>
+
+  <div class="sub-search">
+    <h4>🔍 Busca Rápida de Substitutos</h4>
+    <input type="text" id="subInput" placeholder="Digite um alimento para ver substituições..." oninput="searchSub(this.value)"/>
+    <div class="sub-result" id="subResult"></div>
+  </div>
+
+  <div class="alert-box" style="margin-bottom:20px;">
+    <strong>⚠️ Atenção:</strong> Evitar lactose e alimentos que fermentam. Refeição 1 sempre após o treino e cardio em jejum.
+  </div>
+
+  <!-- R1 -->
+  <div class="meal-card">
+    <h3>Refeição 1 — Pós-Treino</h3>
+    <div class="meal-time">Após treino + cardio em jejum</div>
+    <div class="meal-table-wrap">
+      <table class="meal-table">
+        <thead><tr><th>Alimento</th><th>Qtd</th><th>kcal</th><th>Carbo(g)</th><th>Prot(g)</th><th>Gord(g)</th><th>Substituições</th></tr></thead>
+        <tbody>
+          <tr><td class="food-name">Ovos inteiros</td><td>2 un</td><td>156</td><td>0,8</td><td>13,4</td><td>11,0</td><td>Frango 80g · Atum 80g · Patinho 80g · Whey 25g</td></tr>
+          <tr><td class="food-name">Claras de ovo</td><td>2 un</td><td>34</td><td>0,6</td><td>7,2</td><td>0,0</td><td>—</td></tr>
+          <tr><td class="food-name">Pão integral</td><td>2 fatias (50g)</td><td>124</td><td>22,6</td><td>5,0</td><td>1,8</td><td>Tapioca 70g · Cuscuz 100g · Batata-doce 100g</td></tr>
+          <tr><td class="food-name">Mamão</td><td>150g</td><td>55</td><td>14,2</td><td>0,8</td><td>0,1</td><td>Banana · Maçã · Melão · Abacaxi</td></tr>
+          <tr class="total-row"><td colspan="2">Total da Refeição</td><td>369</td><td>38g</td><td>26g</td><td>13g</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="swipe-hint">← deslize →</div>
+    <div class="meal-obs"><textarea id="obs-r1" placeholder="Observações desta refeição..." onblur="saveObs('r1',this.value)"></textarea></div>
+  </div>
+
+  <!-- R2 -->
+  <div class="meal-card">
+    <h3>Refeição 2 — Almoço</h3>
+    <div class="meal-time">Horário em aberto · Intervalo de 3–4h após R1</div>
+    <div class="meal-table-wrap">
+      <table class="meal-table">
+        <thead><tr><th>Alimento</th><th>Qtd</th><th>kcal</th><th>Carbo(g)</th><th>Prot(g)</th><th>Gord(g)</th><th>Substituições</th></tr></thead>
+        <tbody>
+          <tr><td class="food-name">Arroz branco</td><td>70g</td><td>92</td><td>20,2</td><td>1,7</td><td>0,1</td><td>Batata-doce 130g · Aipim 100g · Cuscuz 80g</td></tr>
+          <tr><td class="food-name">Peito de frango</td><td>120g</td><td>149</td><td>0,0</td><td>33,0</td><td>1,6</td><td>Patinho 120g · Tilápia 140g · Atum 120g</td></tr>
+          <tr><td class="food-name">Verduras e vegetais</td><td>150g</td><td>35</td><td>6,5</td><td>2,1</td><td>0,4</td><td>Brócolis · Cenoura · Abobrinha · Vagem</td></tr>
+          <tr><td class="food-name">Abacaxi</td><td>100g</td><td>48</td><td>12,3</td><td>0,5</td><td>0,1</td><td>Melão · Melancia · Morangos</td></tr>
+          <tr><td class="food-name" style="color:var(--gold-light);font-style:italic;">Feijão (opcional)</td><td>70g</td><td>53</td><td>9,5</td><td>3,4</td><td>0,3</td><td>Lentilha 70g · Grão-de-bico 70g</td></tr>
+          <tr class="total-row"><td colspan="2">Total (sem feijão)</td><td>324</td><td>39g</td><td>37g</td><td>2g</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="swipe-hint">← deslize →</div>
+    <div class="meal-obs-note">👉 Adicionar 70g de feijão se necessário (+53 kcal). Evitar lactose e alimentos que fermentam.</div>
+    <div class="meal-obs"><textarea id="obs-r2" placeholder="Observações desta refeição..." onblur="saveObs('r2',this.value)"></textarea></div>
+  </div>
+
+  <!-- R3 -->
+  <div class="meal-card">
+    <h3>Refeição 3 — Lanche</h3>
+    <div class="meal-time">Horário em aberto · Intervalo de 3–4h após R2</div>
+    <div class="meal-table-wrap">
+      <table class="meal-table">
+        <thead><tr><th>Alimento</th><th>Qtd</th><th>kcal</th><th>Carbo(g)</th><th>Prot(g)</th><th>Gord(g)</th><th>Substituições</th></tr></thead>
+        <tbody>
+          <tr><td class="food-name">Whey protein</td><td>30g</td><td>117</td><td>3,0</td><td>22,0</td><td>1,5</td><td>Frango 80g · Atum 80g · Ovos 2 un</td></tr>
+          <tr><td class="food-name">Granola sem açúcar</td><td>30g</td><td>130</td><td>20,0</td><td>3,0</td><td>4,0</td><td>Aveia 30g · Pão integral 1 fatia</td></tr>
+          <tr><td class="food-name">Iogurte zero (sem lactose)</td><td>200ml</td><td>80</td><td>12,0</td><td>8,0</td><td>0,0</td><td>⚠️ Verificar rótulo — sem lactose</td></tr>
+          <tr><td class="food-name">Frutas variadas</td><td>100g</td><td>50</td><td>12,0</td><td>0,5</td><td>0,2</td><td>Morango · Melão · Mamão · Maçã · Uva · Melancia</td></tr>
+          <tr class="total-row"><td colspan="2">Total da Refeição</td><td>377</td><td>47g</td><td>34g</td><td>6g</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="swipe-hint">← deslize →</div>
+    <div class="meal-obs-note">⚠️ Iogurte zero: verificar se é sem lactose. Evitar iogurte convencional.</div>
+    <div class="meal-obs"><textarea id="obs-r3" placeholder="Observações desta refeição..." onblur="saveObs('r3',this.value)"></textarea></div>
+  </div>
+
+  <!-- R4 -->
+  <div class="meal-card">
+    <h3>Refeição 4 — Jantar</h3>
+    <div class="meal-time">Horário em aberto · Igual à Refeição 2</div>
+    <div class="meal-table-wrap">
+      <table class="meal-table">
+        <thead><tr><th>Alimento</th><th>Qtd</th><th>kcal</th><th>Carbo(g)</th><th>Prot(g)</th><th>Gord(g)</th><th>Substituições</th></tr></thead>
+        <tbody>
+          <tr><td class="food-name">Arroz branco</td><td>70g</td><td>92</td><td>20,2</td><td>1,7</td><td>0,1</td><td>Batata-doce 130g · Aipim 100g · Cuscuz 80g</td></tr>
+          <tr><td class="food-name">Peito de frango</td><td>120g</td><td>149</td><td>0,0</td><td>33,0</td><td>1,6</td><td>Patinho 120g · Tilápia 140g · Atum 120g</td></tr>
+          <tr><td class="food-name">Verduras e vegetais</td><td>150g</td><td>35</td><td>6,5</td><td>2,1</td><td>0,4</td><td>Brócolis · Cenoura · Abobrinha · Vagem</td></tr>
+          <tr><td class="food-name">Abacaxi</td><td>100g</td><td>48</td><td>12,3</td><td>0,5</td><td>0,1</td><td>Melão · Melancia · Morangos</td></tr>
+          <tr><td class="food-name" style="color:var(--gold-light);font-style:italic;">Feijão (opcional)</td><td>70g</td><td>53</td><td>9,5</td><td>3,4</td><td>0,3</td><td>Lentilha 70g · Grão-de-bico 70g</td></tr>
+          <tr class="total-row"><td colspan="2">Total (sem feijão)</td><td>324</td><td>39g</td><td>37g</td><td>2g</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="swipe-hint">← deslize →</div>
+    <div class="meal-obs"><textarea id="obs-r4" placeholder="Observações desta refeição..." onblur="saveObs('r4',this.value)"></textarea></div>
+  </div>
+
+  <!-- TOTAL -->
+  <div class="meal-card" style="border-color:var(--gold);background:linear-gradient(135deg,rgba(201,168,76,0.06),var(--dark2));">
+    <h3>Total Diário</h3>
+    <div class="meal-table-wrap">
+      <table class="meal-table">
+        <thead><tr><th>Cenário</th><th>Energia</th><th>Carboidratos</th><th>Proteínas</th><th>Gorduras</th></tr></thead>
+        <tbody>
+          <tr><td style="color:var(--white-dim);">Sem feijão</td><td style="color:var(--gold);font-size:18px;font-weight:700;">~1.390 kcal</td><td style="color:var(--blue);">163g</td><td style="color:var(--green);">134g</td><td style="color:#f8c464;">23g</td></tr>
+          <tr><td style="color:var(--white-dim);">Com feijão (2 refeições)</td><td style="color:var(--gold);font-size:16px;font-weight:600;">~1.496 kcal</td><td style="color:var(--blue);">182g</td><td style="color:var(--green);">141g</td><td style="color:#f8c464;">23g</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="swipe-hint">← deslize →</div>
+  </div>
+</section>
+
+<section id="treino" class="section">
+  <div class="section-header"><h2>Orientações de <span>Treino</span></h2><div class="section-line"></div></div>
+
+  <div class="alert-box alert-gold" style="margin-bottom:20px;">
+    <strong>ℹ️ Sobre o Treino:</strong> O treinamento de musculação não é acompanhado pela Consultoria LB neste momento. Siga as orientações gerais abaixo e mantenha sua rotina na academia.
+  </div>
+
+  <div class="alert-box" style="margin-bottom:20px;">
+    <strong>⚠️ Restrições importantes:</strong><br>
+    • Evitar exercícios unilaterais com carga (dor lombar)<br>
+    • Atenção ao punho esquerdo — evitar carga excessiva em flexão de punho<br>
+    • Pressão alta — monitorar intensidade e evitar Valsalva prolongado
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:16px;">
+
+    <div class="meal-card">
+      <h3 style="color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:19px;margin-bottom:12px;">🏋️ Frequência Mínima</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:16px;">
+        <div style="background:var(--dark3);border:1px solid var(--border);border-radius:4px;padding:16px;text-align:center;">
+          <div style="font-size:36px;font-weight:700;color:var(--gold);">5–6</div>
+          <div style="font-size:10px;color:var(--white-dim);letter-spacing:1px;text-transform:uppercase;margin-top:4px;">Treinos por semana</div>
+        </div>
+        <div style="background:var(--dark3);border:1px solid var(--border);border-radius:4px;padding:16px;text-align:center;">
+          <div style="font-size:36px;font-weight:700;color:var(--green);">60</div>
+          <div style="font-size:10px;color:var(--white-dim);letter-spacing:1px;text-transform:uppercase;margin-top:4px;">Min por sessão</div>
+        </div>
+        <div style="background:var(--dark3);border:1px solid var(--border);border-radius:4px;padding:16px;text-align:center;">
+          <div style="font-size:22px;font-weight:700;color:var(--blue);">Manhã</div>
+          <div style="font-size:10px;color:var(--white-dim);letter-spacing:1px;text-transform:uppercase;margin-top:4px;">9h às 12h</div>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--white-dim);line-height:1.9;">Manter entre <strong style="color:var(--white);">5 e 6 treinos de musculação por semana</strong>. A musculação é fundamental para manutenção da massa muscular, melhora metabólica e aumento do gasto energético. Perder peso sem musculação aumenta muito o risco de perder massa muscular junto.</p>
+    </div>
+
+    <div class="meal-card">
+      <h3 style="color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:19px;margin-bottom:12px;">📋 Orientações Gerais</h3>
+      <ul style="font-size:12px;color:var(--white-dim);line-height:2.2;padding-left:16px;">
+        <li>Treino em jejum — primeira refeição após treino + cardio</li>
+        <li>Evitar exercícios unilaterais com carga (proteger lombar)</li>
+        <li>Atenção à pegada no punho esquerdo — sem carga excessiva em flexão</li>
+        <li>Priorizar exercícios bilaterais e máquinas</li>
+        <li>Progressão de carga gradual ao longo das semanas</li>
+        <li>Séries compostas: <strong style="color:var(--white);">6–10 reps</strong> · Isolados: <strong style="color:var(--white);">10–15 reps</strong></li>
+        <li>1ª série sempre aquecimento leve — nunca carga máxima de imediato</li>
+        <li>Monitorar pressão arterial — evitar esforço máximo prolongado</li>
+      </ul>
+    </div>
+
+    <div class="meal-card">
+      <h3 style="color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:19px;margin-bottom:12px;">😴 Recuperação</h3>
+      <p style="font-size:12px;color:var(--white-dim);line-height:1.9;">O corpo evolui no <strong style="color:var(--white);">descanso</strong>, não durante o treino. Sono de <strong style="color:var(--white);">7 a 8 horas por noite</strong> é essencial para recuperação muscular, regulação hormonal e controle de apetite — especialmente com o volume de treino + cardio diário.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════ CARDIO ══════════════ -->
+<section id="cardio" class="section">
+  <div class="section-header"><h2>Protocolo de <span>Cardio</span></h2><div class="section-line"></div></div>
+
+  <div class="plan-info-bar">
+    <div class="plan-pill"><div class="pl-label">Duração</div><div class="pl-val">6 semanas</div></div>
+    <div class="plan-pill"><div class="pl-label">Frequência</div><div class="pl-val">7x/sem</div></div>
+    <div class="plan-pill"><div class="pl-label">Por sessão</div><div class="pl-val">60 min</div></div>
+    <div class="plan-pill"><div class="pl-label">Zona base</div><div class="pl-val" style="color:var(--green);">Z2–Z3</div></div>
+  </div>
+
+  <div class="meal-card" style="margin-bottom:20px;">
+    <h3 style="font-size:16px;margin-bottom:12px;">📊 Controle de Intensidade</h3>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="display:flex;align-items:center;gap:12px;"><span class="zone-pill z2">Z1–Z2</span><span style="font-size:12px;color:var(--white-dim);">RPE 3–4 · Leve, confortável, conversável</span></div>
+      <div style="display:flex;align-items:center;gap:12px;"><span class="zone-pill z3">Z3</span><span style="font-size:12px;color:var(--white-dim);">RPE 5–6 · Moderado, sustentado</span></div>
+      <div style="display:flex;align-items:center;gap:12px;"><span class="zone-pill z4">Z4</span><span style="font-size:12px;color:var(--white-dim);">RPE 7–8 · Forte controlado</span></div>
+    </div>
+    <div style="margin-top:14px;font-size:11px;color:var(--white-dim);line-height:1.9;">
+      🔥 <strong style="color:var(--white);">Aquecimento (todos os dias):</strong> 5–8 min leves — caminhada, pedal leve ou trote leve.<br>
+      🧊 <strong style="color:var(--white);">Final:</strong> 5 min leves, respiração desacelerando gradualmente.<br>
+      ⚠️ Zona 5 não será utilizada.
+    </div>
+  </div>
+
+  <!-- SEMANA 1 -->
+  <div class="cardio-week">
+    <h3>📅 Semana 1</h3>
+    <div class="week-badge">Base de condicionamento</div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🏃 Segunda — Esteira (corrida + caminhada) <span class="zone-pill z2">Z2</span></div>
+      <div class="cardio-day-body">60 min · 4 min trote leve / 2 min caminhada · Repetir ao longo da sessão</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">⛰️ Terça — Esteira inclinada + Transport <span class="zone-pill z2">Z2–Z3</span></div>
+      <div class="cardio-day-body">30 min caminhada inclinada (inclinação 5–7%) + 30 min transport leve/moderado</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🚴 Quarta — Bike <span class="zone-pill z2">Z2–Z3</span></div>
+      <div class="cardio-day-body">60 min · Repetir 3x: 15 min Z2 / 5 min Z3</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🪜 Quinta — Escada + Caminhada</div>
+      <div class="cardio-day-body">20 min escada (2 min leve / 1 min moderado · repetir) + 40 min caminhada leve</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🚶 Sexta — Transport <span class="zone-pill z2">Z2</span></div>
+      <div class="cardio-day-body">60 min contínuo em Zona 2</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🔥 Sábado — Cardio Misto <span class="zone-pill z3">Z2–Z3</span></div>
+      <div class="cardio-day-body">20 min bike + 20 min caminhada inclinada + 20 min transport</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🟢 Domingo — Regenerativo <span class="zone-pill z2">Z2</span></div>
+      <div class="cardio-day-body">60 min caminhada leve ou bike leve</div>
+    </div>
+  </div>
+
+  <!-- SEMANA 2 -->
+  <div class="cardio-week">
+    <h3>📅 Semana 2</h3>
+    <div class="week-badge">Mais tempo em Zona 3</div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🏃 Segunda — Esteira</div>
+      <div class="cardio-day-body">60 min · 5 min corrida / 2 min caminhada · Repetir</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">⛰️ Terça — Inclinado + Transport <span class="zone-pill z3">Z3 nos últimos 10 min</span></div>
+      <div class="cardio-day-body">30 min inclinado (inclinação 6–8%) + 30 min transport · Últimos 10 min Z3</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🚴 Quarta — Bike <span class="zone-pill z3">Z3</span></div>
+      <div class="cardio-day-body">60 min · Repetir 4x: 8 min Z3 / 4 min Z2</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🪜 Quinta — Escada + Caminhada</div>
+      <div class="cardio-day-body">25 min escada (2 min moderado / 1 min forte · repetir) + 35 min caminhada leve</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🚶 Sexta — Transport <span class="zone-pill z2">Z2</span></div>
+      <div class="cardio-day-body">60 min contínuo em Zona 2</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🔥 Sábado — Misto</div>
+      <div class="cardio-day-body">20 min corrida leve + 20 min bike + 20 min transport</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🟢 Domingo — Regenerativo <span class="zone-pill z2">Z2</span></div>
+      <div class="cardio-day-body">60 min regenerativo</div>
+    </div>
+  </div>
+
+  <!-- SEMANA 3 -->
+  <div class="cardio-week">
+    <h3>📅 Semana 3</h3>
+    <div class="week-badge">Progressão de duração e intensidade</div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🏃 Segunda — Esteira <span class="zone-pill z3">Z2–Z3</span></div>
+      <div class="cardio-day-body">60 min · 6 min corrida / 2 min caminhada · Repetir</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">⛰️ Terça — Inclinado + Transport</div>
+      <div class="cardio-day-body">35 min inclinado (7–10%) + 25 min transport</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🚴 Quarta — Bike <span class="zone-pill z3">Z3</span></div>
+      <div class="cardio-day-body">60 min · Repetir 5x: 5 min Z3 / 2 min leve</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🪜 Quinta — Escada + Caminhada</div>
+      <div class="cardio-day-body">30 min escada (90s forte / 90s leve · repetir) + 30 min caminhada</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🚶 Sexta — Transport <span class="zone-pill z2">Z2</span></div>
+      <div class="cardio-day-body">60 min transport contínuo em Zona 2</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🔥 Sábado — Misto <span class="zone-pill z3">Z3</span></div>
+      <div class="cardio-day-body">20 min corrida leve + 20 min inclinado + 20 min bike</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🟢 Domingo — Regenerativo</div>
+      <div class="cardio-day-body">60 min regenerativo</div>
+    </div>
+  </div>
+
+  <!-- SEMANA 4 -->
+  <div class="cardio-week" style="border-color:var(--green-border);">
+    <h3 style="color:var(--green);">📅 Semana 4 — Recuperação Ativa</h3>
+    <div class="week-badge" style="border-color:var(--green-border);color:var(--green);">Redução de intensidade · Zona 2 predominante</div>
+    <div class="cardio-day">
+      <div class="cardio-day-body" style="color:var(--white-dim);font-size:12px;line-height:1.9;">
+        Todos os treinos predominantemente em <strong style="color:var(--green);">Zona 2</strong>.<br>
+        Sem estímulos fortes. Mesma estrutura semanal, mas sem progressão de intensidade.<br>
+        Objetivo: recuperação fisiológica e consolidação das adaptações das semanas anteriores.
+      </div>
+    </div>
+  </div>
+
+  <!-- SEMANA 5 -->
+  <div class="cardio-week">
+    <h3>📅 Semana 5</h3>
+    <div class="week-badge">Retomada progressiva</div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🏃 Segunda — Esteira</div>
+      <div class="cardio-day-body">60 min · 8 min corrida / 2 min caminhada · Repetir</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">⛰️ Terça — Inclinado + Transport <span class="zone-pill z3">Z3 predominante</span></div>
+      <div class="cardio-day-body">35 min inclinado (8–12%) + 25 min transport</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🚴 Quarta — Bike <span class="zone-pill z3">Z3</span></div>
+      <div class="cardio-day-body">60 min · Repetir 6x: 5 min Z3 / 2 min leve</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🪜 Quinta — Escada + Caminhada</div>
+      <div class="cardio-day-body">35 min escada (1 min forte / 1 min leve · repetir) + 25 min caminhada leve</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🚶 Sexta — Transport <span class="zone-pill z3">Z2–Z3</span></div>
+      <div class="cardio-day-body">60 min transport contínuo Z2–Z3</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🔥 Sábado — Misto</div>
+      <div class="cardio-day-body">20 min corrida + 20 min bike + 20 min escada leve</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🟢 Domingo — Regenerativo <span class="zone-pill z2">Z2</span></div>
+      <div class="cardio-day-body">60 min regenerativo</div>
+    </div>
+  </div>
+
+  <!-- SEMANA 6 -->
+  <div class="cardio-week" style="border-color:rgba(224,90,90,0.3);">
+    <h3 style="color:#f8c464;">📅 Semana 6 — Pico Controlado</h3>
+    <div class="week-badge" style="border-color:rgba(248,196,100,0.3);color:#f8c464;">Máxima do bloco · Zona 3 predominante</div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🏃 Segunda — Esteira <span class="zone-pill z3">Z3</span></div>
+      <div class="cardio-day-body">60 min · 10 min corrida / 2 min caminhada · Repetir</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">⛰️ Terça — Inclinado alto + Transport <span class="zone-pill z3">Z3</span></div>
+      <div class="cardio-day-body">40 min inclinado (inclinação alta) + 20 min transport</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🚴 Quarta — Bike <span class="zone-pill z3">Z2–Z3</span></div>
+      <div class="cardio-day-body">60 min contínuo Z2–Z3</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🪜 Quinta — Escada + Caminhada <span class="zone-pill z4">Z4</span></div>
+      <div class="cardio-day-body">40 min escada (90s forte / 60s leve · repetir) + 20 min caminhada</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🚶 Sexta — Transport <span class="zone-pill z2">Z2</span></div>
+      <div class="cardio-day-body">60 min transport contínuo Z2</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🔥 Sábado — Misto <span class="zone-pill z3">Z3</span></div>
+      <div class="cardio-day-body">20 min corrida leve + 20 min bike + 20 min caminhada inclinada</div>
+    </div>
+    <div class="cardio-day">
+      <div class="cardio-day-title">🟢 Domingo — Regenerativo leve <span class="zone-pill z2">Z2</span></div>
+      <div class="cardio-day-body">60 min regenerativo muito leve</div>
+    </div>
+  </div>
+
+  <div class="meal-card">
+    <h3 style="font-size:15px;margin-bottom:10px;">📈 Evolução Esperada ao Longo do Programa</h3>
+    <ul style="font-size:12px;color:var(--white-dim);line-height:2;padding-left:16px;">
+      <li>Mais tempo em Zona 3 ao longo das semanas</li>
+      <li>Progressão de inclinação na esteira</li>
+      <li>Corridas cada vez mais longas</li>
+      <li>Maior tolerância cardiovascular</li>
+      <li>Melhor recuperação entre estímulos</li>
+    </ul>
+    <div style="margin-top:12px;font-size:11px;color:var(--white-dim);line-height:1.9;">
+      <strong style="color:var(--gold);">"Cardio não é castigo, é estratégia."</strong>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CONSCIENTIZAÇÃO ══════════════ -->
+<section id="conscientizacao" class="section">
+  <div class="section-header"><h2>Área de <span>Conscientização</span></h2><div class="section-line"></div></div>
+  <p style="font-size:11px;color:var(--white-dim);margin-bottom:28px;line-height:1.8;">Dicas e conteúdos do seu treinador sobre nutrição, mentalidade, sono e saúde.</p>
+
+  <div class="biblio-block">
+    <div class="biblio-block-title">🧠 Comportamento e Mentalidade</div>
+    <div class="biblio-item"><div class="biblio-tag">⚡ Performance X Perder Gordura</div><p>Querer hipertrofia e emagrecimento ao mesmo tempo exige equilíbrio e estratégia. Déficit agressivo destrói recuperação e compromete a síntese muscular.</p><div style="margin-top:8px;"><a href="https://www.instagram.com/reel/DYhdnxBRyHb/" target="_blank" class="ig-link">▶ VER</a></div></div>
+    <div class="biblio-item"><div class="biblio-tag">🔁 Você não consegue ou nunca fez acontecer?</div><p>Existe diferença entre não conseguir e nunca ter feito acontecer de verdade. Tenta pra valer primeiro.</p><div style="margin-top:8px;"><a href="https://www.instagram.com/reel/DYM9-vVxMzU/" target="_blank" class="ig-link">▶ VER</a></div></div>
+    <div class="biblio-item"><div class="biblio-tag">🤝 Negociando com você mesmo</div><p>Cada vez que você negocia com você mesmo, quebra uma promessa. A solução é honrar o que você disse que queria.</p><div style="margin-top:8px;"><a href="https://www.instagram.com/reel/DYFNPgCRgWD/" target="_blank" class="ig-link">▶ VER</a></div></div>
+    <div class="biblio-item"><div class="biblio-tag">📚 Saber não é o mesmo que fazer</div><p>Todo mundo sabe o que fazer. Quase ninguém se mantém fazendo. A diferença entre quem chega lá é processo.</p><div style="margin-top:8px;"><a href="https://www.instagram.com/reel/DXea2_gkcQt/" target="_blank" class="ig-link">▶ VER</a></div></div>
+  </div>
+
+  <div class="biblio-block">
+    <div class="biblio-block-title">🥗 Nutrição e Alimentação</div>
+    <div class="biblio-item"><div class="biblio-tag">🍽️ Não sei o que comer à tarde</div><p>Uma refeição simples e estratégica pode mudar sua fome no fim do dia e a performance no treino.</p><div style="margin-top:8px;"><a href="https://www.instagram.com/p/DYA05hhkVVX/" target="_blank" class="ig-link">▶ VER</a></div></div>
+    <div class="biblio-item"><div class="biblio-tag">🥦 Isso aqui mata sua fome</div><p>Volume + fibra + saciedade: como montar o almoço certo para controlar a fome o dia todo.</p><div style="margin-top:8px;"><a href="https://www.instagram.com/p/DXu0eOikcgc/" target="_blank" class="ig-link">▶ VER</a></div></div>
+    <div class="biblio-item"><div class="biblio-tag">⚠️ Déficit Calórico vs Déficit Nutricional</div><p>Comer pouco não é comer certo. Déficit de nutrientes gera menos energia, pior recuperação e perda muscular.</p><div style="margin-top:8px;"><a href="https://www.instagram.com/reel/DXo7pFTkWJ1/" target="_blank" class="ig-link">▶ VER</a></div></div>
+    <div class="biblio-item"><div class="biblio-tag">🔄 De quanto em quanto tempo trocar a dieta?</div><p>Consistência costuma ser mais importante do que variedade. O corpo responde à adesão ao longo do tempo.</p><div style="margin-top:8px;"><a href="https://www.instagram.com/reel/DXHaD9QEbks/" target="_blank" class="ig-link">▶ VER</a></div></div>
+    <div class="biblio-item"><div class="biblio-tag">🎯 Pequenos erros na dieta</div><p>Qualquer detalhe fora do planejamento já é um erro. Chega mais longe quem erra menos.</p><div style="margin-top:8px;"><a href="https://www.instagram.com/reel/DYXR3N8syMd/" target="_blank" class="ig-link">▶ VER</a></div></div>
+  </div>
+
+  <div class="biblio-block">
+    <div class="biblio-block-title">💊 Suplementação</div>
+    <div class="biblio-item"><div class="biblio-tag">💉 Você realmente precisa de Mounjaro?</div><p>Alimentação de qualidade faz o que muita gente acha que só remédio resolve.</p><div style="margin-top:8px;"><a href="https://www.instagram.com/reel/DYe7YNKRydI/" target="_blank" class="ig-link">▶ VER</a></div></div>
+  </div>
+
+  <div class="biblio-block">
+    <div class="biblio-block-title">😴 Sono e Recuperação</div>
+    <div class="biblio-item"><div class="biblio-tag">🍺 O álcool inibe seu potencial</div><p>Mesmo em doses moderadas, prejudica sono, recuperação muscular, função cognitiva e hormônios.</p><div style="margin-top:8px;"><a href="https://www.instagram.com/reel/DXxSy9SxBKT/" target="_blank" class="ig-link">▶ VER</a></div></div>
+  </div>
+</section>
+
+<!-- ══════════════ Z3 DISTRIBUIDORA ══════════════ -->
+<section id="z3distribuidora" class="section">
+  <div class="section-header"><h2>🛒 Z3 <span>Distribuidora</span></h2><div class="section-line"></div></div>
+  <div style="background:linear-gradient(135deg,rgba(201,168,76,0.08),var(--dark2));border:1px solid var(--border);border-radius:8px;padding:32px;text-align:center;margin-bottom:24px;">
+    <div style="font-size:48px;margin-bottom:16px;">🛒</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold);margin-bottom:8px;">Z3 Distribuidora</div>
+    <div style="font-size:13px;color:var(--white-dim);margin-bottom:24px;line-height:1.8;">Catálogo com <strong style="color:var(--white);">16 marcas</strong> · PIX ou cartão · Pedido mínimo <strong style="color:var(--white);">R$399</strong> · Pedido pelo WhatsApp</div>
+    <a href="https://z3distribuidora.netlify.app/" target="_blank" style="display:inline-block;background:var(--gold);color:#000;font-weight:700;font-size:13px;letter-spacing:1px;padding:14px 32px;border-radius:4px;text-decoration:none;">🛒 Acessar Catálogo</a>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
+    <div style="background:var(--dark2);border:1px solid var(--border);border-radius:6px;padding:20px;text-align:center;"><div style="font-size:28px;margin-bottom:8px;">🏷️</div><div style="font-size:12px;font-weight:600;color:var(--gold);margin-bottom:4px;">16 Marcas</div><div style="font-size:11px;color:var(--white-dim);">Maior variedade</div></div>
+    <div style="background:var(--dark2);border:1px solid var(--border);border-radius:6px;padding:20px;text-align:center;"><div style="font-size:28px;margin-bottom:8px;">💳</div><div style="font-size:12px;font-weight:600;color:var(--gold);margin-bottom:4px;">PIX ou Cartão</div><div style="font-size:11px;color:var(--white-dim);">Pagamento facilitado</div></div>
+    <div style="background:var(--dark2);border:1px solid var(--border);border-radius:6px;padding:20px;text-align:center;"><div style="font-size:28px;margin-bottom:8px;">📦</div><div style="font-size:12px;font-weight:600;color:var(--gold);margin-bottom:4px;">Pedido Mínimo R$399</div><div style="font-size:11px;color:var(--white-dim);">Via WhatsApp</div></div>
+  </div>
+</section>
+
+<!-- ══════════════ EVOLUÇÃO ══════════════ -->
+<section id="evolucao" class="section">
+  <div class="section-header"><h2>Fotos de <span>Acompanhamento</span></h2><div class="section-line"></div></div>
+  <div class="photo-upload-area"><label class="upload-label" for="photoUpload"><div class="upload-icon">📷</div><div class="upload-text">Toque para adicionar foto de acompanhamento</div></label><input type="file" id="photoUpload" accept="image/*" multiple onchange="addPhotos(this)"></div>
+  <div class="photo-grid" id="photoGrid"></div>
+</section>
+
+<!-- ══════════════ RELATÓRIO ══════════════ -->
+<section id="relatorio" class="section">
+  <div class="section-header"><h2>Relatório <span>Personalizado</span></h2><div class="section-line"></div></div>
+  <div style="background:linear-gradient(135deg,rgba(201,168,76,0.06),var(--dark2));border:1px solid var(--border);border-radius:4px;padding:22px 24px;margin-bottom:20px;">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold);margin-bottom:4px;">Sayonara Dinis de Souza Ferreira</div>
+    <div style="font-size:10px;color:var(--white-dim);letter-spacing:1px;">RELATÓRIO DE ACOMPANHAMENTO · CONSULTORIA LB</div>
+    <div style="font-size:11px;color:var(--white-dim);margin-top:8px;line-height:1.8;">Além das explicações neste relatório, incluí links para vídeos educativos do meu Instagram para reforçar a conscientização e facilitar sua adesão ao processo.</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:18px;">
+
+    <div class="meal-card">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:12px;">🎯 Objetivo</div>
+      <p style="font-size:12px;color:var(--white-dim);line-height:2;">Implementar estratégia na sua rotina alimentar e de treinamento, buscando <strong style="color:var(--white)">melhorar a composição corporal, promover perda de gordura, manter e desenvolver massa muscular, melhorar saúde, qualidade de vida e bem-estar físico e mental</strong>. O foco não é apenas emagrecer, mas criar um ambiente sustentável para o corpo responder de maneira eficiente e saudável ao longo do tempo.</p>
+      <div style="margin-top:12px;"><a href="https://www.instagram.com/reel/DN1T1hF4gf-/" target="_blank" class="ig-link">▶ Entenda o processo</a></div>
+    </div>
+
+    <div class="meal-card">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:12px;">🍽️ Planejamento da Dieta</div>
+      <p style="font-size:12px;color:var(--white-dim);line-height:2;">Foi elaborado um planejamento alimentar com <strong style="color:var(--white)">4 refeições ao longo do dia</strong>, totalizando aproximadamente <strong style="color:var(--white)">~1.390 kcal/dia</strong> (até ~1.500 kcal com feijão nas refeições principais). Esse planejamento criará um déficit calórico suficiente para promover perda de gordura e melhora da composição corporal, preservando massa muscular e mantendo energia.</p>
+      <div style="margin-top:12px;"><a href="https://www.instagram.com/reel/DIzjTBhSr95/" target="_blank" class="ig-link">▶ Organização alimentar</a></div>
+    </div>
+
+    <div class="meal-card">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:12px;">🧠 Comportamento e Constância</div>
+      <p style="font-size:12px;color:var(--white-dim);line-height:2;">Resultado vem da repetição consistente de bons hábitos. Criar horários fixos para alimentação, treino, atividade aeróbica e descanso reduz o desgaste mental e aumenta a chance de manter constância.</p>
+      <div style="margin-top:10px;background:rgba(201,168,76,0.05);border-left:3px solid var(--gold);border-radius:3px;padding:10px 14px;font-size:11px;color:var(--white);font-style:italic;">"Constância não é ausência de falhas, é capacidade de retorno."</div>
+      <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;">
+        <a href="https://www.instagram.com/reel/DHqfIjkxlM7/" target="_blank" class="ig-link">▶ Constância vence intensidade</a>
+        <a href="https://www.instagram.com/reel/DOgG7RTkYOx/" target="_blank" class="ig-link">▶ Não espere o momento perfeito</a>
+      </div>
+    </div>
+
+    <div class="meal-card">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:12px;">⏰ Horário das Refeições</div>
+      <p style="font-size:12px;color:var(--white-dim);line-height:2;">Os horários podem ser flexíveis e adaptados à sua rotina. O mais importante é manter intervalos de <strong style="color:var(--white)">3 a 4 horas</strong> entre as refeições e evitar longos períodos sem alimentação. Sua primeira refeição será realizada <strong style="color:var(--white)">após o treino e o cardio em jejum</strong> — essa estratégia auxilia no controle do apetite e na organização da rotina.</p>
+      <div style="margin-top:12px;"><a href="https://www.instagram.com/reel/DNjfRDHvKzi/" target="_blank" class="ig-link">▶ Organização de horários</a></div>
+    </div>
+
+    <div class="meal-card">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:12px;">🏋️ Treinamento</div>
+      <p style="font-size:12px;color:var(--white-dim);line-height:2;">A orientação é manter entre <strong style="color:var(--white)">5 e 6 treinos de musculação por semana</strong>. A musculação é fundamental para manutenção de massa muscular, melhora metabólica, aumento do gasto energético e melhora da composição corporal. Perder peso sem musculação aumenta muito o risco de perder massa muscular junto.</p>
+    </div>
+
+    <div class="meal-card">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:12px;">🚴 Atividade Aeróbica</div>
+      <p style="font-size:12px;color:var(--white-dim);line-height:2;">A recomendação mínima é <strong style="color:var(--white)">200 minutos de atividade aeróbica por semana</strong>. O protocolo de cardio no portal varia os estímulos ao longo da semana para evitar adaptação metabólica, melhorar condicionamento e aumentar o gasto energético. Fazer sempre o mesmo estímulo faz o corpo se adaptar mais rápido.</p>
+      <div style="margin-top:10px;background:rgba(201,168,76,0.05);border-left:3px solid var(--gold);border-radius:3px;padding:10px 14px;font-size:11px;color:var(--white);font-style:italic;">"Cardio não é castigo, é estratégia."</div>
+      <div style="margin-top:12px;"><a href="https://www.instagram.com/reel/DOY2YvMEbxP/" target="_blank" class="ig-link">▶ Benefícios do cardio</a></div>
+    </div>
+
+    <div class="meal-card">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:12px;">🍽️ Refeição Livre e Álcool</div>
+      <p style="font-size:12px;color:var(--white-dim);line-height:2;">Manter <strong style="color:var(--white)">até 1 refeição livre por semana</strong>, de forma controlada e sem exageros. O álcool deve ser evitado ao máximo — impacta diretamente recuperação, qualidade do sono, controle hormonal, composição corporal e o processo de perda de gordura.</p>
+      <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;">
+        <a href="https://www.instagram.com/reel/DNGS8cSRS5X/" target="_blank" class="ig-link">▶ Refeição livre</a>
+        <a href="https://www.instagram.com/reel/DI4b3FnSxAz/" target="_blank" class="ig-link">▶ Álcool e metabolismo</a>
+      </div>
+    </div>
+
+    <div class="meal-card">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:12px;">📌 Suporte</div>
+      <p style="font-size:12px;color:var(--white-dim);line-height:2;">Como cliente da consultoria premium, você conta com suporte direto de <strong style="color:var(--white)">segunda a sexta, das 8h às 18h</strong>. Quanto mais você utiliza o suporte, mais eficiente e preciso o processo se torna.</p>
+      <div style="margin-top:10px;background:rgba(201,168,76,0.05);border-left:3px solid var(--gold);border-radius:3px;padding:10px 14px;font-size:11px;color:var(--white);font-style:italic;">"Você não precisa ser perfeita, mas precisa ser consistente."</div>
+      <div style="margin-top:12px;"><a href="https://www.instagram.com/reel/DOgG7RTkYOx/" target="_blank" class="ig-link">▶ Execução consistente gera resultado</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FEEDBACK ══════════════ -->
+<section id="feedback" class="section">
+  <div class="section-header"><h2>Feedback <span>Semanal</span></h2><div class="section-line"></div></div>
+  <div class="fb-obs">Responda as perguntas abaixo e clique em <strong style="color:var(--gold);">Gerar Resumo</strong> para criar a mensagem para o WhatsApp do treinador.</div>
+  <div class="fb-section">
+    <h3>🥗 Alimentação</h3>
+    <div class="fb-question"><div class="fb-q-label">Está conseguindo seguir o plano alimentar?</div><div class="fb-scale"><button class="fb-scale-btn" data-group="adesao" data-val="Ruim" onclick="selectScale(this)"><span>😔</span><span>Ruim</span></button><button class="fb-scale-btn" data-group="adesao" data-val="Regular" onclick="selectScale(this)"><span>😐</span><span>Regular</span></button><button class="fb-scale-btn" data-group="adesao" data-val="Bem" onclick="selectScale(this)"><span>😊</span><span>Bem</span></button><button class="fb-scale-btn" data-group="adesao" data-val="Ótimo" onclick="selectScale(this)"><span>🔥</span><span>Ótimo</span></button></div></div>
+    <div class="fb-question"><div class="fb-q-label">Sentiu fome excessiva?</div><div class="fb-yesno"><button class="fb-yn-btn" data-group="fome" data-val="Sim" onclick="selectYN(this)">✓ Sim</button><button class="fb-yn-btn" data-group="fome" data-val="Não" onclick="selectYN(this)">✕ Não</button><button class="fb-yn-btn" data-group="fome" data-val="Às vezes" onclick="selectYN(this)">~ Às vezes</button></div></div>
+  </div>
+  <div class="fb-section">
+    <h3>🏋️ Treino e Cardio</h3>
+    <div class="fb-question"><div class="fb-q-label">Treinos de musculação realizados na semana:</div><div class="fb-yesno"><button class="fb-yn-btn" data-group="treinos" data-val="1–2" onclick="selectYN(this)">1–2</button><button class="fb-yn-btn" data-group="treinos" data-val="3–4" onclick="selectYN(this)">3–4</button><button class="fb-yn-btn" data-group="treinos" data-val="5" onclick="selectYN(this)">5</button><button class="fb-yn-btn" data-group="treinos" data-val="6+" onclick="selectYN(this)">6+</button></div></div>
+    <div class="fb-question"><div class="fb-q-label">Cardio realizado conforme protocolo?</div><div class="fb-yesno"><button class="fb-yn-btn" data-group="cardio-fb" data-val="Sim" onclick="selectYN(this)">✓ Sim</button><button class="fb-yn-btn" data-group="cardio-fb" data-val="Não" onclick="selectYN(this)">✕ Não</button><button class="fb-yn-btn" data-group="cardio-fb" data-val="Parcialmente" onclick="selectYN(this)">~ Parcialmente</button></div></div>
+    <div class="fb-question"><div class="fb-q-label">Dor lombar ou punho esta semana?</div><div class="fb-yesno"><button class="fb-yn-btn" data-group="dor" data-val="Sem dor" onclick="selectYN(this)">✓ Sem dor</button><button class="fb-yn-btn" data-group="dor" data-val="Lombar" onclick="selectYN(this)">⚠️ Lombar</button><button class="fb-yn-btn" data-group="dor" data-val="Punho" onclick="selectYN(this)">⚠️ Punho</button><button class="fb-yn-btn" data-group="dor" data-val="Ambos" onclick="selectYN(this)">⚠️ Ambos</button></div></div>
+  </div>
+  <div class="fb-section">
+    <h3>😴 Sono e Disposição</h3>
+    <div class="fb-question"><div class="fb-q-label">Como está a qualidade do sono?</div><div class="fb-scale"><button class="fb-scale-btn" data-group="sono" data-val="Ruim" onclick="selectScale(this)"><span>😔</span><span>Ruim</span></button><button class="fb-scale-btn" data-group="sono" data-val="Regular" onclick="selectScale(this)"><span>😐</span><span>Regular</span></button><button class="fb-scale-btn" data-group="sono" data-val="Bem" onclick="selectScale(this)"><span>😊</span><span>Bem</span></button><button class="fb-scale-btn" data-group="sono" data-val="Ótimo" onclick="selectScale(this)"><span>🔥</span><span>Ótimo</span></button></div></div>
+    <div class="fb-question"><div class="fb-q-label">Como está sua disposição geral?</div><div class="fb-scale"><button class="fb-scale-btn" data-group="disp" data-val="Baixa" onclick="selectScale(this)"><span>😴</span><span>Baixa</span></button><button class="fb-scale-btn" data-group="disp" data-val="Regular" onclick="selectScale(this)"><span>😐</span><span>Regular</span></button><button class="fb-scale-btn" data-group="disp" data-val="Boa" onclick="selectScale(this)"><span>😊</span><span>Boa</span></button><button class="fb-scale-btn" data-group="disp" data-val="Ótima" onclick="selectScale(this)"><span>⚡</span><span>Ótima</span></button></div></div>
+  </div>
+  <div class="fb-section"><h3>📝 Observações</h3><textarea class="fb-text-area" id="fb-obs" placeholder="Dificuldades, dúvidas ou observações da semana..."></textarea></div>
+  <button class="btn-generate" onclick="generateFeedback()">Gerar Resumo para WhatsApp</button>
+  <div class="fb-result" id="fbResult"></div>
+  <button class="btn-copy" id="btnCopy" style="display:none;" onclick="copyFeedback()">Copiar e Abrir WhatsApp</button>
+</section>
+
+<!-- ══════════════ FINANCEIRO ══════════════ -->
+<section id="financeiro" class="section">
+  <div class="section-header"><h2>💳 <span>Financeiro</span></h2><div class="section-line"></div></div>
+  <div id="fin-container"><div style="text-align:center;padding:40px;color:var(--white-dim);">Carregando dados financeiros...</div></div>
+</section>
+
+</div><!-- .main -->
+<div class="watermark">Consultoria LB · Luan Barreto</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script>
+const CLIENT_ID = 'sayonara-ferreira';
+firebase.initializeApp({apiKey:"AIzaSyBeik1WqF-1vdAiKR5Fzxs9M87p9gi3HCI",authDomain:"consultoria-lb.firebaseapp.com",projectId:"consultoria-lb"});
+const db = firebase.firestore();
+const docRef = db.collection('clients').doc(CLIENT_ID);
+
+function showSection(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  const sec=document.getElementById(id);
+  if(sec)sec.classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(b=>{if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes(id))b.classList.add('active');});
+  window.scrollTo(0,0);
+}
+
+function calcWeek(d){if(!d)return'—';const s=new Date(d),t=new Date();return'S'+(Math.floor((t-s)/(7*864e5))+1);}
+
+docRef.get().then(doc=>{
+  const d=doc.exists?doc.data():{};
+  document.getElementById('weekNum').textContent=calcWeek(d.planUpdateDate);
+  ['r1','r2','r3','r4'].forEach(r=>{const el=document.getElementById('obs-'+r);if(el&&d['obs_'+r])el.value=d['obs_'+r];});
+  renderFin(d);
+}).catch(()=>{});
+
+function saveObs(k,v){docRef.set({['obs_'+k]:v},{merge:true}).catch(()=>{});}
+
+function renderFin(data){
+  const pu=data.planUpdateDate||null,rd=data.renewalDate||null,rv=data.renewalValue||null;
+  const t=new Date();t.setHours(0,0,0,0);
+  let dl=null,pp=0;
+  if(rd){const r=new Date(rd);r.setHours(0,0,0,0);dl=Math.ceil((r-t)/86400000);}
+  if(pu&&rd){const s=new Date(pu);s.setHours(0,0,0,0);const r=new Date(rd);r.setHours(0,0,0,0);pp=Math.max(0,Math.min(100,Math.round((t-s)/(r-s)*100)));}
+  const col=dl===null?'var(--gold)':dl>30?'#7dd87d':dl>14?'#f5c842':'#e05a5a';
+  const em=dl===null?'📅':dl>30?'🟢':dl>14?'🟡':'🔴';
+  const wk=pu?Math.ceil((t-new Date(pu))/604800000):'—';
+  document.getElementById('fin-container').innerHTML=`
+    ${dl!==null&&dl<=14?'<div style="background:rgba(224,90,90,0.15);border:1px solid rgba(224,90,90,0.4);border-radius:6px;padding:14px;margin-bottom:20px;font-size:12px;color:#e05a5a;">⚠️ Plano vence em breve — entre em contato para renovação.</div>':''}
+    <div style="text-align:center;padding:32px;background:var(--dark2);border:1px solid var(--border);border-radius:8px;margin-bottom:20px;">
+      <div style="font-size:72px;font-weight:700;color:${col};line-height:1;">${dl!==null?dl:'—'}</div>
+      <div style="font-size:11px;color:var(--white-dim);margin-top:6px;letter-spacing:1px;">DIAS RESTANTES ${em}</div>
+    </div>
+    <div style="background:var(--dark2);border:1px solid var(--border);border-radius:8px;padding:22px;margin-bottom:16px;">
+      <div style="font-size:11px;color:var(--white-dim);margin-bottom:10px;">PROGRESSO DO PLANO</div>
+      <div style="height:8px;background:rgba(255,255,255,0.07);border-radius:4px;overflow:hidden;margin-bottom:8px;">
+        <div style="height:100%;width:${pp}%;background:linear-gradient(90deg,var(--gold),#e2c06e);border-radius:4px;"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--white-dim);">
+        <span>Início: ${pu||'—'}</span><span>Renovação: ${rd||'—'}</span>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;">
+      <div style="background:var(--dark2);border:1px solid var(--border);border-radius:6px;padding:16px;text-align:center;"><div style="font-size:9px;color:var(--white-dim);margin-bottom:6px;">SEMANA</div><div style="font-size:22px;color:var(--gold);font-weight:600;">S${wk}</div></div>
+      <div style="background:var(--dark2);border:1px solid var(--border);border-radius:6px;padding:16px;text-align:center;"><div style="font-size:9px;color:var(--white-dim);margin-bottom:6px;">RENOVAÇÃO</div><div style="font-size:14px;color:var(--white);font-weight:500;">${rd||'—'}</div></div>
+      <div style="background:var(--dark2);border:1px solid var(--border);border-radius:6px;padding:16px;text-align:center;"><div style="font-size:9px;color:var(--white-dim);margin-bottom:6px;">VALOR</div><div style="font-size:18px;color:var(--gold);font-weight:600;">${rv?'R$'+rv:'—'}</div></div>
+    </div>`;
+}
+
+// SUBSTITUIÇÕES
+const SUBS={
+  'ovo':'Frango 80g · Atum 80g · Patinho 80g · Whey 25g',
+  'frango':'Patinho 120g · Tilápia 140g · Atum 120g',
+  'arroz':'Batata-doce 130g · Aipim 100g · Cuscuz 80g · Macarrão 80g',
+  'pão':'Tapioca 70g · Cuscuz 100g · Batata-doce 100g · Aveia 40g',
+  'mamão':'Banana · Maçã · Melão · Abacaxi · Melancia',
+  'abacaxi':'Melão · Melancia · Morangos · Maçã',
+  'whey':'Frango 80g · Atum 80g · Ovos 2un + 1 clara',
+  'granola':'Aveia 30g · Pão integral 1 fatia',
+  'iogurte':'⚠️ Verificar versão sem lactose — Iogurte zero sem lactose',
+  'feijão':'Lentilha 70g · Grão-de-bico 70g',
+};
+function searchSub(v){const r=document.getElementById('subResult');if(!v.trim()){r.textContent='';return;}const k=Object.keys(SUBS).find(k=>v.toLowerCase().includes(k));r.innerHTML=k?`<strong style="color:var(--gold);">${k.charAt(0).toUpperCase()+k.slice(1)}:</strong> ${SUBS[k]}`:'Nenhuma substituição cadastrada.';}
+
+// FEEDBACK
+function selectScale(btn){const g=btn.dataset.group;document.querySelectorAll(`[data-group="${g}"]`).forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');}
+function selectYN(btn){const g=btn.dataset.group;document.querySelectorAll(`[data-group="${g}"]`).forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');}
+function getVal(g){const s=document.querySelector(`[data-group="${g}"].selected`);return s?s.dataset.val:'Não informado';}
+function generateFeedback(){
+  const obs=document.getElementById('fb-obs').value;
+  const text=`📊 *Feedback Semanal — Sayonara Ferreira*\n\n`+
+    `🥗 *Alimentação*\n• Adesão ao plano: ${getVal('adesao')}\n• Fome excessiva: ${getVal('fome')}\n\n`+
+    `🏋️ *Treino e Cardio*\n• Treinos na semana: ${getVal('treinos')}\n• Cardio conforme protocolo: ${getVal('cardio-fb')}\n• Dor lombar/punho: ${getVal('dor')}\n\n`+
+    `😴 *Sono e Disposição*\n• Qualidade do sono: ${getVal('sono')}\n• Disposição geral: ${getVal('disp')}\n\n`+
+    (obs?`📝 *Observações*\n${obs}\n\n`:'')+
+    `_Enviado via Portal LB_`;
+  const el=document.getElementById('fbResult');
+  el.textContent=text;el.style.display='block';
+  document.getElementById('btnCopy').style.display='block';
+}
+function copyFeedback(){
+  const text=document.getElementById('fbResult').textContent;
+  navigator.clipboard.writeText(text).then(()=>{window.open(`https://wa.me/5527995084354?text=${encodeURIComponent(text)}`,'_blank');});
+}
+
+// FOTOS
+function addPhotos(input){
+  const grid=document.getElementById('photoGrid');
+  Array.from(input.files).forEach(file=>{
+    const reader=new FileReader();
+    reader.onload=e=>{const div=document.createElement('div');div.className='photo-item';div.innerHTML=`<img src="${e.target.result}" alt="Progresso">`;grid.appendChild(div);};
+    reader.readAsDataURL(file);
+  });
+}
+</script>
+</body></html>
