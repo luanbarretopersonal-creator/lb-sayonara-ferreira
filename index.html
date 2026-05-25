@@ -1,66 +1,94 @@
 <!DOCTYPE html>
-<html lang="pt-BR"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Portal — Sayonara Ferreira · Consultoria LB</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --gold:#C9A84C;--gold-light:#e2c06e;--gold-dim:rgba(201,168,76,0.15);
-  --black:#0D0D0D;--dark2:#171717;--dark3:#1e1e1e;
-  --white:#f5f0e8;--white-dim:rgba(245,240,232,0.6);--border:rgba(201,168,76,0.25);
-  --green:#7dd87d;--green-dim:rgba(80,200,80,0.12);--green-border:rgba(80,200,80,0.3);
-  --blue:#8ab4f8;--red:#e05a5a;
+
+:root {
+  --gold: #C9A84C; --gold-light: #e2c06e; --gold-dim: rgba(201,168,76,0.15);
+  --black: #0D0D0D; --dark2: #171717; --dark3: #1e1e1e;
+  --white: #f5f0e8; --white-dim: rgba(245,240,232,0.6); --border: rgba(201,168,76,0.25);
+  --green: #7dd87d; --green-dim: rgba(80,200,80,0.15); --green-border: rgba(80,200,80,0.3);
+  --blue: #8ab4f8; --blue-dim: rgba(100,140,255,0.15); --blue-border: rgba(100,140,255,0.3);
+  --pink: #c13584;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-serif;font-weight:300;min-height:100vh;overflow-x:hidden;}
+body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-serif;font-weight:300;min-height:100vh;overflow-x:clip;}
+
+/* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,13,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);}
-.nav-inner{max-width:1100px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
-.nav-brand{display:flex;align-items:center;gap:10px;padding:10px 0;flex-shrink:0;}
-.nav-logo{width:42px;height:42px;border:1.5px solid var(--gold);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+
+.nav-logo{width:42px;height:42px;border:1.5px solid var(--gold);border-radius:4px;display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;}
 .nav-title{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:600;color:var(--white);letter-spacing:1px;line-height:1.2;}
 .nav-title span{color:var(--gold);display:block;font-size:9px;font-family:'Montserrat',sans-serif;font-weight:400;letter-spacing:2px;text-transform:uppercase;}
-.nav-tabs{display:flex;gap:3px;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;padding:8px 0;scrollbar-width:none;}
-.nav-tabs::-webkit-scrollbar{display:none;}
-.tab-btn{background:none;border:1px solid transparent;color:var(--white-dim);font-family:'Montserrat',sans-serif;font-size:9px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:11px 11px;min-height:40px;cursor:pointer;border-radius:2px;transition:all 0.3s;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
-.tab-btn:hover{color:var(--gold);border-color:var(--border);}
-.tab-btn.active{color:var(--gold);border-color:var(--gold);background:var(--gold-dim);}
-.theme-toggle{background:none;border:1px solid var(--border);color:var(--white-dim);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all 0.3s;flex-shrink:0;-webkit-tap-highlight-color:transparent;}
+
+
+
+
+
+.theme-toggle{background:none;border:1px solid var(--border);color:var(--white-dim);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all 0.3s;flex-shrink:0;}
+.theme-toggle:hover{border-color:var(--gold);color:var(--gold);}
+
+/* ── LIGHT MODE ── */
 body.light-mode{--black:#f5f0e8;--dark2:#ede8df;--dark3:#e5e0d7;--white:#1a1a1a;--white-dim:rgba(26,26,26,0.65);--border:rgba(201,168,76,0.35);}
 body.light-mode nav{background:rgba(245,240,232,0.97);}
+body.light-mode .meal-table th,body.light-mode .exercise-table th{background:rgba(201,168,76,0.12);}
+
+/* ── MAIN ── */
 .main{max-width:1100px;margin:0 auto;padding:88px 16px 60px;}
 .section{display:none;animation:fadeUp 0.5s ease;}
 .section.active{display:block;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── WATERMARK ── */
 .watermark{position:fixed;bottom:18px;right:18px;opacity:0.06;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;pointer-events:none;z-index:50;transform:rotate(-30deg);white-space:nowrap;}
+
+/* ── SECTION HEADER ── */
 .section-header{margin:48px 0 26px;display:flex;align-items:center;gap:14px;}
 .section-header h2{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,36px);font-weight:400;letter-spacing:1px;}
 .section-header h2 span{color:var(--gold);}
 .section-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent);}
-/* HERO */
+
+/* ── HERO ── */
 .client-hero{text-align:center;padding:50px 20px 40px;position:relative;overflow:hidden;border-radius:4px;margin-bottom:28px;}
-.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#120d00,#0d0d0d);filter:brightness(0.9);}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,13,13,0.1) 0%,rgba(13,13,13,0.88) 100%);}
+.hero-bg-img{position:absolute;inset:0;background-size:cover;background-position:center top;filter:brightness(0.2);}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,13,13,0.2) 0%,rgba(13,13,13,0.88) 100%);}
 .hero-content{position:relative;z-index:2;}
 .client-badge{display:inline-block;border:1px solid var(--border);color:var(--gold);font-size:9px;letter-spacing:3px;text-transform:uppercase;padding:5px 16px;margin-bottom:18px;border-radius:1px;}
-.client-name{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,56px);font-weight:300;letter-spacing:2px;line-height:1.1;margin-bottom:10px;}
+.client-name{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,6vw,62px);font-weight:300;letter-spacing:2px;line-height:1.1;margin-bottom:10px;}
 .client-name strong{color:var(--gold);font-weight:600;}
-.client-meta{color:var(--white-dim);font-size:11px;letter-spacing:1px;margin-bottom:8px;}
+.client-meta{color:var(--white-dim);font-size:11px;letter-spacing:1px;margin-bottom:20px;}
 .hero-divider{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:20px auto 0;}
-/* PLAN INFO */
-.plan-info-bar{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;}
-.plan-pill{background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:12px 18px;flex:1;min-width:130px;}
+
+/* ── PLAN INFO ── */
+.plan-info-bar{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;}
+.plan-pill{background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:12px 18px;flex:1;min-width:140px;}
 .plan-pill .pl-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--white-dim);margin-bottom:4px;}
 .plan-pill .pl-val{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);font-weight:600;}
-/* ALERT */
-.alert-box{background:rgba(224,90,90,0.08);border:1px solid rgba(224,90,90,0.3);border-left:3px solid var(--red);border-radius:4px;padding:14px 18px;font-size:12px;color:var(--white-dim);line-height:1.9;margin-bottom:16px;}
-.alert-box strong{color:var(--red);}
-.alert-gold{background:rgba(201,168,76,0.06);border:1px solid var(--border);border-left:3px solid var(--gold);}
-.alert-gold strong{color:var(--gold);}
-/* RECADOS */
+
+/* ── PROGRESS BAR ── */
+.progress-week{background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:20px 22px;margin-bottom:20px;}
+.progress-week h4{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:14px;}
+.pw-info{display:flex;justify-content:space-between;font-size:11px;color:var(--white-dim);margin-bottom:8px;}
+.pw-bar{height:6px;background:rgba(255,255,255,0.07);border-radius:3px;overflow:hidden;}
+.pw-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:3px;transition:width 0.6s ease;}
+.pw-days{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;}
+.day-dot{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:9px;letter-spacing:1px;color:var(--white-dim);}
+.day-circle{width:28px;height:28px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:10px;cursor:pointer;transition:all 0.3s;}
+.day-circle.done{background:var(--green-dim);border-color:var(--green);color:var(--green);}
+.day-circle.today{border-color:var(--gold);color:var(--gold);}
+
+/* ── RECADOS ── */
 .recados-box{background:linear-gradient(135deg,#1a1500,var(--dark2));border:1px solid var(--gold);border-radius:4px;padding:22px;margin-bottom:20px;}
 .recados-box h4{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
 .recados-text{font-size:13px;line-height:1.9;color:var(--white-dim);white-space:pre-wrap;}
-/* PROFILE GRID */
+
+/* ── PROFILE ── */
 .profile-grid{display:grid;grid-template-columns:1fr 2fr;gap:24px;margin:28px 0;}
 @media(max-width:680px){.profile-grid{grid-template-columns:1fr}}
 .profile-card{background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:26px;}
@@ -73,87 +101,374 @@ body.light-mode nav{background:rgba(245,240,232,0.97);}
 .welcome-box p{font-size:13px;line-height:1.9;color:var(--white-dim);margin-bottom:12px;}
 .welcome-box p:last-child{margin-bottom:0;}
 .welcome-box strong{color:var(--gold);font-weight:600;}
-/* MEAL */
-.meal-card{background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:22px;margin-bottom:16px;}
-.meal-card h3{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--gold);margin-bottom:6px;}
-.meal-time{font-size:10px;letter-spacing:2px;color:var(--white-dim);text-transform:uppercase;margin-bottom:14px;}
-.meal-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:4px;}
-.swipe-hint{text-align:center;font-size:10px;color:var(--white-dim);padding:4px 0 10px;opacity:0.7;}
-.meal-table{width:100%;border-collapse:collapse;min-width:560px;}
-.meal-table th{background:rgba(201,168,76,0.08);color:var(--gold);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap;}
-.meal-table td{padding:10px 14px;font-size:11px;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:top;color:var(--white-dim);}
+
+/* ── INFO GRID ── */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:22px 0;}
+.info-box{background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:18px;}
+.info-box .icon{font-size:20px;margin-bottom:10px;}
+.info-box h4{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--gold);margin-bottom:7px;}
+.info-box p{font-size:11px;line-height:1.8;color:var(--white-dim);}
+
+/* ── MEAL CARDS ── */
+.meal-total{text-align:right;margin-bottom:20px;}
+.total-pill{display:inline-flex;align-items:center;gap:10px;background:var(--gold-dim);border:1px solid var(--border);border-radius:40px;padding:9px 20px;}
+.total-pill .label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--white-dim);}
+.total-pill .value{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--gold);font-weight:600;}
+.meal-card{background:var(--dark2);border:1px solid var(--border);border-radius:4px;margin-bottom:16px;overflow:hidden;transition:border-color 0.3s;}
+.meal-card:hover{border-color:var(--gold);}
+.meal-header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:linear-gradient(90deg,#1a1500 0%,var(--dark2) 100%);border-bottom:1px solid var(--border);gap:10px;flex-wrap:wrap;}
+.meal-header-left{display:flex;align-items:center;gap:11px;}
+.meal-num{width:28px;height:28px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--gold);font-weight:700;}
+.meal-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;}
+.meal-time{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--white-dim);display:block;}
+.meal-kcal{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--gold);font-weight:600;}
+.meal-kcal span{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:400;color:var(--white-dim);}
+.meal-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.meal-table{width:100%;border-collapse:collapse;min-width:500px;}
+.meal-table th{background:rgba(201,168,76,0.07);color:var(--gold);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:9px 13px;text-align:left;font-weight:600;white-space:nowrap;}
+.meal-table td{padding:10px 13px;font-size:12px;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:top;line-height:1.6;}
 .meal-table tr:last-child td{border-bottom:none;}
-.meal-table .food-name{color:var(--white);font-weight:500;}
-.meal-table .total-row td{border-top:1px solid var(--border);color:var(--gold);font-weight:600;font-size:12px;}
-.meal-obs textarea{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:3px;color:var(--white);font-family:'Montserrat',sans-serif;font-size:11px;padding:10px 12px;resize:none;min-height:60px;outline:none;transition:border 0.3s;margin-top:10px;}
-.meal-obs textarea:focus{border-color:var(--gold);}
-.meal-obs-note{font-size:10px;color:rgba(201,168,76,0.7);margin-top:8px;padding:8px 12px;background:rgba(201,168,76,0.05);border-radius:3px;line-height:1.7;}
-.sub-search{background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:18px 22px;margin-bottom:20px;}
-.sub-search h4{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--gold);margin-bottom:12px;}
-.sub-search input{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:3px;color:var(--white);font-family:'Montserrat',sans-serif;font-size:12px;padding:9px 14px;outline:none;transition:border 0.3s;}
-.sub-search input:focus{border-color:var(--gold);}
-.sub-result{margin-top:10px;font-size:12px;color:var(--white-dim);min-height:20px;}
-/* TREINO */
+.meal-table tr:hover td{background:rgba(201,168,76,0.03);}
+.food-name{color:var(--white);font-weight:500;}
+.food-qty{color:var(--white-dim);}
+.food-kcal{color:var(--gold-light);font-weight:600;text-align:center;}
+.food-sub{color:rgba(245,240,232,0.5);font-size:11px;line-height:1.9;}
+.food-sub strong{color:var(--gold-light);font-weight:600;}
+.meal-obs-area{padding:12px 16px;border-top:1px solid var(--border);background:rgba(0,0,0,0.2);}
+.meal-obs-area textarea{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:3px;color:var(--white);font-family:'Montserrat',sans-serif;font-size:11px;padding:8px 10px;resize:none;height:56px;outline:none;transition:border-color 0.3s;}
+.meal-obs-area textarea:focus{border-color:var(--gold);}
+.meal-obs-area textarea::placeholder{color:rgba(245,240,232,0.25);}
 
-.treino-tabs::-webkit-scrollbar{display:none;}
+/* ── SEARCH SUBSTITUTE ── */
+.sub-search-wrap{background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:18px 20px;margin-bottom:20px;}
+.sub-search-wrap h4{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--gold);margin-bottom:12px;}
+.sub-search-input{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:3px;color:var(--white);font-family:'Montserrat',sans-serif;font-size:12px;padding:9px 12px;outline:none;transition:border-color 0.3s;}
+.sub-search-input:focus{border-color:var(--gold);}
+.sub-search-input::placeholder{color:rgba(245,240,232,0.25);}
+#sub-results{margin-top:12px;font-size:12px;color:var(--white-dim);line-height:1.9;}
+
+/* ── TREINO ── */
 
 
+.treino-tab:hover{color:var(--gold);border-color:var(--gold);}
 
-
-.exercise-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:4px;}
-.exercise-table{width:100%;border-collapse:collapse;min-width:480px;}
-.exercise-table th{background:rgba(201,168,76,0.08);color:var(--gold);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap;}
-.exercise-table td{padding:10px 14px;font-size:11px;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:middle;color:var(--white-dim);}
+.treino-tab.done-tab{border-color:var(--green);color:var(--green);}
+.treino-content{display:none;}
+.treino-content.active{display:block;animation:fadeUp 0.4s ease;}
+.treino-header{background:linear-gradient(135deg,#1a1500,var(--dark2));border:1px solid var(--border);border-radius:4px;padding:20px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;}
+.treino-title{font-family:'Cormorant Garamond',serif;font-size:22px;}
+.treino-title span{color:var(--gold);}
+.treino-day{background:var(--gold-dim);border:1px solid var(--border);border-radius:30px;padding:5px 13px;font-size:10px;letter-spacing:1px;color:var(--gold);white-space:nowrap;}
+.treino-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:14px;}
+.btn-done{background:none;border:1px solid var(--green-border);color:var(--green);font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 14px;cursor:pointer;border-radius:2px;transition:all 0.3s;}
+.btn-done:hover{background:var(--green-dim);}
+.btn-done.active{background:var(--green-dim);border-color:var(--green);}
+.btn-timer{background:none;border:1px solid var(--border);color:var(--white-dim);font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 14px;cursor:pointer;border-radius:2px;transition:all 0.3s;}
+.btn-timer:hover{border-color:var(--gold);color:var(--gold);}
+.done-badge{font-size:10px;color:var(--green);letter-spacing:1px;}
+.exercise-table{width:100%;border-collapse:collapse;}
+.exercise-table th{background:rgba(201,168,76,0.07);color:var(--gold);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:9px 13px;text-align:left;font-weight:600;}
+.exercise-table td{padding:11px 13px;font-size:12px;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:middle;line-height:1.5;}
 .exercise-table tr:last-child td{border-bottom:none;}
-.exercise-table .ex-name{color:var(--white);font-weight:500;}
-.video-btn{display:inline-flex;align-items:center;gap:5px;background:var(--gold-dim);border:1px solid var(--border);color:var(--gold);font-size:9px;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;border-radius:2px;text-decoration:none;transition:all 0.3s;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
-.video-btn:hover{background:var(--gold);color:#000;}
-/* CARDIO */
-.cardio-week{background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:22px;margin-bottom:16px;}
-.cardio-week h3{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--gold);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border);}
-.cardio-day{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.04);}
-.cardio-day:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
-.cardio-day-title{font-size:11px;font-weight:600;color:var(--white);letter-spacing:1px;margin-bottom:6px;display:flex;align-items:center;gap:8px;}
-.cardio-day-body{font-size:11px;color:var(--white-dim);line-height:1.9;}
-.zone-pill{display:inline-block;padding:2px 10px;border-radius:2px;font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;}
-.z2{background:var(--green-dim);border:1px solid var(--green-border);color:var(--green);}
-.z3{background:rgba(248,196,100,0.12);border:1px solid rgba(248,196,100,0.3);color:#f8c464;}
-.z4{background:rgba(224,90,90,0.1);border:1px solid rgba(224,90,90,0.3);color:var(--red);}
-.week-badge{display:inline-block;padding:3px 14px;border:1px solid var(--border);border-radius:2px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
-/* BIBLIOTECA */
-.biblio-block{background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:22px;margin-bottom:16px;}
-.biblio-block-title{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border);}
-.biblio-item{margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,0.04);}
-.biblio-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
-.biblio-tag{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;font-weight:600;}
-.biblio-item p{font-size:12px;line-height:1.9;color:var(--white-dim);}
-.ig-link{display:inline-flex;align-items:center;gap:5px;background:var(--gold-dim);border:1px solid var(--border);color:var(--gold);font-size:9px;letter-spacing:1px;padding:5px 10px;border-radius:2px;text-decoration:none;transition:all 0.3s;-webkit-tap-highlight-color:transparent;}
-.ig-link:hover{background:var(--gold);color:#000;}
-/* EVOLUÇÃO */
-.photo-upload-area{border:2px dashed var(--border);border-radius:4px;padding:40px;text-align:center;cursor:pointer;transition:border 0.3s;margin-bottom:20px;}
+.exercise-table tr:hover td{background:rgba(201,168,76,0.03);}
+.ex-name{color:var(--white);font-weight:500;font-size:12px;}
+.exercise-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.swipe-hint{text-align:center;font-size:10px;color:rgba(201,168,76,0.5);letter-spacing:1.5px;padding:5px 0 10px;}
+.ex-conj{color:var(--gold);font-size:9px;letter-spacing:1px;display:block;margin-top:2px;}
+.ex-series{color:var(--gold);font-weight:600;text-align:center;}
+.ex-reps{color:var(--white-dim);white-space:nowrap;}
+.load-input{background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:2px;color:var(--white);font-family:'Montserrat',sans-serif;font-size:11px;padding:5px 8px;width:72px;outline:none;text-align:center;transition:border-color 0.3s;}
+.load-input:focus{border-color:var(--gold);}
+.load-input::placeholder{color:rgba(245,240,232,0.2);font-size:10px;}
+.load-history-btn{background:none;border:none;color:rgba(201,168,76,0.4);cursor:pointer;font-size:10px;padding:2px 4px;transition:color 0.3s;}
+.load-history-btn:hover{color:var(--gold);}
+.yt-link{display:inline-flex;align-items:center;gap:4px;color:rgba(201,168,76,0.6);font-size:9px;letter-spacing:1px;text-transform:uppercase;text-decoration:none;border:1px solid rgba(201,168,76,0.2);padding:4px 9px;border-radius:2px;transition:all 0.3s;white-space:nowrap;}
+.yt-link:hover{background:var(--gold-dim);color:var(--gold);}
+.treino-obs{padding:14px 16px;border-top:1px solid var(--border);background:rgba(0,0,0,0.15);}
+.treino-obs textarea{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:3px;color:var(--white);font-family:'Montserrat',sans-serif;font-size:11px;padding:8px 10px;resize:none;height:60px;outline:none;transition:border-color 0.3s;}
+.treino-obs textarea:focus{border-color:var(--gold);}
+.treino-obs textarea::placeholder{color:rgba(245,240,232,0.25);}
+
+/* ── TIMER MODAL ── */
+.timer-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:200;align-items:center;justify-content:center;}
+.timer-overlay.show{display:flex;}
+.timer-box{background:var(--dark2);border:1px solid var(--gold);border-radius:8px;padding:36px;text-align:center;min-width:260px;}
+.timer-count{font-family:'Cormorant Garamond',serif;font-size:72px;color:var(--gold);font-weight:300;line-height:1;margin-bottom:10px;}
+.timer-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--white-dim);margin-bottom:24px;}
+.timer-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.timer-btn{background:none;border:1px solid var(--border);color:var(--white-dim);font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:8px 16px;cursor:pointer;border-radius:2px;transition:all 0.3s;}
+.timer-btn:hover{border-color:var(--gold);color:var(--gold);}
+.timer-presets{display:flex;gap:8px;justify-content:center;margin-bottom:18px;flex-wrap:wrap;}
+.timer-preset{background:var(--gold-dim);border:1px solid var(--border);color:var(--gold);font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:1px;padding:6px 12px;cursor:pointer;border-radius:2px;transition:all 0.3s;}
+.timer-preset:hover{background:rgba(201,168,76,0.25);}
+
+/* ── LOAD HISTORY MODAL ── */
+.hist-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:200;align-items:center;justify-content:center;}
+.hist-overlay.show{display:flex;}
+.hist-box{background:var(--dark2);border:1px solid var(--gold);border-radius:8px;padding:28px;min-width:280px;max-width:360px;width:90%;}
+.hist-box h4{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);margin-bottom:16px;}
+.hist-list{max-height:260px;overflow-y:auto;}
+.hist-item{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:12px;}
+.hist-item:last-child{border-bottom:none;}
+.hist-date{color:var(--white-dim);font-size:10px;}
+.hist-val{color:var(--gold);font-weight:600;}
+.hist-empty{color:var(--white-dim);font-size:12px;text-align:center;padding:20px 0;}
+.hist-close{background:none;border:1px solid var(--border);color:var(--white-dim);font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 16px;cursor:pointer;border-radius:2px;margin-top:16px;width:100%;transition:all 0.3s;}
+.hist-close:hover{border-color:var(--gold);color:var(--gold);}
+
+/* ── WARMUP ── */
+.warmup-block{display:flex;gap:14px;border-radius:4px;padding:20px;margin-bottom:16px;border:1px solid;}
+.warmup-inferior{background:linear-gradient(135deg,#0f1a0f,#131a10);border-color:var(--green-border);}
+.warmup-superior{background:linear-gradient(135deg,#0f0f1a,#101318);border-color:var(--blue-border);}
+.warmup-icon{font-size:24px;flex-shrink:0;}
+.warmup-content{flex:1;}
+.warmup-title{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;margin-bottom:7px;}
+.warmup-inferior .warmup-title{color:var(--green);}
+.warmup-superior .warmup-title{color:var(--blue);}
+.warmup-desc{font-size:11px;line-height:1.8;color:var(--white-dim);margin-bottom:14px;}
+.warmup-steps{display:flex;flex-direction:column;gap:8px;margin-bottom:16px;}
+.warmup-step{display:flex;align-items:flex-start;gap:9px;}
+.step-num{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0;}
+.warmup-inferior .step-num{background:var(--green-dim);color:var(--green);border:1px solid var(--green-border);}
+.warmup-superior .step-num{background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue-border);}
+.step-text{font-size:11px;color:var(--white-dim);line-height:1.7;padding-top:1px;}
+.step-text strong{color:var(--white);}
+.warmup-videos-title{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--white-dim);margin-bottom:9px;font-weight:500;}
+.warmup-videos{display:flex;flex-wrap:wrap;gap:6px;}
+.warmup-vid{text-decoration:none;font-size:9px;letter-spacing:1px;padding:4px 10px;border-radius:2px;transition:all 0.25s;font-weight:500;}
+.warmup-inferior .warmup-vid{color:var(--green);border:1px solid var(--green-border);background:var(--green-dim);}
+.warmup-inferior .warmup-vid:hover{background:rgba(80,200,80,0.2);}
+.warmup-superior .warmup-vid{color:var(--blue);border:1px solid var(--blue-border);background:var(--blue-dim);}
+.warmup-superior .warmup-vid:hover{background:rgba(100,140,255,0.2);}
+
+/* ── CARDIO ── */
+.cardio-week{background:var(--dark2);border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:16px;}
+.cardio-day-row{display:grid;grid-template-columns:100px 1fr 80px 80px 40px;gap:0;border-bottom:1px solid rgba(255,255,255,0.04);align-items:center;}
+.cardio-day-row:last-child{border-bottom:none;}
+.cardio-day-row.header{background:rgba(201,168,76,0.07);}
+.cardio-cell{padding:10px 13px;font-size:11px;}
+.cardio-cell.header-cell{color:var(--gold);font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:600;}
+.cardio-cell .day-name{font-weight:500;color:var(--white);}
+.cardio-cell .prescribed{color:var(--white-dim);}
+.cardio-check{display:flex;align-items:center;justify-content:center;padding:10px;}
+.cardio-check input[type=checkbox]{width:16px;height:16px;cursor:pointer;accent-color:var(--gold);}
+.cardio-obs-row{padding:0 13px 12px;grid-column:1/-1;}
+.cardio-obs-input{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:2px;color:var(--white);font-family:'Montserrat',sans-serif;font-size:10px;padding:6px 9px;outline:none;transition:border-color 0.3s;}
+.cardio-obs-input:focus{border-color:var(--gold);}
+.cardio-obs-input::placeholder{color:rgba(245,240,232,0.2);}
+@media(max-width:540px){
+  .cardio-day-row{grid-template-columns:80px 1fr 60px 40px;}
+  .cardio-duration{display:none;}
+}
+
+/* ── EVOLUÇÃO ── */
+.evo-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+@media(max-width:600px){.evo-grid{grid-template-columns:1fr}}
+.evo-card{background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:20px;}
+.evo-card h4{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.weight-form{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
+.weight-input{background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:3px;color:var(--white);font-family:'Montserrat',sans-serif;font-size:12px;padding:8px 10px;outline:none;flex:1;min-width:80px;transition:border-color 0.3s;}
+.weight-input:focus{border-color:var(--gold);}
+.weight-input::placeholder{color:rgba(245,240,232,0.2);}
+.btn-add{background:var(--gold-dim);border:1px solid var(--border);color:var(--gold);font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 14px;cursor:pointer;border-radius:2px;transition:all 0.3s;white-space:nowrap;}
+.btn-add:hover{background:rgba(201,168,76,0.25);}
+.weight-list{max-height:200px;overflow-y:auto;}
+.weight-item{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:12px;}
+.weight-item:last-child{border-bottom:none;}
+.weight-date{color:var(--white-dim);font-size:10px;}
+.weight-val{color:var(--gold);font-weight:600;}
+.weight-del{background:none;border:none;color:rgba(255,80,80,0.4);cursor:pointer;font-size:11px;padding:2px 6px;transition:color 0.3s;}
+.weight-del:hover{color:rgba(255,80,80,0.8);}
+.weight-empty{color:var(--white-dim);font-size:11px;text-align:center;padding:16px 0;}
+
+/* ── CHART ── */
+.chart-wrap{background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:20px;margin-bottom:20px;}
+.chart-wrap h4{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:14px;}
+canvas#weightChart{width:100%!important;}
+
+/* ── PHOTO UPLOAD ── */
+.photo-upload-area{border:2px dashed var(--border);border-radius:4px;padding:24px;text-align:center;cursor:pointer;transition:border-color 0.3s;margin-bottom:14px;}
 .photo-upload-area:hover{border-color:var(--gold);}
+.photo-upload-area input{display:none;}
 .upload-label{cursor:pointer;display:block;}
-.upload-icon{font-size:32px;margin-bottom:10px;}
-.upload-text{font-size:12px;color:var(--white-dim);}
-.photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;}
-.photo-item{position:relative;border-radius:4px;overflow:hidden;aspect-ratio:3/4;}
+.upload-icon{font-size:28px;margin-bottom:8px;}
+.upload-text{font-size:11px;color:var(--white-dim);letter-spacing:1px;}
+.photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:10px;margin-bottom:14px;}
+.photo-item{position:relative;border-radius:3px;overflow:hidden;aspect-ratio:3/4;}
 .photo-item img{width:100%;height:100%;object-fit:cover;}
-/* FEEDBACK */
-.fb-obs{background:var(--gold-dim);border:1px solid var(--border);border-radius:4px;padding:14px 18px;font-size:12px;color:var(--white-dim);margin-bottom:24px;line-height:1.8;}
+.photo-item .photo-del{position:absolute;top:4px;right:4px;background:rgba(0,0,0,0.7);border:none;color:#fff;width:20px;height:20px;border-radius:50%;cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;}
+.photo-date{position:absolute;bottom:4px;left:4px;background:rgba(0,0,0,0.7);color:var(--gold);font-size:8px;padding:2px 5px;border-radius:2px;letter-spacing:1px;}
+
+/* ── BIBLIOTECA ── */
+.biblio-block{background:var(--dark2);border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:16px;}
+.biblio-block-title{background:linear-gradient(90deg,#1a1500,var(--dark2));border-bottom:1px solid var(--border);color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:16px;padding:13px 20px;}
+.biblio-item{padding:16px 20px;border-bottom:1px solid rgba(255,255,255,0.04);}
+.biblio-item:last-child{border-bottom:none;}
+.biblio-tag{display:inline-block;background:var(--gold-dim);border:1px solid var(--border);color:var(--gold);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:2px;font-weight:500;margin-bottom:8px;}
+.biblio-item p{font-size:12px;line-height:1.9;color:var(--white-dim);margin-bottom:9px;}
+.biblio-links{display:flex;flex-wrap:wrap;gap:6px;}
+
+/* ── VÍDEOS ── */
+.video-library{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-bottom:16px;}
+.video-card{display:flex;align-items:center;gap:12px;background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:13px 15px;text-decoration:none;transition:all 0.3s;}
+.video-card:hover{border-color:var(--pink);background:rgba(193,53,132,0.05);transform:translateY(-2px);}
+.video-icon{width:32px;height:32px;background:rgba(193,53,132,0.15);border:1px solid rgba(193,53,132,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--pink);font-size:11px;flex-shrink:0;}
+.video-title{font-size:11px;color:var(--white);font-weight:500;line-height:1.4;margin-bottom:3px;}
+.video-source{font-size:9px;letter-spacing:1px;color:rgba(193,53,132,0.8);text-transform:uppercase;}
+
+/* ── ORIENTAÇÕES ── */
+.orientacoes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:18px 0;}
+.orient-card{background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:18px;transition:border-color 0.3s;}
+.orient-card:hover{border-color:rgba(201,168,76,0.5);}
+.orient-card h4{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--gold);margin-bottom:8px;}
+.orient-card p{font-size:11px;line-height:1.8;color:var(--white-dim);}
+
+/* ── RELATÓRIO ── */
+.relatorio-hero{background:linear-gradient(135deg,#1a1500 0%,var(--dark2) 100%);border:1px solid var(--border);border-radius:4px;padding:26px;margin-bottom:22px;text-align:center;}
+.relatorio-hero h3{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--gold);margin-bottom:10px;}
+.relatorio-hero p{font-size:12px;line-height:1.9;color:var(--white-dim);max-width:700px;margin:0 auto;}
+.objetivo-tag{display:inline-block;background:var(--gold-dim);border:1px solid var(--border);color:var(--gold);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:12px;}
+.relatorio-section{background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:24px;margin-bottom:16px;}
+.relatorio-section h3{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--gold);margin-bottom:13px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.relatorio-section p{font-size:12px;line-height:1.9;color:var(--white-dim);margin-bottom:10px;}
+.relatorio-section p:last-child{margin-bottom:0;}
+.relatorio-section strong{color:var(--white);}
+.bullet-list{list-style:none;margin:9px 0;}
+.bullet-list li{padding:5px 0 5px 15px;position:relative;font-size:12px;color:var(--white-dim);line-height:1.7;}
+.bullet-list li::before{content:'';position:absolute;left:0;top:13px;width:6px;height:1px;background:var(--gold);}
+.ig-link{display:inline-flex;align-items:center;gap:5px;color:var(--pink);font-size:9px;letter-spacing:1px;text-transform:uppercase;text-decoration:none;border:1px solid rgba(193,53,132,0.3);padding:4px 10px;border-radius:2px;transition:all 0.3s;margin:3px 3px 3px 0;}
+.ig-link:hover{background:rgba(193,53,132,0.1);border-color:var(--pink);}
+.links-row{display:flex;flex-wrap:wrap;gap:5px;margin-top:11px;}
+.suporte-box{background:linear-gradient(135deg,#111008,#0d0d0d);border:1px solid var(--gold);border-radius:4px;padding:26px;text-align:center;margin-top:24px;}
+.suporte-box h3{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold);margin-bottom:10px;}
+.suporte-box p{font-size:12px;line-height:1.9;color:var(--white-dim);max-width:600px;margin:0 auto 16px;}
+.suporte-hours{display:inline-flex;align-items:center;gap:8px;background:var(--gold-dim);border:1px solid var(--border);border-radius:30px;padding:7px 18px;font-size:11px;color:var(--gold);letter-spacing:1px;}
+
+/* ── FEEDBACK ── */
 .fb-section{background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:22px;margin-bottom:16px;}
-.fb-section h3{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);margin-bottom:16px;}
-.fb-question{margin-bottom:16px;}
+.fb-section h3{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;}
+.fb-question{margin-bottom:18px;}
 .fb-question:last-child{margin-bottom:0;}
-.fb-q-label{font-size:11px;color:var(--white-dim);margin-bottom:8px;line-height:1.6;}
-.fb-scale,.fb-yesno{display:flex;gap:6px;flex-wrap:wrap;}
-.fb-scale-btn,.fb-yn-btn{background:var(--dark3);border:1px solid var(--border);color:var(--white-dim);font-family:'Montserrat',sans-serif;font-size:10px;padding:8px 14px;min-height:40px;border-radius:2px;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;gap:5px;-webkit-tap-highlight-color:transparent;}
-.fb-scale-btn.selected,.fb-yn-btn.selected{background:var(--gold-dim);border-color:var(--gold);color:var(--gold);}
-.fb-text-area{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:3px;color:var(--white);font-family:'Montserrat',sans-serif;font-size:12px;padding:12px 14px;resize:none;min-height:80px;outline:none;transition:border 0.3s;margin-top:8px;}
-.fb-text-area:focus{border-color:var(--gold);}
-.btn-generate{background:var(--gold);color:#000;font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;border:none;padding:14px 28px;border-radius:2px;cursor:pointer;width:100%;margin-top:16px;transition:all 0.3s;-webkit-tap-highlight-color:transparent;}
-.btn-generate:hover{background:var(--gold-light);}
-.fb-result{background:var(--dark3);border:1px solid var(--border);border-radius:4px;padding:18px;margin-top:16px;font-size:12px;line-height:1.9;color:var(--white-dim);display:none;white-space:pre-wrap;}
-.btn-copy{background:var(--dark2);border:1px solid var(--gold);color:var(--gold);font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:1px;padding:8px 20px;border-radius:2px;cursor:pointer;margin-top:10px;width:100%;-webkit-tap-highlight-color:transparent;}
+.fb-q-label{font-size:12px;color:var(--white);margin-bottom:10px;line-height:1.6;}
+.fb-scale{display:flex;gap:7px;flex-wrap:wrap;}
+.fb-scale-btn{background:none;border:1px solid var(--border);color:var(--white-dim);font-family:'Montserrat',sans-serif;font-size:10px;padding:7px 12px;cursor:pointer;border-radius:3px;transition:all 0.3s;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:54px;}
+.fb-scale-btn .fb-emoji{font-size:18px;}
+.fb-scale-btn .fb-txt{font-size:9px;letter-spacing:1px;}
+.fb-scale-btn:hover{border-color:var(--gold);color:var(--gold);}
+.fb-scale-btn.selected{background:var(--gold-dim);border-color:var(--gold);color:var(--gold);}
+.fb-yesno{display:flex;gap:8px;}
+.fb-yn-btn{background:none;border:1px solid var(--border);color:var(--white-dim);font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:1.5px;padding:8px 20px;cursor:pointer;border-radius:2px;transition:all 0.3s;text-transform:uppercase;}
+.fb-yn-btn:hover{border-color:var(--gold);color:var(--gold);}
+.fb-yn-btn.selected-yes{background:var(--green-dim);border-color:var(--green);color:var(--green);}
+.fb-yn-btn.selected-no{background:rgba(255,80,80,0.1);border-color:rgba(255,80,80,0.5);color:rgba(255,120,120,0.9);}
+.fb-multi{display:flex;gap:7px;flex-wrap:wrap;}
+.fb-multi-btn{background:none;border:1px solid var(--border);color:var(--white-dim);font-family:'Montserrat',sans-serif;font-size:10px;padding:6px 12px;cursor:pointer;border-radius:2px;transition:all 0.3s;}
+.fb-multi-btn:hover{border-color:var(--gold);color:var(--gold);}
+.fb-multi-btn.selected{background:var(--gold-dim);border-color:var(--gold);color:var(--gold);}
+.fb-textarea{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:3px;color:var(--white);font-family:'Montserrat',sans-serif;font-size:11px;padding:9px 11px;resize:none;height:70px;outline:none;transition:border-color 0.3s;margin-top:4px;}
+.fb-textarea:focus{border-color:var(--gold);}
+.fb-textarea::placeholder{color:rgba(245,240,232,0.2);}
+.fb-photo-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;}
+.fb-photo-item{width:70px;height:90px;border-radius:3px;overflow:hidden;position:relative;}
+.fb-photo-item img{width:100%;height:100%;object-fit:cover;}
+.fb-upload-btn{display:inline-flex;align-items:center;gap:6px;background:var(--gold-dim);border:1px solid var(--border);color:var(--gold);font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 14px;cursor:pointer;border-radius:2px;transition:all 0.3s;}
+.fb-upload-btn:hover{background:rgba(201,168,76,0.25);}
+.fb-weight-input{background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:3px;color:var(--white);font-family:'Montserrat',sans-serif;font-size:13px;padding:9px 12px;outline:none;width:140px;transition:border-color 0.3s;margin-top:4px;}
+.fb-weight-input:focus{border-color:var(--gold);}
+.fb-weight-input::placeholder{color:rgba(245,240,232,0.2);}
+.fb-divider{height:1px;background:var(--border);margin:20px 0;}
+.fb-obs{background:linear-gradient(135deg,#1a1500,var(--dark2));border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:4px;padding:18px 20px;margin-bottom:16px;font-size:12px;line-height:1.9;color:var(--white-dim);}
+.btn-generate{background:linear-gradient(135deg,var(--gold),var(--gold-light));border:none;color:var(--black);font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:14px 28px;cursor:pointer;border-radius:3px;width:100%;margin-top:8px;transition:opacity 0.3s;}
+.btn-generate:hover{opacity:0.88;}
+.fb-result{display:none;background:rgba(0,0,0,0.4);border:1px solid var(--border);border-radius:4px;padding:18px;margin-top:14px;}
+.fb-result.show{display:block;}
+.fb-result-text{font-size:11px;line-height:1.9;color:var(--white-dim);white-space:pre-wrap;margin-bottom:12px;}
+.btn-copy{background:var(--gold-dim);border:1px solid var(--border);color:var(--gold);font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 16px;cursor:pointer;border-radius:2px;transition:all 0.3s;}
+.btn-copy:hover{background:rgba(201,168,76,0.25);}
+
+/* ── FOOTER ── */
+footer{text-align:center;padding:40px 16px;border-top:1px solid var(--border);margin-top:60px;}
+footer .f-name{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--gold);margin-bottom:5px;}
+footer .f-reg{font-size:9px;letter-spacing:2px;color:var(--white-dim);text-transform:uppercase;}
+
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:var(--black);}
+::-webkit-scrollbar-thumb{background:rgba(201,168,76,0.3);border-radius:3px;}
+::-webkit-scrollbar-thumb:hover{background:var(--gold);}
+
+@media print{
+  nav,.theme-toggle,.timer-overlay,.hist-overlay,.watermark{display:none!important;}
+  .main{padding-top:20px!important;}
+  .section{display:block!important;}
+  .tab-btn,.treino-tab,.btn-done,.btn-timer,.load-history-btn{display:none!important;}
+}
+
+.cardio-semana{background:var(--dark2);border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:18px;}
+.cardio-semana-header{background:linear-gradient(90deg,#1a1500,var(--dark2));border-bottom:1px solid var(--border);padding:13px 20px;font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);}
+.cardio-treino{padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.04);}
+.cardio-treino:last-child{border-bottom:none;}
+.cardio-treino-title{font-size:11px;font-weight:600;color:var(--white);letter-spacing:1px;margin-bottom:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.zona-badge{font-size:9px;padding:2px 8px;border-radius:10px;font-weight:500;}
+.zona-verde{background:rgba(80,200,80,0.15);color:#7dd87d;border:1px solid rgba(80,200,80,0.3);}
+.zona-amarela{background:rgba(255,200,50,0.15);color:#ffc832;border:1px solid rgba(255,200,50,0.3);}
+.cardio-desc{font-size:11px;color:var(--white-dim);line-height:1.8;}
+.cardio-desc strong{color:var(--white);}
+.logica-box{background:rgba(201,168,76,0.04);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:4px;padding:14px 18px;margin:12px 0;font-size:11px;color:var(--white-dim);line-height:1.8;}
+.logica-box strong{color:var(--gold);}
+.exercise-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.swipe-hint{text-align:center;font-size:10px;color:rgba(201,168,76,0.5);letter-spacing:1.5px;padding:5px 0 10px;}
+.ex-conj{color:var(--gold);font-size:9px;letter-spacing:1px;display:block;margin-top:2px;}
+
+.q-campo{display:flex;flex-direction:column;gap:6px;}
+.q-label{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--white-dim);}
+.q-input{background:var(--dark3,#1c1c1c);border:1px solid rgba(255,255,255,0.08);border-radius:3px;color:var(--white);font-family:'Montserrat',sans-serif;font-size:12px;padding:10px 14px;outline:none;transition:border-color 0.2s;width:100%;}
+.q-input:focus{border-color:var(--gold);}
+textarea.q-input{resize:vertical;min-height:80px;}
+.q-opcoes{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px;}
+.q-btn{background:var(--dark3,#1c1c1c);border:1px solid rgba(255,255,255,0.08);border-radius:3px;color:var(--white-dim);font-family:'Montserrat',sans-serif;font-size:11px;padding:8px 14px;cursor:pointer;transition:all 0.2s;user-select:none;}
+.q-btn:hover{border-color:var(--gold);color:var(--white);}
+.q-btn.selected{background:rgba(201,168,76,0.08);border-color:var(--gold);color:var(--gold);font-weight:600;}
+@media(max-width:500px){.q-grid2,.q-grid3{grid-template-columns:1fr!important;}}
+
+.ex-alt-wrap{display:flex;align-items:center;gap:6px;margin-top:4px;}.ex-alt-btn{background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);color:var(--gold);font-size:11px;padding:1px 8px;border-radius:3px;cursor:pointer;font-weight:700;}.ex-alt-content{font-size:10px;color:var(--white-dim);}.ex-alt-label{color:var(--gold);font-weight:600;margin-right:4px;}.ex-conj{color:var(--gold);font-size:9px;display:block;margin-top:2px;}.ig-link{display:inline-block;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.25);color:var(--gold);font-size:10px;padding:4px 12px;border-radius:2px;text-decoration:none;}.biblio-block{background:var(--dark2);border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:20px;}.biblio-block-title{background:linear-gradient(90deg,#1a1500,var(--dark2));border-bottom:1px solid var(--border);padding:13px 20px;font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);}.biblio-item{padding:16px 20px;border-bottom:1px solid rgba(255,255,255,0.04);}.biblio-item:last-child{border-bottom:none;}.biblio-tag{font-size:10px;font-weight:700;letter-spacing:1px;color:var(--gold);text-transform:uppercase;margin-bottom:8px;}.biblio-item p{font-size:11px;color:var(--white-dim);line-height:1.9;}
+
+
+
+
+@media(max-width:500px){.nav-title span{display:none;}}
+
+
+/* ── SEMANA TABS (CARDIO) ────────────────────────────────────── */
+
+
+
+
+.semana-content{display:none;}
+.semana-content.active{display:block;}
+
+
+/* ── NAV MOBILE SCROLL FIX ──────────────────────────────────── */
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 12px;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:nowrap;}
+.nav-brand{display:flex;align-items:center;gap:8px;padding:8px 0;flex-shrink:0;max-width:150px;}
+.nav-right{display:flex;align-items:center;gap:6px;flex:1;min-width:0;flex-wrap:nowrap;}
+.nav-tabs{display:flex;gap:3px;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;flex:1;min-width:0;padding:8px 0;scrollbar-width:none;}
+.nav-tabs::-webkit-scrollbar{display:none;}
+.tab-btn{background:none;border:1px solid transparent;color:var(--white-dim);font-family:'Montserrat',sans-serif;font-size:9px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:10px 9px;min-height:40px;cursor:pointer;border-radius:2px;transition:all 0.3s;white-space:nowrap;-webkit-tap-highlight-color:transparent;flex-shrink:0;}
+.tab-btn:hover{color:var(--gold);border-color:var(--border);}
+.tab-btn.active{color:var(--gold);border-color:var(--gold);background:var(--gold-dim);}
+@media(max-width:480px){.nav-title span{display:none;}.nav-brand{max-width:100px;}.nav-title{font-size:11px;}.tab-btn{font-size:8px;padding:9px 7px;}}
+
+
+/* ── TREINO TABS + SEMANA TABS MOBILE FIX ──────────────────── */
+.treino-tabs{display:flex;gap:6px;margin-bottom:20px;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;padding-bottom:4px;scrollbar-width:none;}
+.treino-tabs::-webkit-scrollbar{display:none;}
+.treino-tab{flex-shrink:0;background:var(--dark2);border:1px solid var(--border);color:var(--white-dim);font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:11px 14px;min-height:40px;cursor:pointer;border-radius:2px;transition:all 0.3s;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
+.treino-tab.active{color:var(--gold);border-color:var(--gold);background:var(--gold-dim);}
+.semana-tabs{display:flex;gap:6px;margin-bottom:20px;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;padding-bottom:4px;scrollbar-width:none;}
+.semana-tabs::-webkit-scrollbar{display:none;}
+.semana-tab{flex-shrink:0;background:var(--dark2);border:1px solid var(--border);color:var(--white-dim);font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:11px 14px;min-height:40px;cursor:pointer;border-radius:2px;transition:all 0.3s;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
+.semana-tab.active{color:var(--gold);border-color:var(--gold);background:var(--gold-dim);}
+
 </style>
 </head>
 <body>
@@ -163,27 +478,28 @@ body.light-mode nav{background:rgba(245,240,232,0.97);}
       <div class="nav-logo">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L3 7v10l9 5 9-5V7L12 2z" stroke="#C9A84C" stroke-width="1.5" fill="none"/><path d="M12 2v20M3 7l9 5 9-5" stroke="#C9A84C" stroke-width="1" opacity="0.5"/></svg>
       </div>
-      <div class="nav-title">Consultoria LB<span>Luan Barreto · Nutricionista & Treinador</span></div>
+      <div class="nav-title">LUAN BARRETO<span>Nutricionista &amp; Treinador</span></div>
     </div>
-    <div class="nav-tabs">
-      <button class="tab-btn active" onclick="showSection('apresentacao')">Apresentação</button>
-      <button class="tab-btn" onclick="showSection('dieta')">Dieta</button>
-      <button class="tab-btn" onclick="showSection('treino')">Treino</button>
-      <button class="tab-btn" onclick="showSection('cardio')">Cardio</button>
-      <button class="tab-btn" onclick="showSection('conscientizacao')">Conscientização</button>
-      <button class="tab-btn" onclick="showSection('z3distribuidora')">🛒 Z3</button>
-      <button class="tab-btn" onclick="showSection('evolucao')">Evolução</button>
-      <button class="tab-btn" onclick="showSection('relatorio')">Relatório</button>
-      <button class="tab-btn" onclick="showSection('feedback')">Feedback</button>
-      <button class="tab-btn" onclick="showSection('financeiro')">💳 Financeiro</button>
+    <div class="nav-right">
+      <div class="nav-tabs">
+        <button class="tab-btn active" onclick="showSection('apresentacao')">Apresentação</button>
+        <button class="tab-btn" onclick="showSection('dieta')">Dieta</button>
+        <button class="tab-btn" onclick="showSection('treino')">Treino</button>
+        <button class="tab-btn" onclick="showSection('cardio')">Cardio</button>
+        <button class="tab-btn" onclick="showSection('conscientizacao')">Conscientização</button>
+        <button class="tab-btn" onclick="showSection('evolucao')">Evolução</button>
+        <button class="tab-btn" onclick="showSection('relatorio')">Relatório</button>
+        <button class="tab-btn" onclick="showSection('feedback')">Feedback</button>
+        <button class="tab-btn" onclick="showSection('financeiro')">💳 Financeiro</button>
+        <button class="tab-btn" onclick="showSection('z3')">🛒 Z3</button>
+      </div>
+      <button class="theme-toggle" onclick="toggleTheme()">☀</button>
     </div>
-    <button class="theme-toggle" onclick="document.body.classList.toggle('light-mode')">☀</button>
   </div>
 </nav>
 
 <div class="main">
 
-<!-- ══════════════ APRESENTAÇÃO ══════════════ -->
 <section id="apresentacao" class="section active">
   <div class="client-hero">
     <div class="hero-bg"></div>
@@ -240,7 +556,6 @@ Suporte: segunda a sexta, 8h às 18h. Qualquer dúvida, me chama! 💬</div>
   </div>
 </section>
 
-<!-- ══════════════ DIETA ══════════════ -->
 <section id="dieta" class="section">
   <div class="section-header"><h2>Plano <span>Alimentar</span></h2><div class="section-line"></div></div>
 
@@ -262,10 +577,10 @@ Suporte: segunda a sexta, 8h às 18h. Qualquer dúvida, me chama! 💬</div>
       <table class="meal-table">
         <thead><tr><th>Alimento</th><th>Qtd</th><th>kcal</th><th>Carbo(g)</th><th>Prot(g)</th><th>Gord(g)</th><th>Substituições</th></tr></thead>
         <tbody>
-          <tr><td class="food-name">Ovos inteiros</td><td>2 un</td><td>156</td><td>0,8</td><td>13,4</td><td>11,0</td><td>Frango 80g · Atum 80g · Patinho 80g · Whey 25g</td></tr>
+          <tr><td class="food-name">Ovos inteiros</td><td>2 un</td><td>156</td><td>0,8</td><td>13,4</td><td>11,0</td><td>Frango 80g · Atum 80g · Patinho 80g · Whey 25g · Sardinha 80g · Tilápia 80g</td></tr>
           <tr><td class="food-name">Claras de ovo</td><td>2 un</td><td>34</td><td>0,6</td><td>7,2</td><td>0,0</td><td>—</td></tr>
-          <tr><td class="food-name">Pão integral</td><td>2 fatias (50g)</td><td>124</td><td>22,6</td><td>5,0</td><td>1,8</td><td>Tapioca 70g · Cuscuz 100g · Batata-doce 100g</td></tr>
-          <tr><td class="food-name">Mamão</td><td>150g</td><td>55</td><td>14,2</td><td>0,8</td><td>0,1</td><td>Banana · Maçã · Melão · Abacaxi</td></tr>
+          <tr><td class="food-name">Pão integral</td><td>2 fatias (50g)</td><td>124</td><td>22,6</td><td>5,0</td><td>1,8</td><td>Tapioca 50g · Cuscuz 80g · Aveia 30g · Granola 30g · Batata-doce 100g · Biscoito de arroz 30g</td></tr>
+          <tr><td class="food-name">Mamão</td><td>150g</td><td>55</td><td>14,2</td><td>0,8</td><td>0,1</td><td>Banana · Maçã · Melão 200g · Uva 120g · Abacaxi 200g · Morango 200g</td></tr>
           <tr class="total-row"><td colspan="2">Total da Refeição</td><td>369</td><td>38g</td><td>26g</td><td>13g</td><td></td></tr>
         </tbody>
       </table>
@@ -282,11 +597,11 @@ Suporte: segunda a sexta, 8h às 18h. Qualquer dúvida, me chama! 💬</div>
       <table class="meal-table">
         <thead><tr><th>Alimento</th><th>Qtd</th><th>kcal</th><th>Carbo(g)</th><th>Prot(g)</th><th>Gord(g)</th><th>Substituições</th></tr></thead>
         <tbody>
-          <tr><td class="food-name">Arroz branco</td><td>70g</td><td>92</td><td>20,2</td><td>1,7</td><td>0,1</td><td>Batata-doce 130g · Aipim 100g · Cuscuz 80g</td></tr>
-          <tr><td class="food-name">Peito de frango</td><td>120g</td><td>149</td><td>0,0</td><td>33,0</td><td>1,6</td><td>Patinho 120g · Tilápia 140g · Atum 120g</td></tr>
-          <tr><td class="food-name">Verduras e vegetais</td><td>150g</td><td>35</td><td>6,5</td><td>2,1</td><td>0,4</td><td>Brócolis · Cenoura · Abobrinha · Vagem</td></tr>
-          <tr><td class="food-name">Abacaxi</td><td>100g</td><td>48</td><td>12,3</td><td>0,5</td><td>0,1</td><td>Melão · Melancia · Morangos</td></tr>
-          <tr><td class="food-name" style="color:var(--gold-light);font-style:italic;">Feijão (opcional)</td><td>70g</td><td>53</td><td>9,5</td><td>3,4</td><td>0,3</td><td>Lentilha 70g · Grão-de-bico 70g</td></tr>
+          <tr><td class="food-name">Arroz branco</td><td>70g</td><td>92</td><td>20,2</td><td>1,7</td><td>0,1</td><td>Batata-doce 130g · Macarrão 80g · Aipim 100g · Cuscuz 80g · Batata inglesa 150g · Inhame 100g</td></tr>
+          <tr><td class="food-name">Peito de frango</td><td>120g</td><td>149</td><td>0,0</td><td>33,0</td><td>1,6</td><td>Patinho 120g · Tilápia 140g · Atum 120g · Merluza 150g · Sardinha 120g · Ovos 3un</td></tr>
+          <tr><td class="food-name">Verduras e vegetais</td><td>150g</td><td>35</td><td>6,5</td><td>2,1</td><td>0,4</td><td>Brócolis · Cenoura · Abobrinha · Vagem · Couve · Espinafre · Beterraba · Aspargos · Pepino</td></tr>
+          <tr><td class="food-name">Abacaxi</td><td>100g</td><td>48</td><td>12,3</td><td>0,5</td><td>0,1</td><td>Melão 200g · Melancia 200g · Morango 200g · Maçã 150g · Laranja 150g · Kiwi 120g</td></tr>
+          <tr><td class="food-name" style="color:var(--gold-light);font-style:italic;">Feijão (opcional)</td><td>70g</td><td>53</td><td>9,5</td><td>3,4</td><td>0,3</td><td>Lentilha 100g · Grão-de-bico 100g · Ervilha 100g · Feijão-fradinho 100g · Edamame 80g · Soja cozida 80g</td></tr>
           <tr class="total-row"><td colspan="2">Total (sem feijão)</td><td>324</td><td>39g</td><td>37g</td><td>2g</td><td></td></tr>
         </tbody>
       </table>
@@ -304,8 +619,8 @@ Suporte: segunda a sexta, 8h às 18h. Qualquer dúvida, me chama! 💬</div>
       <table class="meal-table">
         <thead><tr><th>Alimento</th><th>Qtd</th><th>kcal</th><th>Carbo(g)</th><th>Prot(g)</th><th>Gord(g)</th><th>Substituições</th></tr></thead>
         <tbody>
-          <tr><td class="food-name">Whey protein</td><td>30g</td><td>117</td><td>3,0</td><td>22,0</td><td>1,5</td><td>Frango 80g · Atum 80g · Ovos 2 un</td></tr>
-          <tr><td class="food-name">Granola sem açúcar</td><td>30g</td><td>130</td><td>20,0</td><td>3,0</td><td>4,0</td><td>Aveia 30g · Pão integral 1 fatia</td></tr>
+          <tr><td class="food-name">Whey protein</td><td>30g</td><td>117</td><td>3,0</td><td>22,0</td><td>1,5</td><td>Frango 100g · Atum 100g · Ovos 3un · Queijo cottage 150g · Iogurte grego zero 180g · Patinho 100g</td></tr>
+          <tr><td class="food-name">Granola sem açúcar</td><td>30g</td><td>130</td><td>20,0</td><td>3,0</td><td>4,0</td><td>Aveia 30g · Pão integral 1 fatia · Tapioca 40g · Cuscuz 60g · Biscoito de arroz 30g · Batata-doce 80g</td></tr>
           <tr><td class="food-name">Iogurte zero (sem lactose)</td><td>200ml</td><td>80</td><td>12,0</td><td>8,0</td><td>0,0</td><td>⚠️ Verificar rótulo — sem lactose</td></tr>
           <tr><td class="food-name">Frutas variadas</td><td>100g</td><td>50</td><td>12,0</td><td>0,5</td><td>0,2</td><td>Morango · Melão · Mamão · Maçã · Uva · Melancia</td></tr>
           <tr class="total-row"><td colspan="2">Total da Refeição</td><td>377</td><td>47g</td><td>34g</td><td>6g</td><td></td></tr>
@@ -325,11 +640,11 @@ Suporte: segunda a sexta, 8h às 18h. Qualquer dúvida, me chama! 💬</div>
       <table class="meal-table">
         <thead><tr><th>Alimento</th><th>Qtd</th><th>kcal</th><th>Carbo(g)</th><th>Prot(g)</th><th>Gord(g)</th><th>Substituições</th></tr></thead>
         <tbody>
-          <tr><td class="food-name">Arroz branco</td><td>70g</td><td>92</td><td>20,2</td><td>1,7</td><td>0,1</td><td>Batata-doce 130g · Aipim 100g · Cuscuz 80g</td></tr>
-          <tr><td class="food-name">Peito de frango</td><td>120g</td><td>149</td><td>0,0</td><td>33,0</td><td>1,6</td><td>Patinho 120g · Tilápia 140g · Atum 120g</td></tr>
-          <tr><td class="food-name">Verduras e vegetais</td><td>150g</td><td>35</td><td>6,5</td><td>2,1</td><td>0,4</td><td>Brócolis · Cenoura · Abobrinha · Vagem</td></tr>
-          <tr><td class="food-name">Abacaxi</td><td>100g</td><td>48</td><td>12,3</td><td>0,5</td><td>0,1</td><td>Melão · Melancia · Morangos</td></tr>
-          <tr><td class="food-name" style="color:var(--gold-light);font-style:italic;">Feijão (opcional)</td><td>70g</td><td>53</td><td>9,5</td><td>3,4</td><td>0,3</td><td>Lentilha 70g · Grão-de-bico 70g</td></tr>
+          <tr><td class="food-name">Arroz branco</td><td>70g</td><td>92</td><td>20,2</td><td>1,7</td><td>0,1</td><td>Batata-doce 130g · Macarrão 80g · Aipim 100g · Cuscuz 80g · Batata inglesa 150g · Inhame 100g</td></tr>
+          <tr><td class="food-name">Peito de frango</td><td>120g</td><td>149</td><td>0,0</td><td>33,0</td><td>1,6</td><td>Patinho 120g · Tilápia 140g · Atum 120g · Merluza 150g · Sardinha 120g · Ovos 3un</td></tr>
+          <tr><td class="food-name">Verduras e vegetais</td><td>150g</td><td>35</td><td>6,5</td><td>2,1</td><td>0,4</td><td>Brócolis · Cenoura · Abobrinha · Vagem · Couve · Espinafre · Beterraba · Aspargos · Pepino</td></tr>
+          <tr><td class="food-name">Abacaxi</td><td>100g</td><td>48</td><td>12,3</td><td>0,5</td><td>0,1</td><td>Melão 200g · Melancia 200g · Morango 200g · Maçã 150g · Laranja 150g · Kiwi 120g</td></tr>
+          <tr><td class="food-name" style="color:var(--gold-light);font-style:italic;">Feijão (opcional)</td><td>70g</td><td>53</td><td>9,5</td><td>3,4</td><td>0,3</td><td>Lentilha 100g · Grão-de-bico 100g · Ervilha 100g · Feijão-fradinho 100g · Edamame 80g · Soja cozida 80g</td></tr>
           <tr class="total-row"><td colspan="2">Total (sem feijão)</td><td>324</td><td>39g</td><td>37g</td><td>2g</td><td></td></tr>
         </tbody>
       </table>
@@ -411,8 +726,8 @@ Suporte: segunda a sexta, 8h às 18h. Qualquer dúvida, me chama! 💬</div>
   </div>
 </section>
 
-<!-- ══════════════ CARDIO ══════════════ -->
 <section id="cardio" class="section">
+
   <div class="section-header"><h2>Protocolo de <span>Cardio</span></h2><div class="section-line"></div></div>
 
   <div class="plan-info-bar">
@@ -437,7 +752,16 @@ Suporte: segunda a sexta, 8h às 18h. Qualquer dúvida, me chama! 💬</div>
   </div>
 
   <!-- SEMANA 1 -->
-  <div class="cardio-week">
+  <div class="semana-tabs">
+<button class="semana-tab active" onclick="showSemana('semana-1',this)">Semana 1</button>
+<button class="semana-tab " onclick="showSemana('semana-2',this)">Semana 2</button>
+<button class="semana-tab " onclick="showSemana('semana-3',this)">Semana 3</button>
+<button class="semana-tab " onclick="showSemana('semana-4',this)">Semana 4</button>
+<button class="semana-tab " onclick="showSemana('semana-5',this)">Semana 5</button>
+<button class="semana-tab " onclick="showSemana('semana-6',this)">Semana 6</button>
+</div>
+
+<div id="semana-1" class="semana-content active"><div class="cardio-week">
     <h3>📅 Semana 1</h3>
     <div class="week-badge">Base de condicionamento</div>
     <div class="cardio-day">
@@ -470,8 +794,9 @@ Suporte: segunda a sexta, 8h às 18h. Qualquer dúvida, me chama! 💬</div>
     </div>
   </div>
 
-  <!-- SEMANA 2 -->
-  <div class="cardio-week">
+  <!-- SEMANA 2 --></div>
+
+<div id="semana-2" class="semana-content "><div class="cardio-week">
     <h3>📅 Semana 2</h3>
     <div class="week-badge">Mais tempo em Zona 3</div>
     <div class="cardio-day">
@@ -504,8 +829,9 @@ Suporte: segunda a sexta, 8h às 18h. Qualquer dúvida, me chama! 💬</div>
     </div>
   </div>
 
-  <!-- SEMANA 3 -->
-  <div class="cardio-week">
+  <!-- SEMANA 3 --></div>
+
+<div id="semana-3" class="semana-content "><div class="cardio-week">
     <h3>📅 Semana 3</h3>
     <div class="week-badge">Progressão de duração e intensidade</div>
     <div class="cardio-day">
@@ -538,8 +864,9 @@ Suporte: segunda a sexta, 8h às 18h. Qualquer dúvida, me chama! 💬</div>
     </div>
   </div>
 
-  <!-- SEMANA 4 -->
-  <div class="cardio-week" style="border-color:var(--green-border);">
+  <!-- SEMANA 4 --></div>
+
+<div id="semana-4" class="semana-content "><div class="cardio-week" style="border-color:var(--green-border);">
     <h3 style="color:var(--green);">📅 Semana 4 — Recuperação Ativa</h3>
     <div class="week-badge" style="border-color:var(--green-border);color:var(--green);">Redução de intensidade · Zona 2 predominante</div>
     <div class="cardio-day">
@@ -551,8 +878,9 @@ Suporte: segunda a sexta, 8h às 18h. Qualquer dúvida, me chama! 💬</div>
     </div>
   </div>
 
-  <!-- SEMANA 5 -->
-  <div class="cardio-week">
+  <!-- SEMANA 5 --></div>
+
+<div id="semana-5" class="semana-content "><div class="cardio-week">
     <h3>📅 Semana 5</h3>
     <div class="week-badge">Retomada progressiva</div>
     <div class="cardio-day">
@@ -585,8 +913,9 @@ Suporte: segunda a sexta, 8h às 18h. Qualquer dúvida, me chama! 💬</div>
     </div>
   </div>
 
-  <!-- SEMANA 6 -->
-  <div class="cardio-week" style="border-color:rgba(224,90,90,0.3);">
+  <!-- SEMANA 6 --></div>
+
+<div id="semana-6" class="semana-content "><div class="cardio-week" style="border-color:rgba(224,90,90,0.3);">
     <h3 style="color:#f8c464;">📅 Semana 6 — Pico Controlado</h3>
     <div class="week-badge" style="border-color:rgba(248,196,100,0.3);color:#f8c464;">Máxima do bloco · Zona 3 predominante</div>
     <div class="cardio-day">
@@ -632,9 +961,10 @@ Suporte: segunda a sexta, 8h às 18h. Qualquer dúvida, me chama! 💬</div>
       <strong style="color:var(--gold);">"Cardio não é castigo, é estratégia."</strong>
     </div>
   </div>
+</section></div>
+
 </section>
 
-<!-- ══════════════ CONSCIENTIZAÇÃO ══════════════ -->
 <section id="conscientizacao" class="section">
   <div class="section-header"><h2>Área de <span>Conscientização</span></h2><div class="section-line"></div></div>
   <p style="font-size:11px;color:var(--white-dim);margin-bottom:28px;line-height:1.8;">Dicas e conteúdos do seu treinador sobre nutrição, mentalidade, sono e saúde.</p>
@@ -667,30 +997,59 @@ Suporte: segunda a sexta, 8h às 18h. Qualquer dúvida, me chama! 💬</div>
   </div>
 </section>
 
-<!-- ══════════════ Z3 DISTRIBUIDORA ══════════════ -->
-<section id="z3distribuidora" class="section">
-  <div class="section-header"><h2>🛒 Z3 <span>Distribuidora</span></h2><div class="section-line"></div></div>
-  <div style="background:linear-gradient(135deg,rgba(201,168,76,0.08),var(--dark2));border:1px solid var(--border);border-radius:8px;padding:32px;text-align:center;margin-bottom:24px;">
-    <div style="font-size:48px;margin-bottom:16px;">🛒</div>
-    <div style="font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold);margin-bottom:8px;">Z3 Distribuidora</div>
-    <div style="font-size:13px;color:var(--white-dim);margin-bottom:24px;line-height:1.8;">Catálogo com <strong style="color:var(--white);">16 marcas</strong> · PIX ou cartão · Pedido mínimo <strong style="color:var(--white);">R$399</strong> · Pedido pelo WhatsApp</div>
-    <a href="https://z3distribuidora.netlify.app/" target="_blank" style="display:inline-block;background:var(--gold);color:#000;font-weight:700;font-size:13px;letter-spacing:1px;padding:14px 32px;border-radius:4px;text-decoration:none;">🛒 Acessar Catálogo</a>
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
-    <div style="background:var(--dark2);border:1px solid var(--border);border-radius:6px;padding:20px;text-align:center;"><div style="font-size:28px;margin-bottom:8px;">🏷️</div><div style="font-size:12px;font-weight:600;color:var(--gold);margin-bottom:4px;">16 Marcas</div><div style="font-size:11px;color:var(--white-dim);">Maior variedade</div></div>
-    <div style="background:var(--dark2);border:1px solid var(--border);border-radius:6px;padding:20px;text-align:center;"><div style="font-size:28px;margin-bottom:8px;">💳</div><div style="font-size:12px;font-weight:600;color:var(--gold);margin-bottom:4px;">PIX ou Cartão</div><div style="font-size:11px;color:var(--white-dim);">Pagamento facilitado</div></div>
-    <div style="background:var(--dark2);border:1px solid var(--border);border-radius:6px;padding:20px;text-align:center;"><div style="font-size:28px;margin-bottom:8px;">📦</div><div style="font-size:12px;font-weight:600;color:var(--gold);margin-bottom:4px;">Pedido Mínimo R$399</div><div style="font-size:11px;color:var(--white-dim);">Via WhatsApp</div></div>
-  </div>
-</section>
-
-<!-- ══════════════ EVOLUÇÃO ══════════════ -->
 <section id="evolucao" class="section">
-  <div class="section-header"><h2>Fotos de <span>Acompanhamento</span></h2><div class="section-line"></div></div>
-  <div class="photo-upload-area"><label class="upload-label" for="photoUpload"><div class="upload-icon">📷</div><div class="upload-text">Toque para adicionar foto de acompanhamento</div></label><input type="file" id="photoUpload" accept="image/*" multiple onchange="addPhotos(this)"></div>
+  <div class="section-header"><h2>Histórico de <span>Evolução</span></h2><div class="section-line"></div></div>
+
+  <div class="evo-grid">
+    <div class="evo-card">
+      <h4>⚖️ Histórico de Peso</h4>
+      <div class="weight-form">
+        <input class="weight-input" type="number" step="0.1" id="weightVal" placeholder="Peso (kg)">
+        <button class="btn-add" onclick="addWeight()">+ Adicionar</button>
+      </div>
+      <div class="weight-list" id="weightList"><div class="weight-empty">Nenhum registro ainda.</div></div>
+    </div>
+    <div class="evo-card">
+      <h4>📏 Medidas Corporais</h4>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div>
+          <div style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--white-dim);margin-bottom:4px;">Cintura (cm)</div>
+          <input class="weight-input" type="number" step="0.1" placeholder="cm" data-key="medida-cintura" onchange="saveMedida(this)" style="width:100%">
+        </div>
+        <div>
+          <div style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--white-dim);margin-bottom:4px;">Quadril (cm)</div>
+          <input class="weight-input" type="number" step="0.1" placeholder="cm" data-key="medida-quadril" onchange="saveMedida(this)" style="width:100%">
+        </div>
+        <div>
+          <div style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--white-dim);margin-bottom:4px;">Braço D (cm)</div>
+          <input class="weight-input" type="number" step="0.1" placeholder="cm" data-key="medida-braco" onchange="saveMedida(this)" style="width:100%">
+        </div>
+        <div>
+          <div style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--white-dim);margin-bottom:4px;">Coxa D (cm)</div>
+          <input class="weight-input" type="number" step="0.1" placeholder="cm" data-key="medida-coxa" onchange="saveMedida(this)" style="width:100%">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-wrap">
+    <h4>📈 Gráfico de Evolução de Peso</h4>
+    <canvas id="weightChart" height="200"></canvas>
+    <div id="chart-empty" style="text-align:center;color:var(--white-dim);font-size:12px;padding:30px 0;display:none;">Adicione registros de peso para ver o gráfico.</div>
+  </div>
+
+  <div class="section-header" style="margin-top:40px;"><h2>Fotos de <span>Acompanhamento</span></h2><div class="section-line"></div></div>
+  <div class="photo-upload-area">
+    <label class="upload-label" for="photoUpload">
+      <div class="upload-icon">📷</div>
+      <div class="upload-text">Toque para adicionar foto de acompanhamento</div>
+    </label>
+    <input type="file" id="photoUpload" accept="image/*" multiple onchange="addPhotos(this)">
+  </div>
   <div class="photo-grid" id="photoGrid"></div>
+
 </section>
 
-<!-- ══════════════ RELATÓRIO ══════════════ -->
 <section id="relatorio" class="section">
   <div class="section-header"><h2>Relatório <span>Personalizado</span></h2><div class="section-line"></div></div>
   <div style="background:linear-gradient(135deg,rgba(201,168,76,0.06),var(--dark2));border:1px solid var(--border);border-radius:4px;padding:22px 24px;margin-bottom:20px;">
@@ -758,71 +1117,1300 @@ Suporte: segunda a sexta, 8h às 18h. Qualquer dúvida, me chama! 💬</div>
   </div>
 </section>
 
-<!-- ══════════════ FEEDBACK ══════════════ -->
 <section id="feedback" class="section">
   <div class="section-header"><h2>Feedback <span>Semanal</span></h2><div class="section-line"></div></div>
-  <div class="fb-obs">Responda as perguntas abaixo e clique em <strong style="color:var(--gold);">Gerar Resumo</strong> para criar a mensagem para o WhatsApp do treinador.</div>
+
+  <div class="fb-obs">
+    Responda as perguntas abaixo e clique em <strong style="color:var(--gold);">Gerar Resumo</strong> para criar um texto formatado que você pode copiar e enviar diretamente no WhatsApp. Quem iniciou na última semana ou já enviou feedback recentemente não precisa enviar novamente — a não ser que queira compartilhar alguma atualização.
+  </div>
+
+  <!-- TREINOS -->
+  <div class="fb-section">
+    <h3>🏋️ Treinos</h3>
+    <div class="fb-question">
+      <div class="fb-q-label">Como está a frequência dos treinos?</div>
+      <div class="fb-scale">
+        <button class="fb-scale-btn" data-group="freq-treino" data-val="Ruim" onclick="selectScale(this)"><span class="fb-emoji">😔</span><span class="fb-txt">Ruim</span></button>
+        <button class="fb-scale-btn" data-group="freq-treino" data-val="Regular" onclick="selectScale(this)"><span class="fb-emoji">😐</span><span class="fb-txt">Regular</span></button>
+        <button class="fb-scale-btn" data-group="freq-treino" data-val="Bem" onclick="selectScale(this)"><span class="fb-emoji">😊</span><span class="fb-txt">Bem</span></button>
+        <button class="fb-scale-btn" data-group="freq-treino" data-val="Ótimo" onclick="selectScale(this)"><span class="fb-emoji">🔥</span><span class="fb-txt">Ótimo</span></button>
+      </div>
+    </div>
+    <div class="fb-question">
+      <div class="fb-q-label">Está conseguindo cumprir o tempo proposto nos treinos?</div>
+      <div class="fb-yesno">
+        <button class="fb-yn-btn" data-group="tempo-treino" data-val="Sim" onclick="selectYN(this)">✓ Sim</button>
+        <button class="fb-yn-btn" data-group="tempo-treino" data-val="Não" onclick="selectYN(this)">✕ Não</button>
+        <button class="fb-yn-btn" data-group="tempo-treino" data-val="Às vezes" onclick="selectYN(this)">~ Às vezes</button>
+      </div>
+    </div>
+    <div class="fb-question">
+      <div class="fb-q-label">Está realizando os cardios programados?</div>
+      <div class="fb-yesno">
+        <button class="fb-yn-btn" data-group="cardio-fb" data-val="Sim" onclick="selectYN(this)">✓ Sim</button>
+        <button class="fb-yn-btn" data-group="cardio-fb" data-val="Não" onclick="selectYN(this)">✕ Não</button>
+        <button class="fb-yn-btn" data-group="cardio-fb" data-val="Parcialmente" onclick="selectYN(this)">~ Parcialmente</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALIMENTAÇÃO -->
   <div class="fb-section">
     <h3>🥗 Alimentação</h3>
-    <div class="fb-question"><div class="fb-q-label">Está conseguindo seguir o plano alimentar?</div><div class="fb-scale"><button class="fb-scale-btn" data-group="adesao" data-val="Ruim" onclick="selectScale(this)"><span>😔</span><span>Ruim</span></button><button class="fb-scale-btn" data-group="adesao" data-val="Regular" onclick="selectScale(this)"><span>😐</span><span>Regular</span></button><button class="fb-scale-btn" data-group="adesao" data-val="Bem" onclick="selectScale(this)"><span>😊</span><span>Bem</span></button><button class="fb-scale-btn" data-group="adesao" data-val="Ótimo" onclick="selectScale(this)"><span>🔥</span><span>Ótimo</span></button></div></div>
-    <div class="fb-question"><div class="fb-q-label">Sentiu fome excessiva?</div><div class="fb-yesno"><button class="fb-yn-btn" data-group="fome" data-val="Sim" onclick="selectYN(this)">✓ Sim</button><button class="fb-yn-btn" data-group="fome" data-val="Não" onclick="selectYN(this)">✕ Não</button><button class="fb-yn-btn" data-group="fome" data-val="Às vezes" onclick="selectYN(this)">~ Às vezes</button></div></div>
+    <div class="fb-question">
+      <div class="fb-q-label">Está conseguindo seguir o plano alimentar?</div>
+      <div class="fb-scale">
+        <button class="fb-scale-btn" data-group="adesao-dieta" data-val="Ruim" onclick="selectScale(this)"><span class="fb-emoji">😔</span><span class="fb-txt">Ruim</span></button>
+        <button class="fb-scale-btn" data-group="adesao-dieta" data-val="Regular" onclick="selectScale(this)"><span class="fb-emoji">😐</span><span class="fb-txt">Regular</span></button>
+        <button class="fb-scale-btn" data-group="adesao-dieta" data-val="Bem" onclick="selectScale(this)"><span class="fb-emoji">😊</span><span class="fb-txt">Bem</span></button>
+        <button class="fb-scale-btn" data-group="adesao-dieta" data-val="Ótimo" onclick="selectScale(this)"><span class="fb-emoji">🔥</span><span class="fb-txt">Ótimo</span></button>
+      </div>
+    </div>
+    <div class="fb-question">
+      <div class="fb-q-label">Se não está conseguindo seguir, qual o principal motivo?</div>
+      <div class="fb-multi">
+        <button class="fb-multi-btn" data-group="motivo-dieta" data-val="Organização" onclick="selectMulti(this)">Organização</button>
+        <button class="fb-multi-btn" data-group="motivo-dieta" data-val="Planejamento" onclick="selectMulti(this)">Planejamento</button>
+        <button class="fb-multi-btn" data-group="motivo-dieta" data-val="Rotina agitada" onclick="selectMulti(this)">Rotina agitada</button>
+        <button class="fb-multi-btn" data-group="motivo-dieta" data-val="Falta de vontade" onclick="selectMulti(this)">Falta de vontade</button>
+        <button class="fb-multi-btn" data-group="motivo-dieta" data-val="Não se aplica" onclick="selectMulti(this)">Não se aplica</button>
+      </div>
+    </div>
   </div>
+
+  <!-- DIFICULDADES -->
   <div class="fb-section">
-    <h3>🏋️ Treino e Cardio</h3>
-    <div class="fb-question"><div class="fb-q-label">Treinos de musculação realizados na semana:</div><div class="fb-yesno"><button class="fb-yn-btn" data-group="treinos" data-val="1–2" onclick="selectYN(this)">1–2</button><button class="fb-yn-btn" data-group="treinos" data-val="3–4" onclick="selectYN(this)">3–4</button><button class="fb-yn-btn" data-group="treinos" data-val="5" onclick="selectYN(this)">5</button><button class="fb-yn-btn" data-group="treinos" data-val="6+" onclick="selectYN(this)">6+</button></div></div>
-    <div class="fb-question"><div class="fb-q-label">Cardio realizado conforme protocolo?</div><div class="fb-yesno"><button class="fb-yn-btn" data-group="cardio-fb" data-val="Sim" onclick="selectYN(this)">✓ Sim</button><button class="fb-yn-btn" data-group="cardio-fb" data-val="Não" onclick="selectYN(this)">✕ Não</button><button class="fb-yn-btn" data-group="cardio-fb" data-val="Parcialmente" onclick="selectYN(this)">~ Parcialmente</button></div></div>
-    <div class="fb-question"><div class="fb-q-label">Dor lombar ou punho esta semana?</div><div class="fb-yesno"><button class="fb-yn-btn" data-group="dor" data-val="Sem dor" onclick="selectYN(this)">✓ Sem dor</button><button class="fb-yn-btn" data-group="dor" data-val="Lombar" onclick="selectYN(this)">⚠️ Lombar</button><button class="fb-yn-btn" data-group="dor" data-val="Punho" onclick="selectYN(this)">⚠️ Punho</button><button class="fb-yn-btn" data-group="dor" data-val="Ambos" onclick="selectYN(this)">⚠️ Ambos</button></div></div>
+    <h3>⚠️ Dificuldades</h3>
+    <div class="fb-question">
+      <div class="fb-q-label">O que tem atrapalhado sua rotina? (pode marcar mais de um)</div>
+      <div class="fb-multi">
+        <button class="fb-multi-btn" data-group="dificuldades" data-val="Trabalho/estresse" onclick="selectMulti(this)">Trabalho / estresse</button>
+        <button class="fb-multi-btn" data-group="dificuldades" data-val="Falta de tempo" onclick="selectMulti(this)">Falta de tempo</button>
+        <button class="fb-multi-btn" data-group="dificuldades" data-val="Compromissos sociais" onclick="selectMulti(this)">Compromissos sociais</button>
+        <button class="fb-multi-btn" data-group="dificuldades" data-val="Viagens" onclick="selectMulti(this)">Viagens</button>
+        <button class="fb-multi-btn" data-group="dificuldades" data-val="Motivação" onclick="selectMulti(this)">Motivação</button>
+        <button class="fb-multi-btn" data-group="dificuldades" data-val="Nenhuma" onclick="selectMulti(this)">Nenhuma</button>
+      </div>
+      <textarea class="fb-textarea" id="fb-dificuldades-extra" placeholder="Detalhe se quiser..."></textarea>
+    </div>
   </div>
+
+  <!-- SAÚDE -->
   <div class="fb-section">
-    <h3>😴 Sono e Disposição</h3>
-    <div class="fb-question"><div class="fb-q-label">Como está a qualidade do sono?</div><div class="fb-scale"><button class="fb-scale-btn" data-group="sono" data-val="Ruim" onclick="selectScale(this)"><span>😔</span><span>Ruim</span></button><button class="fb-scale-btn" data-group="sono" data-val="Regular" onclick="selectScale(this)"><span>😐</span><span>Regular</span></button><button class="fb-scale-btn" data-group="sono" data-val="Bem" onclick="selectScale(this)"><span>😊</span><span>Bem</span></button><button class="fb-scale-btn" data-group="sono" data-val="Ótimo" onclick="selectScale(this)"><span>🔥</span><span>Ótimo</span></button></div></div>
-    <div class="fb-question"><div class="fb-q-label">Como está sua disposição geral?</div><div class="fb-scale"><button class="fb-scale-btn" data-group="disp" data-val="Baixa" onclick="selectScale(this)"><span>😴</span><span>Baixa</span></button><button class="fb-scale-btn" data-group="disp" data-val="Regular" onclick="selectScale(this)"><span>😐</span><span>Regular</span></button><button class="fb-scale-btn" data-group="disp" data-val="Boa" onclick="selectScale(this)"><span>😊</span><span>Boa</span></button><button class="fb-scale-btn" data-group="disp" data-val="Ótima" onclick="selectScale(this)"><span>⚡</span><span>Ótima</span></button></div></div>
+    <h3>🏥 Saúde</h3>
+    <div class="fb-question">
+      <div class="fb-q-label">Está sentindo alguma dor, incômodo ou desconforto físico?</div>
+      <div class="fb-yesno">
+        <button class="fb-yn-btn" data-group="dor-fisica" data-val="Sim" onclick="selectYN(this)">✓ Sim</button>
+        <button class="fb-yn-btn" data-group="dor-fisica" data-val="Não" onclick="selectYN(this)">✕ Não</button>
+      </div>
+      <textarea class="fb-textarea" id="fb-dor-detalhe" placeholder="Se sim, descreva onde e quando sente..."></textarea>
+    </div>
+    <div class="fb-question">
+      <div class="fb-q-label">Como está o sono?</div>
+      <div class="fb-scale">
+        <button class="fb-scale-btn" data-group="sono" data-val="Ruim" onclick="selectScale(this)"><span class="fb-emoji">😔</span><span class="fb-txt">Ruim</span></button>
+        <button class="fb-scale-btn" data-group="sono" data-val="Regular" onclick="selectScale(this)"><span class="fb-emoji">😐</span><span class="fb-txt">Regular</span></button>
+        <button class="fb-scale-btn" data-group="sono" data-val="Bom" onclick="selectScale(this)"><span class="fb-emoji">😊</span><span class="fb-txt">Bom</span></button>
+        <button class="fb-scale-btn" data-group="sono" data-val="Ótimo" onclick="selectScale(this)"><span class="fb-emoji">🔥</span><span class="fb-txt">Ótimo</span></button>
+      </div>
+    </div>
+    <div class="fb-question">
+      <div class="fb-q-label">Como está o funcionamento intestinal?</div>
+      <div class="fb-yesno">
+        <button class="fb-yn-btn" data-group="intestino" data-val="Normal" onclick="selectYN(this)">Normal</button>
+        <button class="fb-yn-btn" data-group="intestino" data-val="Preso" onclick="selectYN(this)">Preso</button>
+        <button class="fb-yn-btn" data-group="intestino" data-val="Solto" onclick="selectYN(this)">Solto</button>
+      </div>
+    </div>
   </div>
-  <div class="fb-section"><h3>📝 Observações</h3><textarea class="fb-text-area" id="fb-obs" placeholder="Dificuldades, dúvidas ou observações da semana..."></textarea></div>
-  <button class="btn-generate" onclick="generateFeedback()">Gerar Resumo para WhatsApp</button>
-  <div class="fb-result" id="fbResult"></div>
-  <button class="btn-copy" id="btnCopy" style="display:none;" onclick="copyFeedback()">Copiar e Abrir WhatsApp</button>
+
+  <!-- FOTOS E PESO -->
+  <div class="fb-section">
+    <h3>📸 Fotos e Peso Atual</h3>
+    <div class="fb-question">
+      <div class="fb-q-label">Peso atual (kg)</div>
+      <input class="fb-weight-input" type="number" step="0.1" id="fb-peso" placeholder="Ex: 85.4">
+    </div>
+    <div class="fb-question">
+      <div class="fb-q-label">Fotos de avaliação</div>
+      <label class="fb-upload-btn">
+        📷 Adicionar fotos
+        <input type="file" accept="image/*" multiple style="display:none" onchange="addFbPhotos(this)">
+      </label>
+      <div class="fb-photo-row" id="fb-photo-row"></div>
+    </div>
+    <div class="fb-question">
+      <div class="fb-q-label">Observações gerais ou informações extras</div>
+      <textarea class="fb-textarea" id="fb-obs-geral" placeholder="Conte qualquer coisa relevante sobre a sua semana..." style="height:90px;"></textarea>
+    </div>
+  </div>
+
+  <!-- DISPONIBILIDADE -->
+  <div class="fb-section">
+    <h3>📅 Disponibilidade e Rotina</h3>
+    <div class="fb-question">
+      <div class="fb-q-label">Quantos dias consegue treinar musculação nas próximas semanas?</div>
+      <div class="fb-multi">
+        <button class="fb-multi-btn" data-group="fb-dias-treino" data-val="2 dias" onclick="selectMultiSingle(this)">2 dias</button>
+        <button class="fb-multi-btn" data-group="fb-dias-treino" data-val="3 dias" onclick="selectMultiSingle(this)">3 dias</button>
+        <button class="fb-multi-btn" data-group="fb-dias-treino" data-val="4 dias" onclick="selectMultiSingle(this)">4 dias</button>
+        <button class="fb-multi-btn" data-group="fb-dias-treino" data-val="5 dias" onclick="selectMultiSingle(this)">5 dias</button>
+        <button class="fb-multi-btn" data-group="fb-dias-treino" data-val="6 dias" onclick="selectMultiSingle(this)">6 dias</button>
+      </div>
+    </div>
+    <div class="fb-question">
+      <div class="fb-q-label">Tempo disponível por sessão de treino</div>
+      <div class="fb-multi">
+        <button class="fb-multi-btn" data-group="fb-tempo-treino" data-val="Menos de 1h" onclick="selectMultiSingle(this)">Menos de 1h</button>
+        <button class="fb-multi-btn" data-group="fb-tempo-treino" data-val="1 hora" onclick="selectMultiSingle(this)">1 hora</button>
+        <button class="fb-multi-btn" data-group="fb-tempo-treino" data-val="Até 1h30" onclick="selectMultiSingle(this)">Até 1h30</button>
+        <button class="fb-multi-btn" data-group="fb-tempo-treino" data-val="Mais de 1h30" onclick="selectMultiSingle(this)">+ de 1h30</button>
+      </div>
+    </div>
+    <div class="fb-question">
+      <div class="fb-q-label">Quantos dias consegue fazer cardio além dos treinos?</div>
+      <div class="fb-multi">
+        <button class="fb-multi-btn" data-group="fb-dias-cardio" data-val="Nenhum" onclick="selectMultiSingle(this)">Nenhum</button>
+        <button class="fb-multi-btn" data-group="fb-dias-cardio" data-val="1 dia" onclick="selectMultiSingle(this)">1 dia</button>
+        <button class="fb-multi-btn" data-group="fb-dias-cardio" data-val="2 dias" onclick="selectMultiSingle(this)">2 dias</button>
+        <button class="fb-multi-btn" data-group="fb-dias-cardio" data-val="3 dias" onclick="selectMultiSingle(this)">3 dias</button>
+        <button class="fb-multi-btn" data-group="fb-dias-cardio" data-val="4 ou mais" onclick="selectMultiSingle(this)">4+</button>
+      </div>
+    </div>
+    <div class="fb-question">
+      <div class="fb-q-label">Qual atividade aeróbica está conseguindo fazer? (pode marcar mais de um)</div>
+      <div class="fb-multi">
+        <button class="fb-multi-btn" data-group="fb-tipo-cardio" data-val="Corrida" onclick="selectMulti(this)">🏃 Corrida</button>
+        <button class="fb-multi-btn" data-group="fb-tipo-cardio" data-val="Bike" onclick="selectMulti(this)">🚴 Bike</button>
+        <button class="fb-multi-btn" data-group="fb-tipo-cardio" data-val="Esteira" onclick="selectMulti(this)">Esteira</button>
+        <button class="fb-multi-btn" data-group="fb-tipo-cardio" data-val="Transport" onclick="selectMulti(this)">Transport</button>
+        <button class="fb-multi-btn" data-group="fb-tipo-cardio" data-val="Caminhada" onclick="selectMulti(this)">Caminhada</button>
+        <button class="fb-multi-btn" data-group="fb-tipo-cardio" data-val="Nenhum" onclick="selectMulti(this)">Nenhum</button>
+      </div>
+    </div>
+    <div class="fb-question">
+      <div class="fb-q-label">Rendimento no cardio comparado à semana anterior</div>
+      <div class="fb-multi">
+        <button class="fb-multi-btn" data-group="fb-rend-cardio" data-val="Piorou" onclick="selectMultiSingle(this)">📉 Piorou</button>
+        <button class="fb-multi-btn" data-group="fb-rend-cardio" data-val="Igual" onclick="selectMultiSingle(this)">➡️ Igual</button>
+        <button class="fb-multi-btn" data-group="fb-rend-cardio" data-val="Melhorou" onclick="selectMultiSingle(this)">📈 Melhorou</button>
+        <button class="fb-multi-btn" data-group="fb-rend-cardio" data-val="Muito melhor" onclick="selectMultiSingle(this)">🔥 Muito melhor</button>
+      </div>
+    </div>
+    <div class="fb-question">
+      <div class="fb-q-label">Vai ter alguma mudança de rotina nas próximas semanas?</div>
+      <div class="fb-yesno">
+        <button class="fb-yn-btn" data-group="fb-mudanca-rotina" data-val="Sim" onclick="selectYN(this)">✓ Sim</button>
+        <button class="fb-yn-btn" data-group="fb-mudanca-rotina" data-val="Não" onclick="selectYN(this)">✕ Não</button>
+      </div>
+      <textarea class="fb-textarea" id="fb-mudanca-detalhe" placeholder="Viagem, trabalho intenso, evento..." style="margin-top:8px;"></textarea>
+    </div>
+  </div>
+
+  <!-- DIETA ESPECÍFICO -->
+  <div class="fb-section">
+    <h3>🥗 Dieta — Detalhes</h3>
+    <div class="fb-question">
+      <div class="fb-q-label">Está conseguindo bater a proteína diária?</div>
+      <div class="fb-multi">
+        <button class="fb-multi-btn" data-group="fb-proteina" data-val="Sempre" onclick="selectMultiSingle(this)">✓ Sempre</button>
+        <button class="fb-multi-btn" data-group="fb-proteina" data-val="Quase sempre" onclick="selectMultiSingle(this)">Quase sempre</button>
+        <button class="fb-multi-btn" data-group="fb-proteina" data-val="Às vezes" onclick="selectMultiSingle(this)">Às vezes</button>
+        <button class="fb-multi-btn" data-group="fb-proteina" data-val="Raramente" onclick="selectMultiSingle(this)">Raramente</button>
+      </div>
+    </div>
+    <div class="fb-question">
+      <div class="fb-q-label">Está usando o plano original ou as substituições?</div>
+      <div class="fb-multi">
+        <button class="fb-multi-btn" data-group="fb-plano-uso" data-val="Plano original" onclick="selectMultiSingle(this)">Plano original</button>
+        <button class="fb-multi-btn" data-group="fb-plano-uso" data-val="Usando substituições" onclick="selectMultiSingle(this)">Substituições</button>
+        <button class="fb-multi-btn" data-group="fb-plano-uso" data-val="Mistura dos dois" onclick="selectMultiSingle(this)">Mistura dos dois</button>
+        <button class="fb-multi-btn" data-group="fb-plano-uso" data-val="Improvisando muito" onclick="selectMultiSingle(this)">Improvisando muito</button>
+      </div>
+    </div>
+    <div class="fb-question">
+      <div class="fb-q-label">Como está a fome ao longo do dia?</div>
+      <div class="fb-multi">
+        <button class="fb-multi-btn" data-group="fb-fome" data-val="Sem fome" onclick="selectMultiSingle(this)">Sem fome</button>
+        <button class="fb-multi-btn" data-group="fb-fome" data-val="Fome controlada" onclick="selectMultiSingle(this)">Controlada</button>
+        <button class="fb-multi-btn" data-group="fb-fome" data-val="Muita fome" onclick="selectMultiSingle(this)">Muita fome</button>
+        <button class="fb-multi-btn" data-group="fb-fome" data-val="Fome excessiva" onclick="selectMultiSingle(this)">Excessiva</button>
+      </div>
+    </div>
+    <div class="fb-question">
+      <div class="fb-q-label">A refeição livre foi feita de forma controlada?</div>
+      <div class="fb-multi">
+        <button class="fb-multi-btn" data-group="fb-ref-livre" data-val="Sim, controlada" onclick="selectMultiSingle(this)">✓ Sim</button>
+        <button class="fb-multi-btn" data-group="fb-ref-livre" data-val="Fiz mas exagerei" onclick="selectMultiSingle(this)">Exagerei</button>
+        <button class="fb-multi-btn" data-group="fb-ref-livre" data-val="Não fiz" onclick="selectMultiSingle(this)">Não fiz</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- EVOLUÇÃO SUBJETIVA -->
+  <div class="fb-section">
+    <h3>📈 Evolução e Bem-estar</h3>
+    <div class="fb-question">
+      <div class="fb-q-label">Nível de energia geral no dia a dia</div>
+      <div class="fb-scale">
+        <button class="fb-scale-btn" data-group="fb-energia" data-val="Muito baixo" onclick="selectScale(this)"><span class="fb-emoji">😴</span><span class="fb-txt">Muito baixo</span></button>
+        <button class="fb-scale-btn" data-group="fb-energia" data-val="Baixo" onclick="selectScale(this)"><span class="fb-emoji">😔</span><span class="fb-txt">Baixo</span></button>
+        <button class="fb-scale-btn" data-group="fb-energia" data-val="Normal" onclick="selectScale(this)"><span class="fb-emoji">😐</span><span class="fb-txt">Normal</span></button>
+        <button class="fb-scale-btn" data-group="fb-energia" data-val="Alto" onclick="selectScale(this)"><span class="fb-emoji">😊</span><span class="fb-txt">Alto</span></button>
+        <button class="fb-scale-btn" data-group="fb-energia" data-val="Muito alto" onclick="selectScale(this)"><span class="fb-emoji">🔥</span><span class="fb-txt">Muito alto</span></button>
+      </div>
+    </div>
+    <div class="fb-question">
+      <div class="fb-q-label">Motivação com o processo</div>
+      <div class="fb-scale">
+        <button class="fb-scale-btn" data-group="fb-motivacao" data-val="Desmotivado" onclick="selectScale(this)"><span class="fb-emoji">😔</span><span class="fb-txt">Desmotivado</span></button>
+        <button class="fb-scale-btn" data-group="fb-motivacao" data-val="Regular" onclick="selectScale(this)"><span class="fb-emoji">😐</span><span class="fb-txt">Regular</span></button>
+        <button class="fb-scale-btn" data-group="fb-motivacao" data-val="Motivado" onclick="selectScale(this)"><span class="fb-emoji">😊</span><span class="fb-txt">Motivado</span></button>
+        <button class="fb-scale-btn" data-group="fb-motivacao" data-val="Muito motivado" onclick="selectScale(this)"><span class="fb-emoji">🔥</span><span class="fb-txt">Muito motivado</span></button>
+      </div>
+    </div>
+    <div class="fb-question">
+      <div class="fb-q-label">Nível de estresse essa semana</div>
+      <div class="fb-multi">
+        <button class="fb-multi-btn" data-group="fb-estresse" data-val="Baixo" onclick="selectMultiSingle(this)">😌 Baixo</button>
+        <button class="fb-multi-btn" data-group="fb-estresse" data-val="Moderado" onclick="selectMultiSingle(this)">😐 Moderado</button>
+        <button class="fb-multi-btn" data-group="fb-estresse" data-val="Alto" onclick="selectMultiSingle(this)">😓 Alto</button>
+        <button class="fb-multi-btn" data-group="fb-estresse" data-val="Muito alto" onclick="selectMultiSingle(this)">😤 Muito alto</button>
+      </div>
+    </div>
+    <div class="fb-question">
+      <div class="fb-q-label">Consumiu álcool essa semana?</div>
+      <div class="fb-multi">
+        <button class="fb-multi-btn" data-group="fb-alcool" data-val="Não" onclick="selectMultiSingle(this)">✓ Não</button>
+        <button class="fb-multi-btn" data-group="fb-alcool" data-val="1–2x" onclick="selectMultiSingle(this)">1–2x</button>
+        <button class="fb-multi-btn" data-group="fb-alcool" data-val="3x ou mais" onclick="selectMultiSingle(this)">3x ou mais</button>
+      </div>
+    </div>
+    <div class="fb-question">
+      <div class="fb-q-label">Está sentindo evolução física visualmente?</div>
+      <div class="fb-multi">
+        <button class="fb-multi-btn" data-group="fb-evolucao-vis" data-val="Sim, claramente" onclick="selectMultiSingle(this)">✓ Claramente</button>
+        <button class="fb-multi-btn" data-group="fb-evolucao-vis" data-val="Sim, levemente" onclick="selectMultiSingle(this)">Levemente</button>
+        <button class="fb-multi-btn" data-group="fb-evolucao-vis" data-val="Ainda não percebi" onclick="selectMultiSingle(this)">Ainda não</button>
+        <button class="fb-multi-btn" data-group="fb-evolucao-vis" data-val="Não" onclick="selectMultiSingle(this)">Não</button>
+      </div>
+    </div>
+    <div class="fb-question">
+      <div class="fb-q-label">Sentiu dificuldade em algum exercício específico?</div>
+      <div class="fb-yesno">
+        <button class="fb-yn-btn" data-group="fb-dif-exercicio" data-val="Sim" onclick="selectYN(this)">✓ Sim</button>
+        <button class="fb-yn-btn" data-group="fb-dif-exercicio" data-val="Não" onclick="selectYN(this)">✕ Não</button>
+      </div>
+      <textarea class="fb-textarea" id="fb-dif-exercicio-detalhe" placeholder="Qual exercício e qual a dificuldade?" style="margin-top:8px;"></textarea>
+    </div>
+  </div>
+
+  <button class="btn-generate" onclick="generateFeedback()">✦ Gerar Resumo para WhatsApp</button>
+  <div class="fb-result" id="fb-result">
+    <div class="fb-result-text" id="fb-result-text"></div>
+    <button class="btn-copy" onclick="copyFeedback()">📋 Copiar texto</button>
+  </div>
+
 </section>
 
-<!-- ══════════════ FINANCEIRO ══════════════ -->
 <section id="financeiro" class="section">
   <div class="section-header"><h2>💳 <span>Financeiro</span></h2><div class="section-line"></div></div>
-  <div id="fin-container"><div style="text-align:center;padding:40px;color:var(--white-dim);">Carregando dados financeiros...</div></div>
+  <div id="fin-container"><div style="text-align:center;padding:40px;color:var(--white-dim);">Carregando...</div></div>
 </section>
 
-</div><!-- .main -->
-<div class="watermark">Consultoria LB · Luan Barreto</div>
+<section id="z3" class="section">
+  <div class="section-header"><h2>🛒 Z3 <span>Distribuidora</span></h2><div class="section-line"></div></div>
+  <div style="background:linear-gradient(135deg,#1a1200,var(--dark2));border:1px solid var(--gold);border-radius:8px;padding:28px 24px;text-align:center;margin-bottom:28px;">
+    <div style="font-size:40px;margin-bottom:14px;">🏪</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--gold);margin-bottom:8px;">Z3 Distribuidora</div>
+    <div style="font-size:12px;color:var(--white-dim);margin-bottom:20px;line-height:1.9;">
+      Catálogo com <strong style="color:var(--white)">16 marcas</strong> · Pagamento por <strong style="color:var(--white)">PIX ou cartão</strong><br>
+      Pedido mínimo <strong style="color:var(--white)">R$399</strong> · Pedido via <strong style="color:var(--white)">WhatsApp</strong>
+    </div>
+    <a href="https://z3distribuidora.netlify.app/" target="_blank"
+       style="display:inline-block;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--black);font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:14px 32px;border-radius:3px;text-decoration:none;"
+       onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+      Acessar Catálogo
+    </a>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:24px;">
+    <div style="background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:18px;text-align:center;">
+      <div style="font-size:24px;margin-bottom:8px;">🏷️</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--gold);margin-bottom:6px;">16 Marcas</div>
+      <div style="font-size:11px;color:var(--white-dim);line-height:1.8;">Whey, creatina, pré-treinos, vitaminas e muito mais das melhores marcas do mercado.</div>
+    </div>
+    <div style="background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:18px;text-align:center;">
+      <div style="font-size:24px;margin-bottom:8px;">💳</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--gold);margin-bottom:6px;">PIX ou Cartão</div>
+      <div style="font-size:11px;color:var(--white-dim);line-height:1.8;">Pagamento facilitado. PIX com aprovação imediata ou parcelado no cartão.</div>
+    </div>
+    <div style="background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:18px;text-align:center;">
+      <div style="font-size:24px;margin-bottom:8px;">📦</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--gold);margin-bottom:6px;">Pedido via WhatsApp</div>
+      <div style="font-size:11px;color:var(--white-dim);line-height:1.8;">Pedido mínimo R$399. Atendimento direto e personalizado pelo WhatsApp.</div>
+    </div>
+  </div>
+</section>
 
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+</div>
+
+<div class="watermark">Consultoria LB</div>
+
 <script>
-const CLIENT_ID = 'sayonara-ferreira';
-firebase.initializeApp({apiKey:"AIzaSyBeik1WqF-1vdAiKR5Fzxs9M87p9gi3HCI",authDomain:"consultoria-lb.firebaseapp.com",projectId:"consultoria-lb"});
-const db = firebase.firestore();
-const docRef = db.collection('clients').doc(CLIENT_ID);
 
+const VIDEO_LIB = {
+  'supino reto': 'https://drive.google.com/file/d/1NNitpyCalxSlVztdtECewEerae3BI7q3/view?usp=drive_link',
+  'supino reto com halteres': 'https://drive.google.com/file/d/1tz6fRcmWpt1zNlNrZPPOIyT2qNkYEMTQ/view?usp=drive_link',
+  'supino inclinado com barra': 'https://drive.google.com/file/d/19GHh9oraVrDM398VA-Ww-Y8tX9YRh5jc/view?usp=drive_link',
+  'supino inclinado articulado': 'https://drive.google.com/file/d/1I_VD2JbFJw3cyMMCyXhWfVftX8KFpVtf/view?usp=drive_link',
+  'supino maquina deitado': 'https://drive.google.com/file/d/1Lmh6dn3gGJzkmMzVVjE_rCO38fgjQt-2/view?usp=drive_link',
+  'crucifixo maquina': 'https://drive.google.com/file/d/1TjdmzuXsgRKgddaJUiWHV0xZIHeJDgEE/view?usp=drive_link',
+  'supino maquina': 'https://drive.google.com/file/d/1F7spkZlcM195vSQyPjcJcZ1Cl5hFrpIy/view?usp=drive_link',
+  'cross over polia baixa': 'https://drive.google.com/file/d/1EauRd7pWG349GABrPMXZpuL32tTYXuJg/view?usp=drive_link',
+  'flexao de braco': 'https://drive.google.com/file/d/1xz9dP7gAMQxKgGp5srZMBInoj8CWL9IR/view?usp=drive_link',
+  'flexao inclinado': 'https://drive.google.com/file/d/1NuhgNeW4cD-4Oi0NH4H3B84527hWWqSS/view?usp=drive_link',
+  'crossover polia alta': 'https://drive.google.com/file/d/1E0ji1a-4vHsbKANUnt64CeqihK0_WVmA/view?usp=drivesdk',
+  'crucifixo inclinado com halteres': 'https://drive.google.com/file/d/14tqi3aFNCJpuX7v1W1t1opcu9WrXKY2B/view?usp=drivesdk',
+  'crucifixo reto com halteres': 'https://drive.google.com/file/d/12axpX-T8lIkZSlcIVm2i2r5Uj-wp-89d/view?usp=drivesdk',
+  'paralela': 'https://drive.google.com/file/d/1UKCstBWT0upVbYHW8e5C7jnydJMllowm/view?usp=drivesdk',
+  'supino declinado': 'https://drive.google.com/file/d/1wwoSaXmJBJQlr3zxhgHOGmiPKGV8VrAv/view?usp=drivesdk',
+  'supino inclinado com halteres': 'https://drive.google.com/file/d/1W-MZsADzV86Da2cYnmw_P3PTOkXz7kaQ/view?usp=drivesdk',
+  'supino reto na polia media': 'https://drive.google.com/file/d/1uTT_xDzDFSy_pIIGg9JifYAmJqJDsFa0/view?usp=drivesdk',
+  'barra fixa supinada': 'https://drive.google.com/file/d/1kbAh81XpQnKDvpMeishNDTgHFhc30rKH/view?usp=sharing',
+  'barra fixa pronada': 'https://drive.google.com/file/d/1sxb5t6UoFf8B3a6OXy1uKluyttzCDINZ/view?usp=sharing',
+  'remada serrote unilateral': 'https://drive.google.com/file/d/1oYMJrDI9gezjoz47Gy8UaXhmsKsMGYxL/view?usp=sharing',
+  'barra fixa graviton': 'https://drive.google.com/file/d/1D3-v8wTzwKXyVOlWp02O743l67smh1xH/view?usp=sharing',
+  'remada sentado na maquina pronada': 'https://drive.google.com/file/d/1wjWL1mL1en5VbYKNqAnfyw0L29NVQWNE/view?usp=sharing',
+  'remada maquina pegada neutra': 'https://drive.google.com/file/d/1rLG1qgkC6VZ2HagpOtIKzskzaKsWG977/view?usp=sharing',
+  'remada curvada pronada com barra': 'https://drive.google.com/file/d/1HV2dNqQ1NuEx9EDW3XD-ciIZfnHzFR9i/view?usp=sharing',
+  'remada curvada supinada com barra': 'https://drive.google.com/file/d/12G10YLiOTqupN6Ll1rHQ_5vuO-g_QanH/view?usp=sharing',
+  'remada curvada com halters (peito apoiado)': 'https://drive.google.com/file/d/1W8TbUP1P5zjGDOOgDM1gtdQ2wX9PLziP/view?usp=sharing',
+  'remada curvada com halters (peito apoiado - pegada pronada)': 'https://drive.google.com/file/d/1Iu2SycXaS7t5q6Aofx9z9hMFThsqMMJT/view?usp=sharing',
+  'remada sentada maquina articulada  (pegada pronada)': 'https://drive.google.com/file/d/1CZGhNpGRAJmBvT9y_feZyzc7kc0VsopW/view?usp=sharing',
+  'remada sentada maquina articulada (neutra )': 'https://drive.google.com/file/d/13CAhFKGMHkmUsCENOD1gBmu18CGbU-Sx/view?usp=sharing',
+  'remada maquina articulada unilateral (neutra)': 'https://drive.google.com/file/d/1YaXKQ9koxufELa0zSCY8shLo4DuzI5Mm/view?usp=sharing',
+  'puxada unilateral maquina articulada': 'https://drive.google.com/file/d/1PaZ1SOuCXkrwLFORgHa4EZ1jf4M-aiaU/view?usp=sharing',
+  'puxada maquina articulada': 'https://drive.google.com/file/d/1ABYhq9LrE7EHWq3G31Cz-6Ek0pbLzpGY/view?usp=sharing',
+  'remada cavalinho maquina (pronada)': 'https://drive.google.com/file/d/1v_0x0gWFEvlQq9NQG-6X9AHuKpjUbnb2/view?usp=sharing',
+  'remada cavalinho maquina (neutra)': 'https://drive.google.com/file/d/1JZFtlcf3ESxJdhDp1Twsw1eUdBJe-tGq/view?usp=sharing',
+  'remada com corda polia media': 'https://drive.google.com/file/d/1ouYINqo8mv0TPUOv4QdO8Z_OHCKtuAtZ/view?usp=sharing',
+  'remada na polia media com barra h': 'https://drive.google.com/file/d/1YV1CL06M04EiZkR-LlB4kd-dOVMmK-dT/view?usp=sharing',
+  'facepull com corda': 'https://drive.google.com/file/d/1svhB0YsZuEXCXGcUxztjGFCu_XLsR4V-/view?usp=drivesdk',
+  'pulldown barra reta': 'https://drive.google.com/file/d/1rS33iba87G2SHYzBoG6E9ZnTsnWAJOeE/view?usp=drivesdk',
+  'pulldown com corda': 'https://drive.google.com/file/d/1sm_LpwxolqxJR8yAIrWKVkuVAwUoUAYl/view?usp=drivesdk',
+  'puxada aberta por tras': 'https://drive.google.com/file/d/1hvunRY0WBpoJXgSeA8sSfMN6ZOJm-usF/view?usp=drivesdk',
+  'puxada aberta pronada': 'https://drive.google.com/file/d/1hO72jTUD-c47MI6Y5Vyfh8st7pbtu2FI/view?usp=drivesdk',
+  'puxada barra h': 'https://drive.google.com/file/d/1YrqZAR_gi0JnSNzY4fJKFtXzK2aLJKIZ/view?usp=drivesdk',
+  'puxada supinada barra reta': 'https://drive.google.com/file/d/1VxmESfpkgmjHWWJUEh60HT8iaaBCMvag/view?usp=drivesdk',
+  'puxada triangulo': 'https://drive.google.com/file/d/17ZWS3AhP5PWvcvEEn0dfTTvHD7QGfi8g/view?usp=drivesdk',
+  'remada baixa pegada neutra': 'https://drive.google.com/file/d/1VAbgO1DClGxZhPZ22GQcQwtNE50ivfLl/view?usp=drivesdk',
+  'remada baixa pronada barra reta': 'https://drive.google.com/file/d/1PKEh_JFCtXe1qvciCBBb7UMYKQX1GHRR/view?usp=drivesdk',
+  'remada baixa supinada barra reta': 'https://drive.google.com/file/d/1zNnk21yqP5mD9lMy0oxwRVfZ2a9B9JMr/view?usp=drivesdk',
+  'remada barra h na polia baixa': 'https://drive.google.com/file/d/1dg9b2y_ysQM7xcu5FpUHFYbbf6s6jgHc/view?usp=drivesdk',
+  'remada com corda na polia baixa': 'https://drive.google.com/file/d/1rlBFPmXWXpNIO2ihIm4lWiWO_RqiJAlI/view?usp=drivesdk',
+  'remada sentada triangulo': 'https://drive.google.com/file/d/1WNx2rRvalmy14mbM5j4mBa3rjkRt701E/view?usp=drivesdk',
+  'remada alta barra': 'https://drive.google.com/file/d/1Frogd4IDA0tOvmja3-KVjG8fTSITlCL7/view?usp=sharing',
+  'elevacao lateral maquina': 'https://drive.google.com/file/d/1y7XktavIWg8SKqEMMgs9jdEYguw66o_M/view?usp=sharing',
+  'crucifixo inverso maquina': 'https://drive.google.com/file/d/1Ac4PWLLxwvX77tClHOikkXs7vHmwmALY/view?usp=sharing',
+  'elevacao lateral com halters': 'https://drive.google.com/file/d/1NGqW9xq7yFGUv_U_TnEDNtJg23aKEG3M/view?usp=sharing',
+  'elevacao frontal com halters': 'https://drive.google.com/file/d/1nxrBTIn4tgbt_gSY1JroWfAiFIj7HjrW/view?usp=sharing',
+  'elevacao lateral sentado halters': 'https://drive.google.com/file/d/1IBgnFbipf8egUHXkmHDjI7oapD-oKA5k/view?usp=sharing',
+  'elevacao frontal sentado halters': 'https://drive.google.com/file/d/1-oWukNu-K5ybdxoJOE-083Fhw9r7IZwb/view?usp=sharing',
+  'elevacao frontal pronado halters': 'https://drive.google.com/file/d/1t1OVuH52YdVCz7Hjb-RxhBVF5lTiyo0l/view?usp=sharing',
+  'crucifixo inverso com halters': 'https://drive.google.com/file/d/1NdJPRNzEE-HuijZs9z79V_lKlwoUmSVX/view?usp=sharing',
+  'desenvolvimento com halter em pe': 'https://drive.google.com/file/d/1ubs5rubVoOPVhmuB3bUeCg5NwlS-iLY-/view?usp=sharing',
+  'desenvolvimento com halter': 'https://drive.google.com/file/d/1xoXg9D_HYvAcyw1_Y7T0_O-xtKkGqE-0/view?usp=sharing',
+  'desenvolvimento com halter sentado': 'https://drive.google.com/file/d/1od8U4dsUyufbcKSqLUcwN0xcSLHnvhK3/view?usp=sharing',
+  'desenvolvimento pronado halter': 'https://drive.google.com/file/d/1nVUQRrhecpPLLVqhBvuxbDdKmZ3y_HDE/view?usp=sharing',
+  'elevacao frontal barra reta': 'https://drive.google.com/file/d/1fd1-Pvef0fbTf4ygQBnXi8UV6eqB9dRD/view?usp=sharing',
+  'elevacao lateral unil maquina': 'https://drive.google.com/file/d/1I0NwskV_oOHv0S9nZu4JosTn_PnoOGuz/view?usp=sharing',
+  'elevacao frontal maquina unil': 'https://drive.google.com/file/d/1xuA1fEc-mbSN7mK9gZshhJf0kuCIFueo/view?usp=sharing',
+  'elevacao frontal maquina neutra unil': 'https://drive.google.com/file/d/1WcTSQ5NnZ4KoYnj2PErtjm81Sd7tMoUP/view?usp=sharing',
+  'elevacao frontal com corda': 'https://drive.google.com/file/d/12lzD3sG4skT1n6ALfgu2758T-aHk83ZD/view?usp=sharing',
+  'crucifixo inverso na polia': 'https://drive.google.com/file/d/12lzD3sG4skT1n6ALfgu2758T-aHk83ZD/view?usp=sharing',
+  'elevacao frontal barra reta polia': 'https://drive.google.com/file/d/1Pv8zlqsdDcCM_J_U1OHnFB8E4rAQCsMp/view?usp=sharing',
+  'remada na pollia baxa com barra': 'https://drive.google.com/file/d/1Z1OUM8XXUIxoRW0mr2pv7fO_4RovCM0i/view?usp=sharing',
+  'desenvolvimento maquina': 'https://drive.google.com/file/d/1Y-OxA5MzB9N5ebbGo8QX5L8NxxtpwWjY/view?usp=sharing',
+  'desenvolvimento maquina pronado': 'https://drive.google.com/file/d/1tC17Rp2y6KJEcDAOTduFKu7JtbWlaPVN/view?usp=sharing',
+  'rosca direta halters': 'https://drive.google.com/file/d/1-9Y1afcVJmG_QehGO6sQinWCVxSjPnxI/view?usp=sharing',
+  'rosca martelo halter': 'https://drive.google.com/file/d/1UU-_tq8q3zdmZBMChM3nnaJNOtqWeKD0/view?usp=sharing',
+  'rosca direta halters banco': 'https://drive.google.com/file/d/1Va0UnHBKvWCLAgBmAtoN1DRxz7PvmqwM/view?usp=sharing',
+  'rosca martelo halter banco': 'https://drive.google.com/file/d/1PfoljfBoCCk9xM4JR1BjHaf3OoADjivL/view?usp=sharing',
+  'rosca alternada halter banco': 'https://drive.google.com/file/d/1pUq_LYODQiMTegVYVkck4LPzsgNBdwDE/view?usp=sharing',
+  'rosca martelo alternada banco': 'https://drive.google.com/file/d/14F6PMMJAJ9SbSg_KxPD05xeTRKConDjJ/view?usp=sharing',
+  'rosca direta barra w': 'https://drive.google.com/file/d/1THTclIW1YtUhy65_lt-Hjf6bJJXHWACd/view?usp=sharing',
+  'rosca pegada pronada w': 'https://drive.google.com/file/d/1kYgkG9cCjyVIGMCaZX6mF5X_FFfkin84/view?usp=sharing',
+  'rosca barra reta': 'https://drive.google.com/file/d/1KKm5omdNjJinT2iySZFMVd82gPv0Lp1d/view?usp=sharing',
+  'rosca barra reta pronada': 'https://drive.google.com/file/d/18Ba3sB5L-JJNAjzbQ5OH2uId08MZ93P4/view?usp=sharing',
+  'rosca arnold': 'https://drive.google.com/file/d/1d-r-MDlVEdDeGfzUjepqjgxlw1mZHN9j/view?usp=sharing',
+  'rosca banco 45': 'https://drive.google.com/file/d/1-cA9q0RKvfAt4qKj1Wd7XrZeusfnr_PS/view?usp=sharing',
+  'rosca martelo banco 45': 'https://drive.google.com/file/d/1F_0ajLzSqgID4ea_0mR_OgGrKkhvBQkY/view?usp=sharing',
+  'rosca alternada banco 45': 'https://drive.google.com/file/d/1KW9DIJ3ZfUNLBqgiviCJZg0u19QnWIOO/view?usp=sharing',
+  'rosca scott barra w': 'https://drive.google.com/file/d/14KY2OqZVULDhI6sSIm60WClA9vDTi3kW/view?usp=sharing',
+  'rosca scott halter': 'https://drive.google.com/file/d/1rcAWEAs1WUrvkBjgtHkRb_gzAIC3d8-F/view?usp=sharing',
+  'rosca scott martelo halter': 'https://drive.google.com/file/d/10nuSZKahRPeWDJCWWxK5OJxy2vvarV_e/view?usp=sharing',
+  'rosca scott maquina': 'https://drive.google.com/file/d/1cJHCdAHWk07X1lD5hdug49D85khI70NS/view?usp=sharing',
+  'rosca scott maquina alternada': 'https://drive.google.com/file/d/1f1v3HikM8lqMzdFpCEQQ_E7x5BPLKksC/view?usp=sharing',
+  'rosca direta na maquina': 'https://drive.google.com/file/d/1Hy3FUB2-OeAade-yDOZOW7nCjp0Ews2U/view?usp=sharing',
+  'rosca direta na maquina altenada': 'https://drive.google.com/file/d/1p8Yxc7slMOzy3bIdxi1ANButLFhog3jw/view?usp=sharing',
+  'biceps polia alta': 'https://drive.google.com/file/d/1vfg7FO5OJKUY0xYvP6p2EFagaNKjIkUv/view?usp=sharing',
+  'rosca polia baica unilateral': 'https://drive.google.com/file/d/1V1NKO3ulI_U5tKV6lF1oh67yQ1pcaIpN/view?usp=sharing',
+  'rosca martelo polia': 'https://drive.google.com/file/d/1NWLJaBV4hkalLHJrV8xt7Vo7-PCUPIFP/view?usp=sharing',
+  'rosca maquina polia': 'https://drive.google.com/file/d/12Gx0xy3m4ckm6ZUuf5tvcV9muvzCrQMb/view?usp=sharing',
+  'triceps maquina': 'https://drive.google.com/file/d/1PjZkGxshaKeYfJhRDXlvsLSUdoLQaN29/view?usp=sharing',
+  'triceps polia barra w': 'https://drive.google.com/file/d/1PHx0gIvHuVoCz1gVCc2T0AR6mNCsUWax/view?usp=sharing',
+  'triceps testa polia corda': 'https://drive.google.com/file/d/1z6MpuRYH66VbXLDzfKiNM5lOLIjz3U-7/view?usp=sharing',
+  'triceps testa polia barra reta': 'https://drive.google.com/file/d/1jvwG2APoNixE2rkWeyu8KlHow-okgboS/view?usp=sharing',
+  'triceps corda': 'https://drive.google.com/file/d/1p_Ec7GnQK8wgOTAvbXb0VIhjtm7QMNXV/view?usp=sharing',
+  'triceps frances corda': 'https://drive.google.com/file/d/1FIv5ZpqN80Fa26AqHM3KYMrK8PvWGrky/view?usp=sharing',
+  'triceps unilateral polia': 'https://drive.google.com/file/d/1S2-SunEeGozyxoED018VILD1qGgn164r/view?usp=sharing',
+  'triceps coice baixa': 'https://drive.google.com/file/d/1874xOMCjixRWZbQEQzcRYt-K1AYQHJz3/view?usp=sharing',
+  'triceps frances unilateral': 'https://drive.google.com/file/d/1Sv9hTG1KcXGrStZiHVRcg1XAwvivQ3pK/view?usp=sharing',
+  'triceps pulley cross unilateral': 'https://drive.google.com/file/d/1H8MYBU4maeTjbIskrMVng76r-eoGPQBz/view?usp=sharing',
+  'triceps pulley barra reta': 'https://drive.google.com/file/d/1W64l1i-WH0mA7tddNRofwHDQ4YbJWp9p/view?usp=sharing',
+  'triceps maquina sentado': 'https://drive.google.com/file/d/1cFLoGH2Xr9o1kU2-WxwWwZCR1txAaMoU/view?usp=sharing',
+  'triceps cruzado polia': 'https://drive.google.com/file/d/10i2S9DfoiP9ocXNS_GgOgti2_gMzAb0M/view?usp=sharing',
+  'triceps frances com halter': 'https://drive.google.com/file/d/19RjJdGWL-X8hDrlQEA-boWRPLQ4Z54vX/view?usp=sharing',
+  'triceps frances com halter conjunto': 'https://drive.google.com/file/d/1VBippSZDWCsdJjPtBXaj4nCMNFI4fvRu/view?usp=sharing',
+  'triceps testa com halter': 'https://drive.google.com/file/d/12K3lbgufN46Sj8zPK0JwZyctgigNxW8-/view?usp=sharing',
+  'triceps barra testa w': 'https://drive.google.com/file/d/1oDwiZzhe0cLliY8ZQSjhFB51t50V3GzQ/view?usp=sharing',
+  'triceps barra w deitado': 'https://drive.google.com/file/d/1RERd9mKE6aly0CCO3UHBIHnBWLGSPHH1/view?usp=sharing',
+  'https://drive.google.com/file/d/1aks23cs1bep498kggfcpwseps9jefpyi/view?usp=sharing': 'https://drive.google.com/file/d/1cGWmpLnfAiKpZSRTe560ENbb9iM0j29i/view?usp=sharing',
+  'agachamento frontal com halter': 'https://drive.google.com/file/d/1KuQ_NCc_pdQ7wfsqtwXfhX6geqzvhsC7/view?usp=sharing',
+  'agachamento sumo com kettlebell': 'https://drive.google.com/file/d/11-1NG-t_CgnKrSO41mgwHgZLTcywISDu/view?usp=sharing',
+  'passada livre': 'https://drive.google.com/file/d/1eKHZtbYmZMm0mCK5T0LNkxVnCLUWGTvu/view?usp=sharing',
+  'agachamento frontal com kettlebell': 'https://drive.google.com/file/d/1PQ-aV8qHqKiHHOiLI6-HEMKyikF-e9Z_/view?usp=sharing',
+  'stiff com halteres': 'https://drive.google.com/file/d/1MgJYRwMXQhpVGD2ZRDqI3_rlH9ScYxki/view?usp=sharing',
+  'squat jump': 'https://drive.google.com/file/d/1IyO1VJC67M9MlY7kHZW0k685K5JVHfwP/view?usp=sharing',
+  'cadeira flexora': 'https://drive.google.com/file/d/1aKS23cs1BEP498KggFcpwSEPs9Jefpyi/view?usp=sharing',
+  'cadeira adutora': 'https://drive.google.com/file/d/1cGWmpLnfAiKpZSRTe560ENbb9iM0j29i/view?usp=sharing',
+  'cadeira abdutora': 'https://drive.google.com/file/d/1HsjUj6xu9tKX3kLqUeU9e_9_DAI8Navp/view?usp=sharing',
+  'leg press 45': 'https://drive.google.com/file/d/1xBoO6qds5YoocHs2cMK6DDOwDAWGzTcZ/view?usp=sharing',
+  'leg press': 'https://drive.google.com/file/d/1tsBBo78LQTNNsBWvQqO24T4qc9RGju0x/view?usp=sharing',
+  'agachamento sumo maquina': 'https://drive.google.com/file/d/1WmWuDSyLaCZMWHo7a61bfbuCqaFYsTFe/view?usp=sharing',
+  'agachamento frontal com barra': 'https://drive.google.com/file/d/1VNGHuuWMcwLRcDAQOVj0Rtjy4ybwe1AR/view?usp=sharing',
+  'agachamento bulgaro no smith': 'https://drive.google.com/file/d/1wNOFLYKFyw3IySztAtCp3NHitn2e823w/view?usp=sharing',
+  'agachamento sumo step': 'https://drive.google.com/file/d/11-1NG-t_CgnKrSO41mgwHgZLTcywISDu/view?usp=sharing',
+  'afundo entre estepes': 'https://drive.google.com/file/d/1Drwi0zZv-L0cpLXqchVnbxc_XFcsBiO2/view?usp=sharing',
+  'avanco': 'https://drive.google.com/file/d/1F7mmDKQpyGoHfX2QCuMx3WXU6K6dYh3c/view?usp=sharing',
+  'avanco unilateral': 'https://drive.google.com/file/d/1j8feLbQq94g6ou65RBHhBYHlaoI8R-5B/view?usp=sharing',
+  'passada': 'https://drive.google.com/file/d/1eKHZtbYmZMm0mCK5T0LNkxVnCLUWGTvu/view?usp=sharing',
+  'sobe e desce banco': 'https://drive.google.com/file/d/12bjStafiMll0UR-CRnbQFYgb-mgW0FrV/view?usp=sharing',
+  'sobe e desce banco unilateral': 'https://drive.google.com/file/d/1S5X-RNSaiMua1BZXfQ6eLN6D-Cuu7QlH/view?usp=sharing',
+  'agachamento hack': 'https://drive.google.com/file/d/17OV-jxbod04KW0pIzxvFxX7igXtnIb4d/view?usp=drivesdk',
+  'agachamento smith': 'https://drive.google.com/file/d/1QNsyxSR4JfRpctAhTilG8MnEc5slXWqw/view?usp=drivesdk',
+  'agachamento sumo smith': 'https://drive.google.com/file/d/10R_F01vUhk79c1c52NtpWUuSpgaSp3OS/view?usp=drivesdk',
+  'deadlift sumo barra reta': 'https://drive.google.com/file/d/1q1eLhDPXBLxEHs0J8e2bhRAmwcnTG6kC/view?usp=drivesdk',
+  'agachamento sumo barra reta': 'https://drive.google.com/file/d/1YaqwX2c7_rxtUe9s5xMTFVCVukCmjCpX/view?usp=drivesdk',
+  'levantamento terra com barra': 'https://drive.google.com/file/d/1oLer2VnjyQBytboW9FM0-xUIM40YC-7E/view?usp=drivesdk',
+  'recuo no smith': 'https://drive.google.com/file/d/1PldKTsrBGOADN55fIisAq1bwWDEU2bSJ/view?usp=drivesdk',
+  'agachamento livre com barra': 'https://drive.google.com/file/d/1kfdYAINSWW47OoHGPYbd9PioUkmvrnzA/view?usp=drivesdk',
+  'stiff com halter': 'https://drive.google.com/file/d/1pr-StRSsWaaiC10VCefbZyOHAdV9_k42/view?usp=sharing',
+  'coice na polia': 'https://drive.google.com/file/d/15zT1EoCFFHeGYV_6fA8TsIrdJ5Xw18Kr/view?usp=sharing',
+  'abducao polia': 'https://drive.google.com/file/d/1iKjKZxbJKUhEQfXB1g0zcK6gVjQkjuSL/view?usp=sharing',
+  'coice na polia com banco': 'https://drive.google.com/file/d/1qlyHspS4xnH2mTfEGqh0GdPSTdUy3B7F/view?usp=sharing',
+  'elevacao de joelho na polia baixa': 'https://drive.google.com/file/d/1cOOmIGVzyjZyFJZLkZVNJNfTy6YO4mNE/view?usp=sharing',
+  'panturrilha em pe': 'https://drive.google.com/file/d/1sBcrEVs8k6aIZsTuoR7KQkRi2OgLJcH5/view',
+  'panturrilha em pe step': 'https://drive.google.com/file/d/1libeLkF6iB2R1VQ6jZX9hOIWfMydh7pP/view',
+  'panturrilha sentado': 'https://drive.google.com/file/d/1qm48y5daTVojPgsYunD8zL9qMZzQqdsC/view?usp=sharing',
+  'stiff': 'https://drive.google.com/file/d/1duHw86vMh7SY5MMb7gMzZgE7-S93sulY/view?usp=sharing',
+  'panturrilha maquina': 'https://drive.google.com/file/d/1QUbKSJcFSxK-ZXZpszewaexrkycjq6Ym/view?usp=sharing',
+  'panturrilha maquina em pe': 'https://drive.google.com/file/d/1xmzcWHYEDpB2dGAwnhouD_j1HOQCH0nf/view?usp=sharing',
+  'flexora sentado': 'https://drive.google.com/file/d/1sirxKDE_YlDKDSROYD3d83raodQW-2TD/view?usp=sharing',
+  'flexora vertical unilateral': 'https://drive.google.com/file/d/1ZIK1BeivgUAuu0qjTB4XWzS-oDSXU8KO/view?usp=sharing',
+  'krause': 'https://drive.google.com/file/d/1LD1PkFD55kHKGvfcsHMayLw99b0xb3qN/view?usp=sharing',
+  'stiff halter': 'https://drive.google.com/file/d/1MgJYRwMXQhpVGD2ZRDqI3_rlH9ScYxki/view?usp=sharing',
+  'extensao quadril no banco romano': 'https://drive.google.com/file/d/1Irp0EBRzlL4HGow8KJPTsBXsc4_I0Ui8/view?usp=sharing',
+  'abdomen maquina': 'https://drive.google.com/file/d/1OahLGlWhe-yZ9ZS6zGTg7aDaHQyxeGO2/view?usp=sharing',
+  'prancha': 'https://drive.google.com/file/d/1vYM01dZN6NaYmdODUfKdxcMoesJZssb8/view?usp=sharing',
+  'prancha ventral': 'https://drive.google.com/file/d/1MkE0vVjoSw4Nw2pq_fY9fRT-kf55rRWX/view?usp=sharing',
+  'prancha toque ombro': 'https://drive.google.com/file/d/1Y7qVzgwgQgGMTTgLdMVmDmbVtdmcdWrX/view?usp=sharing',
+  'prancha suica': 'https://drive.google.com/file/d/1J0U6xCNuSLZgt_ZhWFPNXJciIYFeRRjy/view?usp=sharing',
+  'abdomen supra polia alta': 'https://drive.google.com/file/d/1fVzr7ZqnwIOBmLgUGqFJQg0Vu3HoB5pv/view?usp=sharing',
+  'abdominal obliquo polia alta': 'https://drive.google.com/file/d/16BbAdZ7hvl1PI3d-XQgkRS5JtDp48eYJ/view?usp=sharing',
+  'rotacao tronco de media': 'https://drive.google.com/file/d/1VmEkECUiS9TFFc2bWcks6IRgQbu_ws8P/view?usp=sharing',
+  'elevacao pernas barra fixa': 'https://drive.google.com/file/d/1HlPMxDFY9sn1vG3sWDrmlftWMiHZ3kRj/view?usp=sharing',
+  'elevacao pernas na paralela': 'https://drive.google.com/file/d/1jds0AKb6AcEwzgw_RXM3xtsHMHxlDVHj/view?usp=sharing',
+  'abdomen remador': 'https://drive.google.com/file/d/1KR_2-Wugb2S02x4bZe1XN0tBoN8PJQ0n/view?usp=sharing',
+  'abdominal remador apoiado': 'https://drive.google.com/file/d/1NzVfGs22vwpIo_vuIV1ZL6XEVXVPua7s/view?usp=sharing',
+  'abdominal supra no solo': 'https://drive.google.com/file/d/1A369sG3S7ZpzcA6UkMEBukAU_oo5rSw9/view?usp=sharing',
+  'elevacao de pernas no solo': 'https://drive.google.com/file/d/139MHAEIgicFin1q2PSCiozTqxtSa2tNK/view?usp=sharing',
+  'abdominal isometria no solo': 'https://drive.google.com/file/d/14guFl93voc_oE1G1c7Ql0PemQ2PC0Uq-/view?usp=sharing',
+  'canoinha': 'https://drive.google.com/file/d/15yq2SR6X7M9kg9GofBjUuxkPKe-1gMuu/view?usp=sharing',
+  'abdominal infra': 'https://drive.google.com/file/d/1rroKVPiHGYRUDre8-HRK-d6SWmOXfauk/view?usp=sharing',
+  'rotacao de tronco o solo': 'https://drive.google.com/file/d/1gy6P9MQ-kSWeo3lDD589MOAPfNnwkl8-/view?usp=sharing',
+  'rotacao de tronco com anilha': 'https://drive.google.com/file/d/10bAo8nfvmfduWlB77e-JP6bkWA0JUstf/view?usp=sharing',
+  'sit up': 'https://drive.google.com/file/d/1kSuQl-fdURMmXwrESSUqIJklAI6_O_0r/view?usp=sharing',
+  'abdominal remador banco': 'https://drive.google.com/file/d/1R1H5vWYThMz80Qw70sz_bxNxmAd4ITC7/view?usp=sharing',
+  'bicicleta': 'https://drive.google.com/file/d/1xP3Zeivmz3rXDzWs5cbTh09-2j46mVn1/view?usp=sharing',
+  'transport': 'https://drive.google.com/file/d/1361WLXEKBcOkJ_uSWa1ysxjKjQbMglCJ/view?usp=sharing',
+  'esteira': 'https://drive.google.com/file/d/1onOcsXepTHiUYXdNobbXs8yAmLN5QI4S/view?usp=sharing',
+  'escada': 'https://drive.google.com/file/d/1h91kO2Rc-SYlJvU4LzEedI4G_zBfZoFg/view?usp=sharing',
+  'escada duplo': 'https://drive.google.com/file/d/1b0kc_e5fHW9GC7fnB8rHHZ7Ojp2h2BYU/view?usp=sharing',
+  'mobilidade de quadril e tornozelo 1': 'https://drive.google.com/file/d/1WJfflEMvAwbFIeeyLRoiT6IypcqkyHRs/view?usp=sharing',
+  'mobilidade de quadril e tornozelo 2': 'https://drive.google.com/file/d/16cq7ROyClZ90yE0MP6F4eE82jDVcSWKc/view?usp=sharing',
+  'mobilidade 3': 'https://drive.google.com/file/d/10DPMlM3QP7brrqeq1kkEYv1iBQcjMrOI/view?usp=sharing',
+  'mobilidade 4': 'https://drive.google.com/file/d/1YevgWTJUAbvd6eBTTynAK3fOHwszAMOC/view?usp=sharing',
+  'mobilidade 5': 'https://drive.google.com/file/d/18RMv2w7smS3Qsn01V0AYMKLc3NIkK5dR/view?usp=sharing',
+  'mobilidade 6': 'https://drive.google.com/file/d/1xS8qfXlu8D4uWy0i1hFD_I4J4crn6tG2/view?usp=sharing',
+  'mobilidade 7': 'https://drive.google.com/file/d/1xteWNWKzlFtZF1b-ApkjvnWO5Um1oDIf/view?usp=sharing',
+  'mobilidade escapular 2': 'https://drive.google.com/file/d/1e6YNv1vaceZPIE8t-AFFtrRfMZt35_3u/view?usp=sharing',
+  'abducao de quadril no solo com miniband': 'https://drive.google.com/file/d/1vYPKCwECOD4EhY7oX6lqDFSpOuuRN1Ut/view?usp=sharing',
+  'elevacao de quadril no solo com miniband': 'https://drive.google.com/file/d/1Bh6E0nC92DW0XSCa3HGYgCZ_OPh159Wg/view?usp=sharing',
+  'deslocamento lateral com elasticos 1': 'https://drive.google.com/file/d/1hWvzDqNjW-U6i6g_iFG-D9qlPk2QJ-sS/view?usp=sharing',
+  'deslocamento lateral com elasticos 2': 'https://drive.google.com/file/d/12mCXZrJANB-BPLuj6r1Hr_VPj0hnKr77/view?usp=sharing',
+  'abducao de quadril com elasticos 1': 'https://drive.google.com/file/d/1QGvyxIlAAJfBvAionk7sOLgpHAgKP7i6/view?usp=sharing',
+  'abducao de quadril com elasticos 2': 'https://drive.google.com/file/d/1dZMoo7Qunr5Olaz2pfu3j4ArzMQ5JVeT/view?usp=sharing',
+  'flexao de quadril com elasticos': 'https://drive.google.com/file/d/1QxyMnwiNR6hNASiaCTTLf1Jd18p_FTxa/view?usp=sharing',
+  'alongamento quadriceps 1': 'https://drive.google.com/file/d/1eOy5OnTkkjY8aAVQUMNglEIc8gBfsPpO/view?usp=sharing',
+  'perdigueiro': 'https://drive.google.com/file/d/1lbj1ZjlOet4tdE2d3JRlOCNxOxvPbA60/view?usp=sharing',
+  'perdigueiro unilateral': 'https://drive.google.com/file/d/188UZOcb-qaciF29SvQrNC0n7a51Yfhz4/view?usp=sharing',
+  'estabilizacao unilpodal instavel': 'https://drive.google.com/file/d/1hRYM4scacF9tmwpK_GWMrTPHVrQH72vE/view?usp=sharing',
+  'alongamento posteriores e coluna 1': 'https://drive.google.com/file/d/1g2g6dqk2UxyFrwqJY5XsQqUKnsZq7qwg/view?usp=sharing',
+  'alongamento inferiores 1': 'https://drive.google.com/file/d/1edZSLnJVEPMhHYdEbaw2Nw1z5EMFIP12/view?usp=sharing',
+  'alongamento posteriores e coluna 2': 'https://drive.google.com/file/d/1cPnfWGZ2i2dBwwuApse3Ie1fFsn_ri2A/view?usp=sharing',
+  'alongamento peitoral 1': 'https://drive.google.com/file/d/1S1duBiOxOv64BhSZpgErfwYv-9y1lF_0/view?usp=sharing',
+  'alongamento peitoral 2': 'https://drive.google.com/file/d/1eCWMhWoo-nQgUy1E-nlF9hdwDGH35dWg/view?usp=sharing',
+  'alongamento pendurado': 'https://drive.google.com/file/d/1wZC2dwEJg2tkni2hxu8anqPvy9rL2LtF/view?usp=sharing',
+  'mobilidade escapular 1': 'https://drive.google.com/file/d/18MbodypqKN1cXpB4ZltkZTiQ8PdwNbAP/view?usp=sharing',
+  'alongamento superior com elastico': 'https://drive.google.com/file/d/1FCHsstMRmglgtr7EegYqpatrv74x5imB/view?usp=sharing',
+  'manguito rotacao externa com elastico': 'https://drive.google.com/file/d/1VNfaWThlyjPS3V9trD8-Fq7rau_mlso8/view?usp=sharing'
+};
+
+function getVideoLink(name) {
+  function norm(s) {
+    return s.toLowerCase().trim()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+      .replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim();
+  }
+  const key = norm(name);
+  // exact
+  if (VIDEO_LIB[key]) return VIDEO_LIB[key];
+  // partial - key contains lib entry
+  for (const [k,v] of Object.entries(VIDEO_LIB)) {
+    if (key === k) return v;
+  }
+  // fuzzy - shared words
+  const words = key.split(' ').filter(w => w.length > 3);
+  let best = null, bestScore = 0;
+  for (const [k,v] of Object.entries(VIDEO_LIB)) {
+    const score = words.filter(w => k.includes(w)).length;
+    if (score > bestScore) { bestScore = score; best = v; }
+  }
+  return bestScore >= 2 ? best : null;
+}
+
+function resolveVideoLinks() {
+  document.querySelectorAll('.yt-link[data-exercise]').forEach(a => {
+    const ex = a.getAttribute('data-exercise');
+    const url = getVideoLink(ex);
+    if (url) {
+      a.href = url;
+      a.target = '_blank';
+      a.innerHTML = '▶ VER';
+      a.style.color = '#C9A84C';
+      a.style.borderColor = 'rgba(201,168,76,0.5)';
+    } else {
+      a.style.opacity = '0.25';
+      a.removeAttribute('href');
+    }
+  });
+}
+document.addEventListener('DOMContentLoaded', resolveVideoLinks);
+
+
+// ── NAVEGAÇÃO ──
 function showSection(id){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  const sec=document.getElementById(id);
-  if(sec)sec.classList.add('active');
-  document.querySelectorAll('.tab-btn').forEach(b=>{if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes(id))b.classList.add('active');});
+  document.getElementById(id).classList.add('active');
+  const map={apresentacao:0,dieta:1,treino:2,cardio:3,conscientizacao:4,evolucao:5,relatorio:6,feedback:7,financeiro:8,z3:9};
+  if(map[id]!==undefined && document.querySelectorAll('.tab-btn')[map[id]]){
+    document.querySelectorAll('.tab-btn')[map[id]].classList.add('active');
+  }
   window.scrollTo(0,0);
 }
 
-function calcWeek(d){if(!d)return'—';const s=new Date(d),t=new Date();return'S'+(Math.floor((t-s)/(7*864e5))+1);}
 
-docRef.get().then(doc=>{
-  const d=doc.exists?doc.data():{};
-  document.getElementById('weekNum').textContent=calcWeek(d.planUpdateDate);
-  ['r1','r2','r3','r4'].forEach(r=>{const el=document.getElementById('obs-'+r);if(el&&d['obs_'+r])el.value=d['obs_'+r];});
-  renderFin(d);
-}).catch(()=>{});
+// ── TEMA ──
+function toggleTheme() {
+  document.body.classList.toggle('light-mode');
+  localStorage.setItem('lb-theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+}
+if (localStorage.getItem('lb-theme') === 'light') document.body.classList.add('light-mode');
 
-function saveObs(k,v){docRef.set({['obs_'+k]:v},{merge:true}).catch(()=>{});}
+// ── SAVE/LOAD ──
+function saveObs(el) { localStorage.setItem(el.dataset.key, el.value); }
+function saveCardio(el) { localStorage.setItem(el.dataset.key, el.checked ? '1' : '0'); }
+function saveLoad(el) {
+  const key = el.dataset.key;
+  const val = el.value.trim();
+  if (!val) return;
+  localStorage.setItem(key, val);
+  const today = new Date().toLocaleDateString('pt-BR');
+  const histKey = key + '-hist';
+  const hist = JSON.parse(localStorage.getItem(histKey) || '[]');
+  hist.unshift({date: today, val: val});
+  if (hist.length > 20) hist.pop();
+  localStorage.setItem(histKey, JSON.stringify(hist));
+}
+function saveMedida(el) { localStorage.setItem(el.dataset.key, el.value); }
 
-function renderFin(data){
-  const pu=data.planUpdateDate||null,rd=data.renewalDate||null,rv=data.renewalValue||null;
+function loadAll() {
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const val = localStorage.getItem(el.dataset.key);
+    if (val === null) return;
+    if (el.type === 'checkbox') el.checked = val === '1';
+    else el.value = val;
+  });
+}
+
+// ── DONE TREINO ──
+function markDone(id) {
+  const btn = document.getElementById('done-' + id);
+  const badge = document.getElementById('done-badge-' + id);
+  const tab = document.getElementById('tab-' + id);
+  const key = 'done-' + id;
+  const isDone = localStorage.getItem(key) === '1';
+  if (isDone) {
+    localStorage.removeItem(key);
+    btn.classList.remove('active');
+    btn.textContent = '✓ Marcar como concluído';
+    badge.textContent = '';
+    if (tab) tab.classList.remove('done-tab');
+  } else {
+    const now = new Date().toLocaleDateString('pt-BR');
+    localStorage.setItem(key, '1');
+    localStorage.setItem(key + '-date', now);
+    btn.classList.add('active');
+    btn.textContent = '✓ Concluído';
+    badge.textContent = '· ' + now;
+    if (tab) tab.classList.add('done-tab');
+  }
+  updateProgress();
+}
+function loadDone() {
+  ['trA','trB','trC','trD','trE'].forEach(id => {
+    if (localStorage.getItem('done-' + id) === '1') {
+      const btn = document.getElementById('done-' + id);
+      const badge = document.getElementById('done-badge-' + id);
+      const tab = document.getElementById('tab-' + id);
+      const date = localStorage.getItem('done-' + id + '-date') || '';
+      if (btn) { btn.classList.add('active'); btn.textContent = '✓ Concluído'; }
+      if (badge) badge.textContent = '· ' + date;
+      if (tab) tab.classList.add('done-tab');
+    }
+  });
+}
+
+// ── PROGRESSO SEMANAL ──
+function updateProgress() {
+  const treinos = ['trA','trB','trC','trD','trE'];
+  const done = treinos.filter(id => localStorage.getItem('done-' + id) === '1').length;
+  const planned = treinos.filter(id => document.getElementById(id)).length;
+  const pct = planned > 0 ? Math.round((done / planned) * 100) : 0;
+  const fill = document.getElementById('pw-fill');
+  const lbl = document.getElementById('pw-done-label');
+  const plbl = document.getElementById('pw-planned-label');
+  if (fill) fill.style.width = pct + '%';
+  if (lbl) lbl.textContent = done + ' treino' + (done !== 1 ? 's' : '') + ' realizado' + (done !== 1 ? 's' : '');
+  if (plbl) plbl.textContent = 'de ' + planned + ' planejados (' + pct + '%)';
+}
+
+// ── SEMANA ATUAL ──
+function calcWeek() {
+  // ✏️ Ajuste a data de início do plano aqui
+  const startStr = localStorage.getItem('plan-start') || null;
+  const el = document.getElementById('currentWeek');
+  if (!el) return;
+  if (!startStr) { el.textContent = '—'; return; }
+  const start = new Date(startStr);
+  const now = new Date();
+  const diff = Math.floor((now - start) / (7 * 24 * 60 * 60 * 1000)) + 1;
+  el.textContent = 'Semana ' + diff;
+}
+
+// ── TIMER ──
+let timerVal = 90, timerRunning = false, timerInterval = null;
+function openTimer() { document.getElementById('timerOverlay').classList.add('show'); }
+function closeTimer() { document.getElementById('timerOverlay').classList.remove('show'); clearInterval(timerInterval); timerRunning = false; }
+function setTimer(s) { clearInterval(timerInterval); timerRunning = false; timerVal = s; document.getElementById('timerCount').textContent = s; }
+function startTimer() {
+  if (timerRunning) return;
+  timerRunning = true;
+  timerInterval = setInterval(() => {
+    timerVal--;
+    document.getElementById('timerCount').textContent = timerVal;
+    if (timerVal <= 0) {
+      clearInterval(timerInterval);
+      timerRunning = false;
+      document.getElementById('timerCount').textContent = '✓';
+      if (navigator.vibrate) navigator.vibrate([200,100,200]);
+    }
+  }, 1000);
+}
+function pauseTimer() { clearInterval(timerInterval); timerRunning = false; }
+function resetTimer() { clearInterval(timerInterval); timerRunning = false; document.getElementById('timerCount').textContent = timerVal; }
+
+// ── HISTORY MODAL ──
+function showHist(treino, exId, name) {
+  const key = 'load-' + treino + '-' + exId + '-hist';
+  const hist = JSON.parse(localStorage.getItem(key) || '[]');
+  document.getElementById('histTitle').textContent = name;
+  const list = document.getElementById('histList');
+  if (hist.length === 0) {
+    list.innerHTML = '<div class="hist-empty">Nenhum registro de carga ainda.</div>';
+  } else {
+    list.innerHTML = hist.map(h => `<div class="hist-item"><span class="hist-date">${h.date}</span><span class="hist-val">${h.val}</span></div>`).join('');
+  }
+  document.getElementById('histOverlay').classList.add('show');
+}
+function closeHist() { document.getElementById('histOverlay').classList.remove('show'); }
+
+// ── PESO ──
+function addWeight() {
+  const val = document.getElementById('weightVal').value.trim();
+  if (!val) return;
+  const today = new Date().toLocaleDateString('pt-BR');
+  const hist = JSON.parse(localStorage.getItem('weight-hist') || '[]');
+  hist.unshift({date: today, val: parseFloat(val)});
+  localStorage.setItem('weight-hist', JSON.stringify(hist));
+  document.getElementById('weightVal').value = '';
+  renderWeightList();
+  renderChart();
+}
+function deleteWeight(idx) {
+  const hist = JSON.parse(localStorage.getItem('weight-hist') || '[]');
+  hist.splice(idx, 1);
+  localStorage.setItem('weight-hist', JSON.stringify(hist));
+  renderWeightList();
+  renderChart();
+}
+function renderWeightList() {
+  const hist = JSON.parse(localStorage.getItem('weight-hist') || '[]');
+  const list = document.getElementById('weightList');
+  if (!list) return;
+  if (hist.length === 0) { list.innerHTML = '<div class="weight-empty">Nenhum registro ainda.</div>'; return; }
+  list.innerHTML = hist.map((h, i) => `
+    <div class="weight-item">
+      <span class="weight-date">${h.date}</span>
+      <span class="weight-val">${h.val} kg</span>
+      <button class="weight-del" onclick="deleteWeight(${i})">✕</button>
+    </div>`).join('');
+}
+
+// ── CHART ──
+let chartInstance = null;
+function renderChart() {
+  const hist = JSON.parse(localStorage.getItem('weight-hist') || '[]').slice().reverse();
+  const canvas = document.getElementById('weightChart');
+  const empty = document.getElementById('chart-empty');
+  if (!canvas) return;
+  if (hist.length === 0) {
+    canvas.style.display = 'none';
+    if (empty) empty.style.display = 'block';
+    return;
+  }
+  canvas.style.display = 'block';
+  if (empty) empty.style.display = 'none';
+  const ctx = canvas.getContext('2d');
+  if (chartInstance) chartInstance = null;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const labels = hist.map(h => h.date);
+  const data = hist.map(h => h.val);
+  const W = canvas.offsetWidth || 600;
+  const H = 200;
+  canvas.width = W; canvas.height = H;
+  const pad = {t:20,r:20,b:40,l:50};
+  const minVal = Math.min(...data) - 1;
+  const maxVal = Math.max(...data) + 1;
+  const scaleX = i => pad.l + i * (W - pad.l - pad.r) / Math.max(data.length - 1, 1);
+  const scaleY = v => H - pad.b - (v - minVal) / (maxVal - minVal) * (H - pad.t - pad.b);
+  const gold = '#C9A84C';
+  ctx.strokeStyle = 'rgba(201,168,76,0.15)';
+  ctx.lineWidth = 1;
+  for (let i = 0; i <= 4; i++) {
+    const y = pad.t + i * (H - pad.t - pad.b) / 4;
+    ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(W - pad.r, y); ctx.stroke();
+    const val = maxVal - i * (maxVal - minVal) / 4;
+    ctx.fillStyle = 'rgba(245,240,232,0.4)';
+    ctx.font = '9px Montserrat,sans-serif';
+    ctx.textAlign = 'right';
+    ctx.fillText(val.toFixed(1), pad.l - 6, y + 3);
+  }
+  ctx.strokeStyle = gold;
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  data.forEach((v, i) => i === 0 ? ctx.moveTo(scaleX(i), scaleY(v)) : ctx.lineTo(scaleX(i), scaleY(v)));
+  ctx.stroke();
+  data.forEach((v, i) => {
+    ctx.beginPath();
+    ctx.arc(scaleX(i), scaleY(v), 4, 0, Math.PI * 2);
+    ctx.fillStyle = gold;
+    ctx.fill();
+  });
+  labels.forEach((l, i) => {
+    ctx.fillStyle = 'rgba(245,240,232,0.4)';
+    ctx.font = '8px Montserrat,sans-serif';
+    ctx.textAlign = 'center';
+    if (labels.length <= 8 || i % Math.ceil(labels.length / 8) === 0)
+      ctx.fillText(l, scaleX(i), H - pad.b + 14);
+  });
+}
+
+// ── PHOTOS ──
+function addPhotos(input) {
+  const grid = document.getElementById('photoGrid');
+  Array.from(input.files).forEach(file => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      const today = new Date().toLocaleDateString('pt-BR');
+      const div = document.createElement('div');
+      div.className = 'photo-item';
+      div.innerHTML = `<img src="${e.target.result}"><button class="photo-del" onclick="this.parentNode.remove()">✕</button><div class="photo-date">${today}</div>`;
+      grid.appendChild(div);
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+// ── BUSCA SUBSTITUTOS ──
+function searchSubs() {
+  const q = document.getElementById('subSearch').value.toLowerCase().trim();
+  const results = document.getElementById('sub-results');
+  if (!q || q.length < 2) { results.innerHTML = ''; return; }
+  const rows = document.querySelectorAll('.meal-table tbody tr');
+  const found = [];
+  rows.forEach(row => {
+    const name = row.querySelector('.food-name');
+    const sub = row.querySelector('.food-sub');
+    if (name && sub && name.textContent.toLowerCase().includes(q)) {
+      found.push(`<strong style="color:var(--white)">${name.textContent}</strong><br>${sub.innerHTML}`);
+    }
+  });
+  results.innerHTML = found.length > 0 ? found.join('<hr style="border-color:var(--border);margin:10px 0">') : '<span style="color:var(--white-dim)">Nenhum alimento encontrado.</span>';
+}
+
+// ── FEEDBACK ──
+const fbAnswers = {};
+function selectScale(btn) {
+  const group = btn.dataset.group;
+  document.querySelectorAll(`[data-group="${group}"]`).forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  fbAnswers[group] = btn.dataset.val;
+}
+function selectYN(btn) {
+  const group = btn.dataset.group;
+  document.querySelectorAll(`[data-group="${group}"]`).forEach(b => { b.classList.remove('selected-yes','selected-no'); });
+  btn.classList.add(btn.dataset.val === 'Sim' || btn.dataset.val === 'Normal' ? 'selected-yes' : 'selected-no');
+  fbAnswers[group] = btn.dataset.val;
+}
+function selectMulti(btn) {
+  btn.classList.toggle('selected');
+  const group = btn.dataset.group;
+  const selected = Array.from(document.querySelectorAll(`[data-group="${group}"].selected`)).map(b => b.dataset.val);
+  fbAnswers[group] = selected.join(', ');
+}
+function addFbPhotos(input) {
+  const row = document.getElementById('fb-photo-row');
+  Array.from(input.files).forEach(file => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      const div = document.createElement('div');
+      div.className = 'fb-photo-item';
+      div.innerHTML = `<img src="${e.target.result}">`;
+      row.appendChild(div);
+    };
+    reader.readAsDataURL(file);
+  });
+}
+function generateFeedback() {
+  const peso = document.getElementById('fb-peso').value;
+  const dorDetalhe = document.getElementById('fb-dor-detalhe').value;
+  const difExtra = document.getElementById('fb-dificuldades-extra').value;
+  const obsGeral = document.getElementById('fb-obs-geral').value;
+  const hoje = new Date().toLocaleDateString('pt-BR');
+  let txt = `📋 FEEDBACK SEMANAL — ${hoje}
+`;
+  txt += `━━━━━━━━━━━━━━━━━━━━━━━
+
+`;
+  txt += `🏋️ TREINOS
+`;
+  txt += `• Frequência: ${fbAnswers['freq-treino'] || '—'}
+`;
+  txt += `• Cumpriu o tempo: ${fbAnswers['tempo-treino'] || '—'}
+`;
+  txt += `• Cardios realizados: ${fbAnswers['cardio-fb'] || '—'}
+
+`;
+  txt += `🥗 ALIMENTAÇÃO
+`;
+  txt += `• Adesão ao plano: ${fbAnswers['adesao-dieta'] || '—'}
+`;
+  if (fbAnswers['motivo-dieta']) txt += `• Motivo dificuldade: ${fbAnswers['motivo-dieta']}
+`;
+  txt += `
+⚠️ DIFICULDADES
+`;
+  txt += `• O que atrapalhou: ${fbAnswers['dificuldades'] || '—'}
+`;
+  if (difExtra) txt += `• Detalhes: ${difExtra}
+`;
+  txt += `
+🏥 SAÚDE
+`;
+  txt += `• Dor/desconforto: ${fbAnswers['dor-fisica'] || '—'}
+`;
+  if (dorDetalhe) txt += `• Descrição: ${dorDetalhe}
+`;
+  txt += `• Sono: ${fbAnswers['sono'] || '—'}
+`;
+  txt += `• Intestino: ${fbAnswers['intestino'] || '—'}
+`;
+  txt += `
+📸 PESO E EVOLUÇÃO
+`;
+  txt += `• Peso atual: ${peso ? peso + ' kg' : '—'}
+`;
+  if (obsGeral) txt += `
+💬 OBSERVAÇÕES
+${obsGeral}
+`;
+  txt += `
+━━━━━━━━━━━━━━━━━━━━━━━
+Enviado via Portal Consultoria LB — Sayonara Ferreira`;
+  document.getElementById('fb-result-text').textContent = txt;
+  document.getElementById('fb-result').classList.add('show');
+  document.getElementById('fb-result').scrollIntoView({behavior:'smooth'});
+}
+function copyFeedback() {
+  const txt = document.getElementById('fb-result-text').textContent;
+  navigator.clipboard.writeText(txt).then(() => {
+    const btn = document.querySelector('.btn-copy');
+    btn.textContent = '✓ Copiado!';
+    setTimeout(() => btn.textContent = '📋 Copiar texto', 2000);
+  });
+}
+
+// ── SELECT SINGLE (radio-like multi) ──
+function selectMultiSingle(btn) {
+  const group = btn.dataset.group;
+  document.querySelectorAll(`[data-group="${group}"]`).forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  fbAnswers[group] = btn.dataset.val;
+}
+
+// ── ANEXOS ANAMNESE ──
+function addAnexos(input) {
+  const list = document.getElementById('an-anexos-list');
+  Array.from(input.files).forEach(file => {
+    const div = document.createElement('div');
+    div.style.cssText = 'background:var(--dark2);border:1px solid var(--border);border-radius:3px;padding:7px 12px;font-size:11px;color:var(--white-dim);display:flex;align-items:center;gap:8px;';
+    div.innerHTML = `📎 ${file.name} <button onclick="this.parentNode.remove()" style="background:none;border:none;color:rgba(255,80,80,0.5);cursor:pointer;font-size:11px;">✕</button>`;
+    list.appendChild(div);
+  });
+}
+
+// ── GERAR ANAMNESE ──
+function generateAnamnese() {
+  const get = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+  const hoje = new Date().toLocaleDateString('pt-BR');
+  let txt = `📋 QUESTIONÁRIO DE ANAMNESE — ${hoje}
+`;
+  txt += `━━━━━━━━━━━━━━━━━━━━━━━
+
+`;
+  txt += `👤 DADOS PESSOAIS
+`;
+  txt += `• Nome: ${get('an-nome') || '—'}
+`;
+  txt += `• Idade: ${get('an-idade') || '—'}
+`;
+  txt += `• Nascimento: ${get('an-nasc') || '—'}
+`;
+  txt += `• Peso: ${get('an-peso') ? get('an-peso') + ' kg' : '—'}
+`;
+  txt += `• Altura: ${get('an-altura') ? get('an-altura') + ' cm' : '—'}
+`;
+  txt += `• Sexo: ${fbAnswers['an-sexo'] || '—'}
+`;
+  txt += `• Profissão: ${get('an-profissao') || '—'}
+`;
+  txt += `• Cidade: ${get('an-cidade') || '—'}
+`;
+  txt += `• E-mail: ${get('an-email') || '—'}
+`;
+  txt += `• Instagram: ${get('an-instagram') || '—'}
+
+`;
+  txt += `⏰ ROTINA DIÁRIA
+`;
+  txt += `• Acorda: ${fbAnswers['an-acordar'] || '—'}
+`;
+  txt += `• Dorme: ${fbAnswers['an-dormir'] || '—'}
+`;
+  txt += `• Melhor horário pra treinar: ${fbAnswers['an-horario-treino'] || '—'}
+`;
+  txt += `• Treina em jejum: ${fbAnswers['an-jejum'] || '—'}
+`;
+  txt += `• Mais fome: ${fbAnswers['an-fome'] || '—'}
+`;
+  txt += `• Dificuldade alimentar: ${fbAnswers['an-dif-alim'] || '—'}
+`;
+  if (get('an-dif-alim-detalhe')) txt += `  → ${get('an-dif-alim-detalhe')}
+`;
+  txt += `• Horas de sono: ${fbAnswers['an-sono-horas'] || '—'}
+`;
+  txt += `• Qualidade do sono: ${fbAnswers['an-sono-qual'] || '—'}
+`;
+  txt += `• Estresse: ${fbAnswers['an-estresse'] || '—'}
+`;
+  txt += `• Dependentes: ${fbAnswers['an-dependentes'] || '—'}
+
+`;
+  txt += `🏋️ TREINAMENTO
+`;
+  txt += `• Experiência: ${fbAnswers['an-exp'] || '—'}
+`;
+  txt += `• Dias por semana: ${fbAnswers['an-dias-treino'] || '—'}
+`;
+  txt += `• Tempo por sessão: ${fbAnswers['an-tempo-treino'] || '—'}
+`;
+  txt += `• Treina 2x ao dia: ${fbAnswers['an-2x-dia'] || '—'}
+`;
+  txt += `• Faz aeróbico: ${fbAnswers['an-aerobico'] || '—'}
+`;
+  if (fbAnswers['an-tipo-aerobico']) txt += `• Tipo aeróbico: ${fbAnswers['an-tipo-aerobico']}
+`;
+  txt += `• Frequência aeróbico: ${fbAnswers['an-freq-aerobico'] || '—'}
+
+`;
+  txt += `🎯 OBJETIVOS
+`;
+  txt += `• Objetivo: ${fbAnswers['an-objetivo'] || '—'}
+`;
+  txt += `• Prazo esperado: ${fbAnswers['an-prazo'] || '—'}
+`;
+  txt += `• Acompanhamento anterior: ${fbAnswers['an-acomp-antes'] || '—'}
+`;
+  txt += `• Obstáculos: ${fbAnswers['an-obstaculos'] || '—'}
+
+`;
+  txt += `🥗 HÁBITOS ALIMENTARES
+`;
+  txt += `• Refeições por dia: ${fbAnswers['an-refeicoes'] || '—'}
+`;
+  txt += `• Restrições: ${fbAnswers['an-restricoes'] || '—'}
+`;
+  if (get('an-restricoes-extra')) txt += `  → ${get('an-restricoes-extra')}
+`;
+  if (get('an-preferencias')) txt += `• Preferências: ${get('an-preferencias')}
+`;
+  txt += `• Álcool: ${fbAnswers['an-alcool'] || '—'}
+`;
+  txt += `• Água/dia: ${fbAnswers['an-agua'] || '—'}
+`;
+  txt += `• Come fora: ${fbAnswers['an-fora'] || '—'}
+`;
+  txt += `• Cozinha: ${fbAnswers['an-cozinhar'] || '—'}
+`;
+  txt += `• Suplementos: ${fbAnswers['an-suplementos'] || '—'}
+`;
+  if (get('an-suplementos-detalhe')) txt += `  → ${get('an-suplementos-detalhe')}
+`;
+  txt += `
+🏥 SAÚDE E HISTÓRICO
+`;
+  txt += `• Doenças: ${fbAnswers['an-doencas'] || '—'}
+`;
+  if (get('an-doencas-extra')) txt += `  → ${get('an-doencas-extra')}
+`;
+  txt += `• Lesões: ${fbAnswers['an-lesao'] || '—'}
+`;
+  if (get('an-lesao-detalhe')) txt += `  → ${get('an-lesao-detalhe')}
+`;
+  txt += `• Medicamentos: ${fbAnswers['an-medicamento'] || '—'}
+`;
+  if (get('an-medicamento-detalhe')) txt += `  → ${get('an-medicamento-detalhe')}
+`;
+  txt += `• Histórico familiar: ${fbAnswers['an-hist-familiar'] || '—'}
+`;
+  if (get('an-hist-familiar-detalhe')) txt += `  → ${get('an-hist-familiar-detalhe')}
+`;
+  txt += `• Exames: ${fbAnswers['an-exames'] || '—'}
+
+`;
+  txt += `🏢 LOCAL DE TREINO
+`;
+  txt += `• ${fbAnswers['an-local'] || '—'}
+`;
+  if (get('an-obs')) txt += `
+💬 OBSERVAÇÕES
+${get('an-obs')}
+`;
+  txt += `
+━━━━━━━━━━━━━━━━━━━━━━━
+Enviado via Portal Consultoria LB — Sayonara Ferreira`;
+  document.getElementById('an-result-text').textContent = txt;
+  document.getElementById('an-result').classList.add('show');
+  document.getElementById('an-result').scrollIntoView({behavior:'smooth'});
+}
+function copyAnamnese() {
+  const txt = document.getElementById('an-result-text').textContent;
+  navigator.clipboard.writeText(txt).then(() => {
+    const btns = document.querySelectorAll('.btn-copy');
+    btns.forEach(b => { if (b.onclick && b.onclick.toString().includes('copyAnamnese')) { b.textContent = '✓ Copiado!'; setTimeout(() => b.textContent = '📋 Copiar texto', 2000); } });
+  });
+}
+
+// ── INIT ──
+window.addEventListener('load', () => {
+  loadAll();
+  loadDone();
+  updateProgress();
+  calcWeek();
+  renderWeightList();
+  renderChart();
+});
+
+// Questionário
+let qDados = {};
+document.querySelectorAll('.q-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const group = btn.closest('.q-opcoes').dataset.group;
+    const isMulti = group === 'objetivo';
+    if (!isMulti) btn.closest('.q-opcoes').querySelectorAll('.q-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.toggle('selected');
+    const sel = [...btn.closest('.q-opcoes').querySelectorAll('.q-btn.selected')].map(b => b.textContent).join(', ');
+    const hid = document.getElementById('qval-' + group);
+    if (hid) hid.value = sel;
+    // Condicionais
+    if (group === 'modalidade_sim') document.getElementById('qcampo-modalidade').style.display = btn.textContent === 'Sim' && btn.classList.contains('selected') ? 'flex' : 'none';
+    if (group === 'med_sim') document.getElementById('qcampo-medicamentos').style.display = btn.textContent === 'Sim' && btn.classList.contains('selected') ? 'flex' : 'none';
+    if (group === 'lesao_sim') document.getElementById('qcampo-lesao').style.display = btn.textContent === 'Sim' && btn.classList.contains('selected') ? 'flex' : 'none';
+  });
+});
+document.getElementById('form-anamnese').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const fd = new FormData(this);
+  fd.forEach((v, k) => { if (v) qDados[k] = v; });
+  this.style.display = 'none';
+  document.getElementById('q-sucesso').style.display = 'block';
+  document.getElementById('q-sucesso').scrollIntoView({behavior:'smooth'});
+});
+function qEnviarWhatsapp() {
+  const d = qDados;
+  const txt = [
+    '📋 *QUESTIONÁRIO DE ANAMNESE — CONSULTORIA LB*','',
+    '*👤 IDENTIFICAÇÃO*',
+    `Nome: ${d.nome||'—'}`,
+    `Idade: ${d.idade||'—'} anos | Peso: ${d.peso||'—'} kg | Altura: ${d.altura||'—'} m`,
+    `Gênero: ${d.genero||'—'} | Cidade: ${d.cidade||'—'}`,
+    `Profissão: ${d.profissao||'—'} | Trabalho: ${d.trabalho_tipo||'—'}`,'',
+    '*🎯 OBJETIVO*',
+    `Objetivo: ${d.objetivo||'—'}`,
+    `Motivação: ${d.motivacao||'—'}`,
+    `Meta/data: ${d.meta_data||'—'}`,
+    `Tentativas: ${d.tentativas||'—'}`,
+    `Desafio: ${d.desafio||'—'}`,'',
+    '*🏋️ TREINO*',
+    `Nível: ${d.nivel_exp||'—'}`,
+    `Acomp. anterior: ${d.acomp_treino||'—'}`,
+    `Dias/semana: ${d.dias_treino||'—'} | Tempo: ${d.tempo_treino||'—'}`,
+    `Horário: ${d.horario_treino||'—'} | Local: ${d.local_treino||'—'}`,
+    `Modalidade: ${d.modalidade_sim||'—'}${d.modalidade?' — '+d.modalidade:''}`,'',
+    '*🩺 SAÚDE*',
+    `Condição: ${d.condicao_saude||'Nenhuma'}`,
+    `Medicamentos: ${d.medicamentos_sim||'—'}${d.medicamentos?' — '+d.medicamentos:''}`,
+    `Lesão: ${d.lesao_sim||'—'}${d.lesao?' — '+d.lesao:''}`,
+    `Acomp. médico: ${d.medico_sim||'—'} | Cirurgia: ${d.cirurgia||'—'}`,'',
+    '*🥗 NUTRIÇÃO*',
+    `Alimentação: ${d.alimentacao_atual||'—'}`,
+    `Restrições: ${d.restricao||'Nenhuma'}`,
+    `Vegetariano: ${d.vegetariano||'—'}`,
+    `Suplementos: ${d.suplementos||'Nenhum'}`,
+    `Come fora: ${d.come_fora||'—'} | Álcool: ${d.alcool||'—'}`,'',
+    '*🌙 ROTINA*',
+    `Sono: ${d.sono||'—'} | Estresse: ${d.estresse||'—'}`,
+    `Filhos/resp.: ${d.filhos||'—'}`,
+    `Obs: ${d.rotina_obs||'—'}`,'',
+    '*💬 OBSERVAÇÕES*',
+    d.obs_finais||'—'
+  ].join('\n');
+  window.open('https://wa.me/5527995084354?text='+encodeURIComponent(txt),'_blank');
+}
+
+
+// Pre-fill questionario for Sayonara Ferreira demo
+window.addEventListener('load', function() {
+  // Simulate filled form for Sayonara Ferreira
+  const preSelections = {
+    'trabalho': 'Sentado (escritório)',
+    'objetivo': 'Perder gordura',
+    'nivel': 'Intermediário (6 meses a 2 anos)',
+    'acomp_treino': 'Não',
+    'dias': '5 dias',
+    'tempo': '1 hora',
+    'horario': 'Noite (após 18h)',
+    'local': 'Academia',
+    'modalidade_sim': 'Não',
+    'med_sim': 'Não',
+    'lesao_sim': 'Não',
+    'medico_sim': 'Sim',
+    'cirurgia': 'Não',
+    'alimentacao': 'Regular',
+    'veg': 'Não',
+    'fora': '1 a 2x por semana',
+    'alcool': 'Fins de semana',
+    'sono': '6 a 7h',
+    'estresse': 'Médio',
+    'filhos': 'Não'
+  };
+  Object.entries(preSelections).forEach(([group, value]) => {
+    const btns = document.querySelectorAll(`.q-btn`);
+    btns.forEach(btn => {
+      const grp = btn.closest('.q-opcoes');
+      if (grp && grp.dataset.group === group && btn.textContent.trim() === value) {
+        btn.classList.add('selected');
+        const hid = document.getElementById('qval-' + group);
+        if (hid) hid.value = value;
+      }
+    });
+  });
+  // Fill text inputs
+  const fills = {
+    'nome': 'Carlos Eduardo Silva',
+    'idade': '34',
+    'peso': '89',
+    'altura': '1.78',
+    'cidade': 'Vitória / ES',
+    'profissao': 'Analista de Sistemas',
+    'motivacao': 'Quero retomar os treinos e perder os quilos que ganhei durante a pandemia. Me sinto sem energia e quero mudar isso.',
+    'meta_data': 'Viagem para a Europa em dezembro',
+    'tentativas': 'Já tentei algumas dietas por conta própria, perdi uns 5kg mas não mantive. Nunca tive acompanhamento profissional.',
+    'desafio': 'Consistência. Começo bem mas perco o ritmo com facilidade quando a rotina muda.',
+    'condicao_saude': 'Nenhuma',
+    'restricao': 'Nenhuma',
+    'suplementos': 'Nenhum no momento',
+    'rotina_obs': 'Trabalho em home office, o que facilita mas também me deixa sedentário durante o dia.',
+    'obs_finais': 'Estou animado para começar e disposto a seguir o plano com seriedade!'
+  };
+  Object.entries(fills).forEach(([name, value]) => {
+    const el = document.querySelector(`[name="${name}"]`);
+    if (el) el.value = value;
+  });
+});
+
+
+function toggleAlt(btn){const c=btn.nextElementSibling;if(c.style.display==="none"){c.style.display="inline";btn.textContent="←";}else{c.style.display="none";btn.textContent="→";}}
+
+
+const CLIENT_ID = 'sayonara-ferreira';
+function renderFin(){
+  const stored=JSON.parse(localStorage.getItem('fin_'+CLIENT_ID)||'{}');
+  const pu=stored.planUpdateDate||null,rd=stored.renewalDate||null,rv=stored.renewalValue||null;
   const t=new Date();t.setHours(0,0,0,0);
   let dl=null,pp=0;
   if(rd){const r=new Date(rd);r.setHours(0,0,0,0);dl=Math.ceil((r-t)/86400000);}
@@ -830,72 +2418,73 @@ function renderFin(data){
   const col=dl===null?'var(--gold)':dl>30?'#7dd87d':dl>14?'#f5c842':'#e05a5a';
   const em=dl===null?'📅':dl>30?'🟢':dl>14?'🟡':'🔴';
   const wk=pu?Math.ceil((t-new Date(pu))/604800000):'—';
-  document.getElementById('fin-container').innerHTML=`
-    ${dl!==null&&dl<=14?'<div style="background:rgba(224,90,90,0.15);border:1px solid rgba(224,90,90,0.4);border-radius:6px;padding:14px;margin-bottom:20px;font-size:12px;color:#e05a5a;">⚠️ Plano vence em breve — entre em contato para renovação.</div>':''}
-    <div style="text-align:center;padding:32px;background:var(--dark2);border:1px solid var(--border);border-radius:8px;margin-bottom:20px;">
-      <div style="font-size:72px;font-weight:700;color:${col};line-height:1;">${dl!==null?dl:'—'}</div>
-      <div style="font-size:11px;color:var(--white-dim);margin-top:6px;letter-spacing:1px;">DIAS RESTANTES ${em}</div>
-    </div>
-    <div style="background:var(--dark2);border:1px solid var(--border);border-radius:8px;padding:22px;margin-bottom:16px;">
-      <div style="font-size:11px;color:var(--white-dim);margin-bottom:10px;">PROGRESSO DO PLANO</div>
-      <div style="height:8px;background:rgba(255,255,255,0.07);border-radius:4px;overflow:hidden;margin-bottom:8px;">
-        <div style="height:100%;width:${pp}%;background:linear-gradient(90deg,var(--gold),#e2c06e);border-radius:4px;"></div>
-      </div>
-      <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--white-dim);">
-        <span>Início: ${pu||'—'}</span><span>Renovação: ${rd||'—'}</span>
-      </div>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;">
-      <div style="background:var(--dark2);border:1px solid var(--border);border-radius:6px;padding:16px;text-align:center;"><div style="font-size:9px;color:var(--white-dim);margin-bottom:6px;">SEMANA</div><div style="font-size:22px;color:var(--gold);font-weight:600;">S${wk}</div></div>
-      <div style="background:var(--dark2);border:1px solid var(--border);border-radius:6px;padding:16px;text-align:center;"><div style="font-size:9px;color:var(--white-dim);margin-bottom:6px;">RENOVAÇÃO</div><div style="font-size:14px;color:var(--white);font-weight:500;">${rd||'—'}</div></div>
-      <div style="background:var(--dark2);border:1px solid var(--border);border-radius:6px;padding:16px;text-align:center;"><div style="font-size:9px;color:var(--white-dim);margin-bottom:6px;">VALOR</div><div style="font-size:18px;color:var(--gold);font-weight:600;">${rv?'R$'+rv:'—'}</div></div>
-    </div>`;
+  const el=document.getElementById('fin-container');if(!el)return;
+  el.innerHTML=`<div style="text-align:center;padding:32px;background:var(--dark2);border:1px solid var(--border);border-radius:8px;margin-bottom:20px;"><div style="font-size:72px;font-weight:700;color:${col};line-height:1;">${dl!==null?dl:'—'}</div><div style="font-size:11px;color:var(--white-dim);margin-top:6px;letter-spacing:1px;">DIAS RESTANTES ${em}</div></div><div style="background:var(--dark2);border:1px solid var(--border);border-radius:8px;padding:22px;margin-bottom:16px;"><div style="font-size:11px;color:var(--white-dim);margin-bottom:10px;">PROGRESSO</div><div style="height:8px;background:rgba(255,255,255,0.07);border-radius:4px;overflow:hidden;margin-bottom:8px;"><div style="height:100%;width:${pp}%;background:linear-gradient(90deg,var(--gold),#e2c06e);border-radius:4px;"></div></div><div style="display:flex;justify-content:space-between;font-size:10px;color:var(--white-dim);"><span>Início: ${pu||'—'}</span><span>Renovação: ${rd||'—'}</span></div></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;"><div style="background:var(--dark2);border:1px solid var(--border);border-radius:6px;padding:16px;text-align:center;"><div style="font-size:9px;color:var(--white-dim);margin-bottom:6px;">SEMANA</div><div style="font-size:22px;color:var(--gold);font-weight:600;">S${wk}</div></div><div style="background:var(--dark2);border:1px solid var(--border);border-radius:6px;padding:16px;text-align:center;"><div style="font-size:9px;color:var(--white-dim);margin-bottom:6px;">RENOVAÇÃO</div><div style="font-size:14px;color:var(--white);font-weight:500;">${rd||'—'}</div></div><div style="background:var(--dark2);border:1px solid var(--border);border-radius:6px;padding:16px;text-align:center;"><div style="font-size:9px;color:var(--white-dim);margin-bottom:6px;">VALOR</div><div style="font-size:18px;color:var(--gold);font-weight:600;">${rv?'R$'+rv:'—'}</div></div></div>`;
+}
+window.addEventListener('load',renderFin);
+
+
+// ── TREINO SUB-TABS ───────────────────────────────────────────
+function showTreino(id, btn){
+  document.querySelectorAll('.treino-content').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.treino-tab').forEach(t=>t.classList.remove('active'));
+  const el = document.getElementById('treino-'+id);
+  if(el) el.classList.add('active');
+  if(btn) btn.classList.add('active');
 }
 
-// SUBSTITUIÇÕES
-const SUBS={
-  'ovo':'Frango 80g · Atum 80g · Patinho 80g · Whey 25g',
-  'frango':'Patinho 120g · Tilápia 140g · Atum 120g',
-  'arroz':'Batata-doce 130g · Aipim 100g · Cuscuz 80g · Macarrão 80g',
-  'pão':'Tapioca 70g · Cuscuz 100g · Batata-doce 100g · Aveia 40g',
-  'mamão':'Banana · Maçã · Melão · Abacaxi · Melancia',
-  'abacaxi':'Melão · Melancia · Morangos · Maçã',
-  'whey':'Frango 80g · Atum 80g · Ovos 2un + 1 clara',
-  'granola':'Aveia 30g · Pão integral 1 fatia',
-  'iogurte':'⚠️ Verificar versão sem lactose — Iogurte zero sem lactose',
-  'feijão':'Lentilha 70g · Grão-de-bico 70g',
-};
-function searchSub(v){const r=document.getElementById('subResult');if(!v.trim()){r.textContent='';return;}const k=Object.keys(SUBS).find(k=>v.toLowerCase().includes(k));r.innerHTML=k?`<strong style="color:var(--gold);">${k.charAt(0).toUpperCase()+k.slice(1)}:</strong> ${SUBS[k]}`:'Nenhuma substituição cadastrada.';}
-
-// FEEDBACK
-function selectScale(btn){const g=btn.dataset.group;document.querySelectorAll(`[data-group="${g}"]`).forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');}
-function selectYN(btn){const g=btn.dataset.group;document.querySelectorAll(`[data-group="${g}"]`).forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');}
-function getVal(g){const s=document.querySelector(`[data-group="${g}"].selected`);return s?s.dataset.val:'Não informado';}
-function generateFeedback(){
-  const obs=document.getElementById('fb-obs').value;
-  const text=`📊 *Feedback Semanal — Sayonara Ferreira*\n\n`+
-    `🥗 *Alimentação*\n• Adesão ao plano: ${getVal('adesao')}\n• Fome excessiva: ${getVal('fome')}\n\n`+
-    `🏋️ *Treino e Cardio*\n• Treinos na semana: ${getVal('treinos')}\n• Cardio conforme protocolo: ${getVal('cardio-fb')}\n• Dor lombar/punho: ${getVal('dor')}\n\n`+
-    `😴 *Sono e Disposição*\n• Qualidade do sono: ${getVal('sono')}\n• Disposição geral: ${getVal('disp')}\n\n`+
-    (obs?`📝 *Observações*\n${obs}\n\n`:'')+
-    `_Enviado via Portal LB_`;
-  const el=document.getElementById('fbResult');
-  el.textContent=text;el.style.display='block';
-  document.getElementById('btnCopy').style.display='block';
-}
-function copyFeedback(){
-  const text=document.getElementById('fbResult').textContent;
-  navigator.clipboard.writeText(text).then(()=>{window.open(`https://wa.me/5527995084354?text=${encodeURIComponent(text)}`,'_blank');});
+// ── SEMANA TABS (CARDIO) ──────────────────────────────────────
+function showSemana(id, btn){
+  const container = btn.closest('.semana-tabs-wrapper') || document;
+  const allTabs = container.querySelectorAll ? container.querySelectorAll('.semana-tab') : document.querySelectorAll('.semana-tab');
+  const allContent = container.querySelectorAll ? container.querySelectorAll('.semana-content') : document.querySelectorAll('.semana-content');
+  allTabs.forEach(t=>t.classList.remove('active'));
+  allContent.forEach(c=>c.classList.remove('active'));
+  const el = document.getElementById(id);
+  if(el) el.classList.add('active');
+  if(btn) btn.classList.add('active');
 }
 
-// FOTOS
-function addPhotos(input){
-  const grid=document.getElementById('photoGrid');
-  Array.from(input.files).forEach(file=>{
-    const reader=new FileReader();
-    reader.onload=e=>{const div=document.createElement('div');div.className='photo-item';div.innerHTML=`<img src="${e.target.result}" alt="Progresso">`;grid.appendChild(div);};
-    reader.readAsDataURL(file);
-  });
-}
 </script>
-</body></html>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, doc, setDoc, getDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+  import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
+  const firebaseConfig = {apiKey:"AIzaSyBeik1WqF-1vdAiKR5Fzxs9M87p9gi3HCI",authDomain:"consultoria-lb.firebaseapp.com",projectId:"consultoria-lb",storageBucket:"consultoria-lb.firebasestorage.app",messagingSenderId:"934724034464",appId:"1:934724034464:web:cdc2dec72be75b46a84ec5"};
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const storage = getStorage(app);
+  const CLIENT_ID = "sayonara-ferreira";
+  const CLIENT_NAME = "Sayonara Ferreira";
+  async function autoRegister(){try{const docRef=doc(db,"clients",CLIENT_ID);const snap=await getDoc(docRef);const now=new Date().toISOString();if(!snap.exists()){await setDoc(docRef,{nome:CLIENT_NAME,registeredAt:now,lastActivity:now,portalUrl:window.location.href.split('?')[0]});}else{await setDoc(docRef,{lastActivity:now},{merge:true});}}catch(e){console.log('Auto-register skipped:',e.message);}}
+  async function fbSet(key,value){try{await setDoc(doc(db,"clients",CLIENT_ID,"data",key),{value,updatedAt:new Date().toISOString()},{merge:true});}catch(e){localStorage.setItem(key,value);}}
+  async function fbGet(key){try{const s=await getDoc(doc(db,"clients",CLIENT_ID,"data",key));if(s.exists())return s.data().value;}catch(e){}return localStorage.getItem(key);}
+  window.saveLoad=function(el){fbSet(el.dataset.key,el.value);};
+  window.saveObs=function(el){fbSet(el.dataset.key,el.value);};
+  window.addWeight=async function(){const i=document.getElementById('weightInput');const v=parseFloat(i.value);if(!v)return;const e={weight:v,date:new Date().toLocaleDateString('pt-BR'),ts:Date.now()};try{await setDoc(doc(db,"clients",CLIENT_ID,"weights",String(e.ts)),e);}catch(ex){const w=JSON.parse(localStorage.getItem('weights')||'[]');w.push(e);localStorage.setItem('weights',JSON.stringify(w));}i.value='';loadWeights();};
+  async function loadWeights(){let w=[];try{const s=await getDocs(collection(db,"clients",CLIENT_ID,"weights"));s.forEach(d=>w.push(d.data()));w.sort((a,b)=>a.ts-b.ts);}catch(e){w=JSON.parse(localStorage.getItem('weights')||'[]');}renderWeightChart(w);renderWeightHistory(w);}
+  window.loadWeights=loadWeights;
+  function renderWeightChart(weights){const canvas=document.getElementById('weightChart');if(!canvas||!weights.length)return;const ctx=canvas.getContext('2d');const W=canvas.width=canvas.offsetWidth||320;const H=canvas.height=160;ctx.clearRect(0,0,W,H);const vals=weights.map(w=>w.weight);const min=Math.min(...vals)-1,max=Math.max(...vals)+1;const px=(i)=>(i/(weights.length-1||1))*(W-40)+20;const py=(v)=>H-20-((v-min)/(max-min||1))*(H-40);ctx.strokeStyle='rgba(201,168,76,0.3)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(20,py(vals[0]));vals.forEach((v,i)=>ctx.lineTo(px(i),py(v)));ctx.stroke();ctx.fillStyle='#c9a84c';vals.forEach((v,i)=>{ctx.beginPath();ctx.arc(px(i),py(v),3,0,Math.PI*2);ctx.fill();});ctx.fillStyle='rgba(245,240,232,0.4)';ctx.font='10px Montserrat';vals.forEach((v,i)=>{if(i===0||i===vals.length-1)ctx.fillText(v+'kg',px(i)-10,py(v)-8);});}
+  function renderWeightHistory(weights){const el=document.getElementById('weightHistory');if(!el)return;el.innerHTML=weights.slice(-5).reverse().map(w=>`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:11px;"><span style="color:var(--white-dim)">${w.date}</span><span style="color:var(--gold);font-weight:600">${w.weight} kg</span></div>`).join('');}
+  window.addPhoto=async function(input){const file=input.files[0];if(!file)return;try{const r=ref(storage,`clients/${CLIENT_ID}/photos/${Date.now()}_${file.name}`);await uploadBytes(r,file);const url=await getDownloadURL(r);await setDoc(doc(db,"clients",CLIENT_ID,"photos",String(Date.now())),{url,date:new Date().toLocaleDateString('pt-BR'),ts:Date.now()});loadPhotos();}catch(e){console.error(e);}};
+  async function loadPhotos(){const grid=document.getElementById('photoGrid');if(!grid)return;try{const s=await getDocs(collection(db,"clients",CLIENT_ID,"photos"));let p=[];s.forEach(d=>p.push(d.data()));p.sort((a,b)=>b.ts-a.ts);grid.innerHTML=p.map(ph=>`<div><img src="${ph.url}" style="width:100%;border-radius:4px;object-fit:cover;aspect-ratio:1"><div style="font-size:9px;color:var(--white-dim);text-align:center;margin-top:4px">${ph.date}</div></div>`).join('');}catch(e){}}
+  window.markDone=async function(id){const key='done-'+id;const cur=await fbGet(key);const now=new Date().toLocaleDateString('pt-BR');const nv=cur===now?'':now;await fbSet(key,nv);const badge=document.getElementById('done-badge-'+id);const btn=document.getElementById('done-'+id);if(badge)badge.textContent=nv?'✓ '+nv:'';if(btn)btn.style.opacity=nv?'0.5':'1';};
+  window.toggleDay=async function(i){const key='day-'+i+'-'+new Date().toISOString().slice(0,10);const v=await fbGet(key);await fbSet(key,v==='1'?'0':'1');loadDays();};
+  async function loadDays(){const week=new Date().toISOString().slice(0,10);let count=0;for(let i=0;i<7;i++){const v=await fbGet('day-'+i+'-'+week);const el=document.querySelector(`.prog-day:nth-child(${i+1})`);if(el){el.classList.toggle('done',v==='1');if(v==='1')count++;}}const bar=document.getElementById('progressBar');const pct=document.getElementById('progressPct');if(bar)bar.style.width=(count/7*100)+'%';if(pct)pct.textContent=Math.round(count/7*100)+'% da semana concluído';}
+  window.showHist=async function(tid,eid,name){document.getElementById('histTitle').textContent=name;const list=document.getElementById('histList');list.innerHTML='<div style="color:var(--white-dim);font-size:11px;">Carregando...</div>';document.getElementById('histOverlay').style.display='flex';try{const s=await getDocs(collection(db,"clients",CLIENT_ID,"loadHistory",tid+'-'+eid,"entries"));let e=[];s.forEach(d=>e.push(d.data()));e.sort((a,b)=>b.ts-a.ts);list.innerHTML=e.length?e.slice(0,10).map(en=>`<div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:11px;"><span style="color:var(--white-dim)">${en.date}</span><span style="color:var(--gold);font-weight:600">${en.value}</span></div>`).join(''):'<div style="color:var(--white-dim);font-size:11px;">Sem histórico ainda.</div>';}catch(e){list.innerHTML='<div style="color:var(--white-dim);font-size:11px;">Erro ao carregar.</div>';}};
+  window.closeHist=function(){document.getElementById('histOverlay').style.display='none';};
+  window.selectFb=function(btn,group){document.querySelectorAll('#fb-'+group+' .fb-opt').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');};
+  window.gerarResumoFeedback=async function(){const treino=document.querySelector('#fb-treino .fb-opt.selected')?.textContent||'—';const dieta=document.querySelector('#fb-dieta .fb-opt.selected')?.textContent||'—';const energia=document.getElementById('fb-energia')?.value||'—';const sono=document.getElementById('fb-sono')?.value||'—';const obs=document.getElementById('fb-obs')?.value||'—';const txt=`📋 *FEEDBACK SEMANAL — ${CLIENT_NAME}*
+
+🏋️ Treinos: ${treino}
+🥗 Alimentação: ${dieta}
+⚡ Energia: ${energia}/10
+😴 Sono: ${sono}/10
+💬 Obs: ${obs}`;await fbSet('last-feedback',txt);window.open('https://wa.me/5527995084354?text='+encodeURIComponent(txt),'_blank');};
+  async function loadAll(){try{const s=await getDocs(collection(db,"clients",CLIENT_ID,"data"));s.forEach(d=>{const el=document.querySelector(`[data-key="${d.id}"]`);if(el){if(el.type==='checkbox')el.checked=d.data().value==='1';else el.value=d.data().value||'';}})}catch(e){document.querySelectorAll('[data-key]').forEach(el=>{const val=localStorage.getItem(el.dataset.key);if(val===null)return;if(el.type==='checkbox')el.checked=val==='1';else el.value=val;});}loadWeights();loadDays();}
+  window.addEventListener('load',()=>{loadAll();loadPhotos();autoRegister();});
+</script>
+
+</body>
+</html>
