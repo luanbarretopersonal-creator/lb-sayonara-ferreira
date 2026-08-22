@@ -523,6 +523,9 @@ textarea.q-input{resize:vertical;min-height:80px;}
 .alert-box{background:linear-gradient(135deg,#1a1500,var(--dark2));border:1px solid var(--gold);border-radius:4px;padding:14px 18px;margin-bottom:20px;font-size:12px;color:var(--white-dim);line-height:1.8;}
 .alert-box strong{color:var(--gold);}
 .alert-gold{border-color:var(--gold);}
+
+.plano-content{display:none !important;}
+.plano-content.active{display:block !important;}
 </style>
 </head>
 <body>
@@ -611,7 +614,7 @@ Suporte: segunda a sexta, 8h às 18h. Qualquer dúvida, me chama! 💬</div>
 </section>
 
 <section id="dieta" class="section">
-  <div class="section-header"><h2>Planejamento <span>Alimentar</span></h2><div class="section-line"></div></div>
+  <div class="section<div style="display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;flex-wrap:nowrap;"><button class="plano-tab" onclick="showPlano('say-dieta-ant',this)" style="padding:8px 14px;background:var(--dark2);border:1px solid var(--border);color:var(--white-dim);border-radius:4px;font-size:11px;cursor:pointer;font-family:inherit;white-space:nowrap;flex-shrink:0;min-height:36px;">📋 Plano anterior</button><button class="plano-tab active" onclick="showPlano('say-dieta-nova',this)" style="padding:8px 14px;background:var(--gold);border:1px solid var(--gold);color:var(--dark);border-radius:4px;font-size:11px;cursor:pointer;font-weight:600;font-family:inherit;white-space:nowrap;flex-shrink:0;min-height:36px;">✅ Dieta atual · ~1.487 kcal</button></div><div id="say-dieta-ant" class="plano-content">
 
   <div class="sub-search-wrap"><h4>🔍 Busca rápida de substitutos</h4><input class="sub-search-input" type="text" id="subSearch" placeholder="Digite o alimento..." oninput="searchSubs()"><div id="sub-results"></div></div>
 
@@ -738,6 +741,29 @@ Suporte: segunda a sexta, 8h às 18h. Qualquer dúvida, me chama! 💬</div>
       <div class="meal-obs-area"><textarea placeholder="Observações desta refeição..." data-key="meal-obs-sup-4" onchange="saveObs(this)"></textarea></div>
     </div>
   </div>
+</div><div id="say-dieta-nova" class="plano-content active"><div class="meal-total"><div class="total-pill"><span class="label">Total diário</span><span class="value">~1.487</span><span class="unit">kcal</span></div></div><div class="meal-card"><div class="meal-header"><div class="meal-header-left"><div class="meal-num">1</div><div><div class="meal-name">Café da Manhã</div><span class="meal-time">Manhã</span></div></div><div class="meal-kcal">326 <span>kcal</span></div></div><div style="overflow-x:auto;-webkit-overflow-scrolling:touch;"><table><thead><tr><th>Alimento</th><th>Qtd</th><th>kcal</th><th>Substituições</th></tr></thead><tbody><tr><td class="food-name">Ovos inteiros</td><td class="food-qty">2 un</td><td class="food-kcal">156</td><td class="food-subs">Whey protein 40g · Atum em água 130g · Peito de frango 130g</td></tr>
+<tr><td class="food-name">Claras de ovo</td><td class="food-qty">2 un</td><td class="food-kcal">34</td><td class="food-subs">Clara extra pode substituir 1 ovo inteiro</td></tr>
+<tr><td class="food-name">Pão integral</td><td class="food-qty">1 fatia (25g)</td><td class="food-kcal">62</td><td class="food-subs">Tapioca 20g · Aveia 25g · Batata-doce 80g</td></tr>
+<tr><td class="food-name">Mamão</td><td class="food-qty">200g</td><td class="food-kcal">74</td><td class="food-subs">Melão 250g · Melancia 350g · Abacaxi 180g · Laranja 200g</td></tr>
+</tbody></table><div style="text-align:center;font-size:10px;color:rgba(245,240,232,.5);padding:3px 0 8px;">← deslize →</div></div></div>
+<div class="meal-card"><div class="meal-header"><div class="meal-header-left"><div class="meal-num">2</div><div><div class="meal-name">Almoço</div><span class="meal-time">12h30</span></div></div><div class="meal-kcal">380 <span>kcal</span></div></div><div style="overflow-x:auto;-webkit-overflow-scrolling:touch;"><table><thead><tr><th>Alimento</th><th>Qtd</th><th>kcal</th><th>Substituições</th></tr></thead><tbody><tr><td class="food-name">Arroz branco cozido</td><td class="food-qty">100g</td><td class="food-kcal">130</td><td class="food-subs">Arroz integral 90g · Batata-doce 130g · Batata inglesa 155g · Mandioquinha 145g</td></tr>
+<tr><td class="food-name">Peito de frango grelhado</td><td class="food-qty">150g</td><td class="food-kcal">186</td><td class="food-subs">Patinho moído 140g · Tilápia 195g · Atum em água 173g · Salmão 135g · Ovos 3 un</td></tr>
+<tr><td class="food-name">Verduras e vegetais</td><td class="food-qty">150g</td><td class="food-kcal">35</td><td class="food-subs">Brócolis · Couve-flor · Abobrinha · Cenoura · Espinafre · Vagem (~150g)</td></tr>
+<tr><td class="food-name">Abacaxi</td><td class="food-qty">60g</td><td class="food-kcal">29</td><td class="food-subs">Melão 80g · Laranja 60g · Mamão 70g · Morango 120g</td></tr>
+</tbody></table><div style="text-align:center;font-size:10px;color:rgba(245,240,232,.5);padding:3px 0 8px;">← deslize →</div></div></div>
+<div class="meal-card"><div class="meal-header"><div class="meal-header-left"><div class="meal-num">3</div><div><div class="meal-name">Lanche da Tarde</div><span class="meal-time">16h</span></div></div><div class="meal-kcal">401 <span>kcal</span></div></div><div style="overflow-x:auto;-webkit-overflow-scrolling:touch;"><table><thead><tr><th>Alimento</th><th>Qtd</th><th>kcal</th><th>Substituições</th></tr></thead><tbody><tr><td class="food-name">Whey protein</td><td class="food-qty">30g</td><td class="food-kcal">117</td><td class="food-subs">Peito de frango 110g · Atum em água 130g · Ovos 2 un · Iogurte grego zero 185g</td></tr>
+<tr><td class="food-name">Granola sem açúcar ou aveia em flocos</td><td class="food-qty">30g</td><td class="food-kcal">129</td><td class="food-subs">Aveia em flocos 30g · Granola zero 30g</td></tr>
+<tr><td class="food-name">Iogurte zero sem lactose</td><td class="food-qty">200ml</td><td class="food-kcal">80</td><td class="food-subs">Kefir desnatado 200ml · Iogurte grego zero 130g · Leite desnatado 200ml</td></tr>
+<tr><td class="food-name">Frutas variadas</td><td class="food-qty">150g</td><td class="food-kcal">75</td><td class="food-subs">Morango · Mirtilo · Kiwi · Maçã · Pera · Melão (qualquer fruta, ~150g)</td></tr>
+</tbody></table><div style="text-align:center;font-size:10px;color:rgba(245,240,232,.5);padding:3px 0 8px;">← deslize →</div></div></div>
+<div class="meal-card"><div class="meal-header"><div class="meal-header-left"><div class="meal-num">4</div><div><div class="meal-name">Jantar</div><span class="meal-time">20h</span></div></div><div class="meal-kcal">380 <span>kcal</span></div></div><div style="overflow-x:auto;-webkit-overflow-scrolling:touch;"><table><thead><tr><th>Alimento</th><th>Qtd</th><th>kcal</th><th>Substituições</th></tr></thead><tbody><tr><td class="food-name">Arroz branco cozido</td><td class="food-qty">100g</td><td class="food-kcal">130</td><td class="food-subs">Arroz integral 90g · Batata-doce 130g · Batata inglesa 155g · Mandioquinha 145g</td></tr>
+<tr><td class="food-name">Peito de frango grelhado</td><td class="food-qty">150g</td><td class="food-kcal">186</td><td class="food-subs">Patinho moído 140g · Tilápia 195g · Atum em água 173g · Salmão 135g</td></tr>
+<tr><td class="food-name">Verduras e vegetais</td><td class="food-qty">150g</td><td class="food-kcal">35</td><td class="food-subs">Brócolis · Couve-flor · Abobrinha · Cenoura · Espinafre · Vagem (~150g)</td></tr>
+<tr><td class="food-name">Abacaxi</td><td class="food-qty">60g</td><td class="food-kcal">29</td><td class="food-subs">Melão 80g · Laranja 60g · Mamão 70g · Morango 120g</td></tr>
+</tbody></table><div style="text-align:center;font-size:10px;color:rgba(245,240,232,.5);padding:3px 0 8px;">← deslize →</div></div></div>
+meal-obs-sup-4" onchange="saveObs(this)"></textarea></div>
+    </div>
+  </div>
 </section>
 
 <section id="treino" class="section">
@@ -803,8 +829,8 @@ Suporte: segunda a sexta, 8h às 18h. Qualquer dúvida, me chama! 💬</div>
   <!-- SELETOR DE PROTOCOLO -->
   <div class="cardio-proto-tabs">
     <button class="cardio-proto-tab" onclick="showProto('cardio-proto1',this)">📁 Protocolo 1 · 6 semanas</button>
-    <button class="cardio-proto-tab active" onclick="showProto('cardio-proto2',this)">🔥 Protocolo 2 · a partir de 13/07</button>
-  </div>
+    <button class="cardio-proto-tab" onclick="showProto('cardio-proto2',this)">🔥 Protocolo 2 · a partir de 13/07</button>
+  <button class="cardio-proto-tab" onclick="showProto('say-card-novo',this)" style="padding:8px 14px;background:var(--gold);border:1px solid var(--gold);color:var(--dark);border-radius:4px;font-size:11px;cursor:pointer;font-weight:600;font-family:inherit;white-space:nowrap;flex-shrink:0;min-height:36px;">✅ Protocolo atual</button></div>
 
   <!-- ═══════════════ PROTOCOLO 1 (6 semanas) ═══════════════ -->
   <div id="cardio-proto1" class="cardio-proto">
@@ -1015,7 +1041,7 @@ Suporte: segunda a sexta, 8h às 18h. Qualquer dúvida, me chama! 💬</div>
       <div style="margin-top:12px;font-size:11px;color:var(--white-dim);line-height:1.9;"><strong style="color:var(--gold);">Este protocolo é a prioridade do momento — a adesão ao cardio vai destravar a evolução da composição corporal.</strong></div>
     </div>
   </div>
-</section>
+<div id="say-card-novo" class="cardio-proto active" style="display:block;"><div style="background:linear-gradient(135deg,rgba(248,113,113,.06),var(--dark2));border:1px solid rgba(248,113,113,.3);border-radius:4px;padding:14px 18px;margin-bottom:16px;"><div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:#f87171;margin-bottom:8px;">🚴 Protocolo de Cardio — Atual</div><div style="font-size:11px;color:var(--white-dim);line-height:1.8;"><strong style="color:var(--white)">7 dias/semana</strong> · 40–60 min · <strong style="color:var(--white)">3× pedalada na orla</strong> + <strong style="color:var(--white)">4× cardio intenso na academia.</strong></div></div><div style="background:var(--dark2);border:1px solid var(--border);border-radius:4px;margin-bottom:10px;overflow:hidden;"><div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(201,168,76,.05);border-bottom:1px solid var(--border);"><span style="font-size:18px">🚴</span><div style="flex:1"><span style="font-size:12px;color:var(--white);font-weight:500">3× por semana · Pedalada na Orla</span></div><span style="background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);color:var(--gold);font-size:9px;padding:2px 8px;border-radius:10px;font-weight:600;">~40–60 min</span></div><div style="padding:10px 14px;"><div style="background:rgba(255,255,255,.03);border-left:2px solid var(--gold);padding:8px 12px;margin-top:6px;border-radius:2px;"><div style="font-size:10px;font-weight:600;color:var(--white);letter-spacing:1px;margin-bottom:3px;text-transform:uppercase;">Intensidade</div><div style="font-size:11px;color:var(--white-dim);line-height:1.6;">Ritmo moderado — Zona 2. Manter consistência e duração.</div></div><div style="background:rgba(255,255,255,.03);border-left:2px solid var(--gold);padding:8px 12px;margin-top:6px;border-radius:2px;"><div style="font-size:10px;font-weight:600;color:var(--white);letter-spacing:1px;margin-bottom:3px;text-transform:uppercase;">Observação</div><div style="font-size:11px;color:var(--white-dim);line-height:1.6;">Ótimo pra base aeróbica e recuperação ativa.</div></div></div></div><div style="background:var(--dark2);border:1px solid var(--border);border-radius:4px;margin-bottom:10px;overflow:hidden;"><div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(201,168,76,.05);border-bottom:1px solid var(--border);"><span style="font-size:18px">🔥</span><div style="flex:1"><span style="font-size:12px;color:var(--white);font-weight:500">4× por semana · Cardio Intenso (Academia)</span></div><span style="background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);color:var(--gold);font-size:9px;padding:2px 8px;border-radius:10px;font-weight:600;">~40–60 min</span></div><div style="padding:10px 14px;"><div style="background:rgba(255,255,255,.03);border-left:2px solid var(--gold);padding:8px 12px;margin-top:6px;border-radius:2px;"><div style="font-size:10px;font-weight:600;color:var(--white);letter-spacing:1px;margin-bottom:3px;text-transform:uppercase;">Modalidades</div><div style="font-size:11px;color:var(--white-dim);line-height:1.6;">Esteira inclinada · Bike com carga · Escada · Transport</div></div><div style="background:rgba(255,255,255,.03);border-left:2px solid var(--gold);padding:8px 12px;margin-top:6px;border-radius:2px;"><div style="font-size:10px;font-weight:600;color:var(--white);letter-spacing:1px;margin-bottom:3px;text-transform:uppercase;">Intensidade</div><div style="font-size:11px;color:var(--white-dim);line-height:1.6;">Zona 3–4 — ritmo elevado, intensidade real. Não passear.</div></div><div style="background:rgba(255,255,255,.03);border-left:2px solid var(--gold);padding:8px 12px;margin-top:6px;border-radius:2px;"><div style="font-size:10px;font-weight:600;color:var(--white);letter-spacing:1px;margin-bottom:3px;text-transform:uppercase;">Objetivo</div><div style="font-size:11px;color:var(--white-dim);line-height:1.6;">Maior gasto calórico e estímulo metabólico — essencial pra resultado.</div></div></div></div></div></section>
 
 <section id="conscientizacao" class="section">
   <div class="section-header"><h2>Área de <span>Conscientização</span></h2><div class="section-line"></div></div>
@@ -1518,8 +1544,6 @@ Suporte: segunda a sexta, 8h às 18h. Qualquer dúvida, me chama! 💬</div>
     </div>
   </div>
 </section>
-
-</div>
 
 <div class="watermark">Consultoria LB</div>
 
@@ -2502,6 +2526,7 @@ function showProto(pid, btn){
   if(el) el.classList.add('active');
   if(btn) btn.classList.add('active');
 }
+function showPlano(pid,btn){document.querySelectorAll(".plano-content").forEach(function(p){p.classList.remove("active");});document.querySelectorAll(".plano-tab").forEach(function(b){b.classList.remove("active");});var el=document.getElementById(pid);if(el)el.classList.add("active");if(btn)btn.classList.add("active");}
 
 </script>
 
